@@ -1,0 +1,60 @@
+<div class="card-header d-flex justify-content-between">
+  <h3>Criterio de Adjudicación</h3>
+  <span class="badge badge__dotted--success" *ngIf="state === 7" >En negociación</span>
+</div>
+
+
+<div class="card-body">
+  <div class="row">
+
+    <div class="col-12 tab__card">
+      <ngb-tabset [justify]="'center'">
+        <ngb-tab>
+          <ng-template ngbTabTitle>
+            <a class="card card--media">
+              <div class="card-body">
+                <div class="media d-flex justify-content-center align-items-center">
+                  <div class="media-body text-center">
+                    <h4 class="text-primary">Precio Total</h4>
+                    <p>El sistema adjudicará por el mejor precio total.<p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </ng-template>
+          <ng-template ngbTabContent>
+            <app-petitioners-assigned-criteria-total></app-petitioners-assigned-criteria-total>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab>
+          <ng-template ngbTabTitle>
+            <a class="card card--media">
+              <div class="card-body">
+                <div class="media d-flex justify-content-center align-items-center">
+                  <div class="media-body text-center">
+                    <h4 class="text-primary">Precio por Subrubro</h4>
+                    <p>El sistema adjudicará por subrubros.</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </ng-template>
+          <ng-template ngbTabContent>
+            <app-petitioners-assigned-criteria-subcategory></app-petitioners-assigned-criteria-subcategory>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </div>
+
+  </div>
+</div>
+<app-modal-assigned-criteria></app-modal-assigned-criteria>
+
+<div class="card-footer d-flex justify-content-center flex-wrap">
+  <button type="button" class="btn btn-outline-secondary btn-sm" (click)="back()">Anterior</button>
+  <!-- ASSIGNED CRITERIA start -> disabled -->
+  <button type="button" class="btn btn-secondary btn-sm" (click)="next()" [disabled]="true">
+    Siguiente
+  </button>
+  <!-- ASSIGNED CRITERIA end -->
+</div>

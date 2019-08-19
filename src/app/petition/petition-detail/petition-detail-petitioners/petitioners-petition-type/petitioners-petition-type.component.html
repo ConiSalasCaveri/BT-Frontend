@@ -1,0 +1,62 @@
+<div class="card-header d-flex justify-content-between">
+  <h3>Tipo de solicitud</h3>
+  <span class="badge badge__dotted--success" *ngIf="petition.state === 5">Publicada</span>
+  <span class="badge badge__dotted--danger"
+  *ngIf="petition.state === 6 || petition.state === 8 || petition.state === 4">Anulada</span>
+  <!-- NEGOTIATE start -->
+  <span class="badge badge__dotted--success" *ngIf="petition.state === 7">En negociación</span>
+  <!-- NEGOTIATE end -->
+</div>
+
+
+<div class="card-body">
+
+  <div class="row">
+    <div class="col-12 col-xl-6">
+      <a class="card card--media" [ngClass]="petition && petition.type.type === 1 ? 'active' : ''" disabled>
+        <div class="card-body">
+          <div class="media d-flex align-items-center">
+            <i-unlock class="text-primary icon--lg"></i-unlock>
+            <div class="media-body">
+              <h4 class="text-primary">Solicitud pública</h4>
+              <p>Se notificará a todos los proveedores asociados a los subrubros correspondientes.<p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-12 col-xl-6">
+      <a class="card card--media" [ngClass]="petition && petition.type.type === 2 ? 'active' : ''" disabled>
+        <div class="card-body">
+          <div class="media d-flex align-items-center">
+            <i-lock class="text-primary icon--lg"></i-lock>
+            <div class="media-body">
+              <h4 class="text-primary">Solicitud privada</h4>
+              <!-- <p>Se notificará a tus proveedores triple A asociados a los rubros correspondientes.</p> -->
+              <p>Se notificará a todos los proveedores "Tripe A" asociados a su compañia que ofrezcan los sub-rubros de esta solicitud.</p>
+            </div>
+          </div>
+        </div>
+      </a>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="PrivatePurchaseCheck"
+        [checked]="petition && petition.type.inviteSuppliers ? true : false"
+        [disabled]="petition && petition.state > 4">
+        <label class="custom-control-label" for="PrivatePurchaseCheck">
+          <!-- Invitar a todos los proveedores triple A del sistema. -->
+          Seleccione esta opción, se notificará a todos los proveedores "Triple A" del sistema que ofrezcan los sub-rubros de esta solicitud.
+        </label>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="card-footer d-flex justify-content-center flex-wrap">
+  <button type="button" class="btn btn-outline-secondary btn-sm" (click)="back()">Anterior</button>
+  <!-- PUBLISH start -> disabled -->
+  <button type="button" class="btn btn-secondary btn-sm" (click)="next()"
+  [disabled]="petition && petition.state < 7 || petition.state > 8">Siguiente</button>
+  <!-- PUBLISH end -->
+</div>

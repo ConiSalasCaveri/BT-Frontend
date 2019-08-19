@@ -1,0 +1,100 @@
+<div id="accordion" class="accordion">
+  <div class="mb-4 card__container" *ngFor="let petition of petitionOffers; index as i">
+    <div class=" w-75 card__tag">
+      <small>Última modificación: 00/00/00 00:00:00 </small>
+    </div>
+    <div class="card">
+      <div class="card-header collapsed py-0 mb-0" data-toggle="collapse" [attr.data-target]="'#collapseOne'+i"
+        aria-expanded="false" aria-controls="collapseOne">
+        <div class="row">
+          <div class="col-auto card__label mr-3 px-2 py-3">
+            <h4 class="mr-0">{{petition.place}}º</h4>
+          </div>
+          <div class="col-auto px-0 d-flex align-items-center">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="SuppliersOneCheck{{i}}"
+                (change)="onCheck(i, petition.id)" name="check" [checked]="petition.place === 1 ? true : false">
+              <label class="custom-control-label" for="SuppliersOneCheck{{i}}"></label>
+            </div>
+          </div>
+          <div class="col pr-2 py-3 d-flex">
+            <div class="row d-flex align-items-center justify-content-between w-100">
+              <div class="col order-1 order-lg-2 order-xl-1">
+                <!-- FALTA PUESTO DEL PROVEEDOR -->
+                <h4>{{petition.name}} </h4>
+                <!-- <small class="mr-auto order-2 order-lg-3 order-xl-2">
+                  Última modificación: {{petition.updatedOn}}</small> -->
+              </div>
+              <div class="col-auto px-0 order-2 order-lg-3 order-xl-2" *ngIf="petition.tripleA">
+                <span class="btn btn-accent btn-sm" ngbTooltip="Proveedor Triple A" tooltipClass="tooltip--accent"
+                  placement="top" container="body">A</span>
+              </div>
+              <div class="col-auto col-lg-12 col-xl-auto order-3 order-lg-1 order-xl-3">
+                  <ngb-rating [rate]="petition.starRate" [readonly]="true" max="5"
+                    class="text-warning icon--star mb-0"
+                    ngbTooltip="Calificación del proveedor" placement="top" container="body"></ngb-rating>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto d-inline-flex justify-content-center align-items-center pl-0">
+            <i-chevron-down class="text-light"></i-chevron-down>
+          </div>
+        </div>
+      </div>
+      <div id="collapseOne{{i}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col-6 col-lg-12 col-xl-6 col-xxl-4 col-fhd-2">
+                  <div class="form-group">
+                    <small>Forma de pago</small>
+                    <p>{{getPaymentString(petition.payment)}}</p>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-12 col-xl-6 col-xxl-4 col-fhd-2">
+                  <div class="form-group">
+                    <small>Plazo de Pago</small>
+                    <p>{{getPaymentPeriodString(petition.paymentPeriod)}}</p>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-12 col-xl-6 col-xxl-4 col-fhd-2">
+                  <div class="form-group">
+                    <small>Entrega en Obra</small>
+                    <p>{{petition.deliveryOnSiteDateStart}}</p>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-12 col-xl-6 col-xxl-4 col-fhd-2">
+                  <div class="form-group">
+                    <small>Costo de envío a cargo de</small>
+                    <p>{{getRoleString(petition.shippingCostOwner)}}</p>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-12 col-xl-6 col-xxl-4 col-fhd-2">
+                  <div class="form-group">
+                    <small>Sub total</small>
+                    <p>{{petition.subtotal | currency}}</p>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-12 col-xl-6 col-xxl-4 col-fhd-2">
+                  <div class="form-group">
+                    <small>Costo de envío</small>
+                    <p>{{petition.shippingCost | currency}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto d-flex align-items-center">
+              <div class="form-group mb-0">
+                <h3>{{petition.total | currency}}</h3>
+                <small class="d-flex justify-content-end">TOTAL</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

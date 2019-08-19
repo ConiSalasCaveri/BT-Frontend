@@ -1,0 +1,49 @@
+@import "../abstracts/abstracts-module";
+
+/* BREADCRUMBS */
+  .breadcrumb__item {
+    margin-bottom: $spacer;
+
+    &:not(:first-child) {
+      padding-left: 0;
+    }
+
+    .breadcrumb__icon {
+      margin-right: $spacer / 2;
+    }
+
+    & + .breadcrumb__item::before {
+      content: "";
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%23808080" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>')
+        no-repeat;
+      width: $spacer * 1.5;
+      height: $spacer;
+      display: inline-block;
+      padding-right: $spacer * 2;
+    }
+  }
+
+  .breadcrumb__item:hover ~ .breadcrumb__item::before {
+    content: "";
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%23808080" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>')
+      no-repeat;
+  }
+
+  .breadcrumb__item.disabled:hover ~ .breadcrumb__item:before {
+    content: "";
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%23808080" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>')
+      no-repeat;
+  }
+
+
+.breadcrumb__btn-group {
+  .btn {
+    margin-left: $spacer;
+    min-width: $spacer * 5.5;
+    margin-bottom: $spacer * 2;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

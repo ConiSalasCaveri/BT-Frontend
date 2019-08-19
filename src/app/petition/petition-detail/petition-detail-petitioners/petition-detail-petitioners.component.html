@@ -1,0 +1,281 @@
+<!-- Breadcrumb start -->
+<app-breadcrumb>
+  <div class="col-auto breadcrumb__item">
+    <a href="/petition/list/petitioners" class="d-inline-flex">
+      <i-file-text class="breadcrumb__icon"></i-file-text>
+      Solicitudes
+    </a>
+  </div>
+
+  <div class="col breadcrumb__item text-truncate active" title="Nombre de la solicitud">
+    {{petition?.name}}
+  </div>
+
+  <div class="col-12 col-lg-auto">
+    <div class="d-flex justify-content-end breadcrumb__btn-group">
+      <!-- NEGOTIATE start -->
+      <button type="button" class="btn btn-primary"
+        (click)="petitionersDetail = 'petitioners-assigned-criteria'"
+        *ngIf="petitionersDetail === 'petitioners-negotiate' && isAssignedCriteria">Adjudicar</button>
+      <!-- NEGOTIATE end -->
+      <!-- ASSIGNED CRITERIA start -->
+      <button type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#ModalAssignedCriteria" *ngIf="petitionersDetail === 'petitioners-assigned-criteria'">Guardar</button>
+      <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+        data-target="#ModalCancel" *ngIf="(response | async)?.state === 14 ">Cancelar</button>
+      <!-- ASSIGNED CRITERIA end -->
+      <!-- ASSIGNED start -->
+      <button routerLink="/petition/finished/petitioners" type="button" class="btn btn-primary"
+      *ngIf="(response | async)?.state === 10">Finalizar</button>
+      <!-- ASSIGNED end -->
+      <hr class="hr--vertical" *ngIf="(response | async)?.state === 7">
+      <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+        data-target="#ModalNullify" *ngIf="(response | async)?.state === 7 || (response | async)?.state === 5 ||
+         (response | async)?.state === 11">Anular</button>
+    </div>
+  </div>
+
+</app-breadcrumb>
+<!-- Breadcrumb end -->
+
+
+<!-- PETITIONERS start -->
+<form action="" class="form--invalid form--warning">
+  <div class="row">
+
+    <!-- WIZARD start -->
+    <div class="col col-lg-4 col-xl-3 col-xxl-3 col-fhd-2 mb-4 mb-lg-0">
+      <div class="card card__wizard">
+
+        <div class="card-body">
+          <div class="list-group">
+            <h6 class="list-group__title">Solicitud</h6>
+            <a class="list-group-item d-flex align-items-center" ngbTooltip="Datos básicos" placement="bottom"
+              container="list-group" (click)="petitionersDetail = 'petitioners-basic-data'"
+              [ngClass]="this.petitionersDetail === 'petitioners-basic-data' ? 'list-group-item--active' : ''">
+              <span class="btn btn-outline-secondary btn-sm">
+                1
+              </span>
+              <p>Datos básicos</p>
+            </a>
+            <hr class="hr--vertical">
+            <a class="list-group-item d-flex align-items-center" ngbTooltip="Detalle de la entrega" placement="bottom"
+              container="list-group" (click)="petitionersDetail = 'petitioners-deliver-detail'"
+              [ngClass]="this.petitionersDetail === 'petitioners-deliver-detail' ? 'list-group-item--active' : ''">
+              <span class="btn btn-outline-secondary btn-sm">
+                2
+              </span>
+              <p>Detalle de la entrega</p>
+            </a>
+            <hr class="hr--vertical">
+            <a class="list-group-item d-flex align-items-center" ngbTooltip="Ítems" placement="bottom"
+              container="list-group" (click)="petitionersDetail = 'petitioners-items'"
+              [ngClass]="this.petitionersDetail === 'petitioners-items' ? 'list-group-item--active' : ''">
+              <span class="btn btn-outline-secondary btn-sm">
+                3
+              </span>
+              <p>Ítems</p>
+            </a>
+            <!--Only Premium start-->
+            <hr class="hr--vertical">
+            <a class="list-group-item d-flex align-items-center" ngbTooltip="Tipo de solicitud" placement="bottom"
+              container="list-group" (click)="petitionersDetail = 'petitioners-petition-type'"
+              [ngClass]="this.petitionersDetail === 'petitioners-petition-type' ? 'list-group-item--active' : ''">
+              <span class="btn btn-outline-secondary btn-sm">
+                4
+              </span>
+              <p>Tipo de solicitud</p>
+            </a>
+            <!--Only Premium end-->
+            <!-- Negotiate start -->
+          <hr class="hr--vertical" *ngIf="isNegotiateStatus">
+          <div *ngIf="isNegotiateStatus">
+            <h6 class="list-group__title">Negociación</h6>
+            <a class="list-group-item d-flex align-items-center" ngbTooltip="Negociación" placement="bottom"
+              container="list-group" (click)="petitionersDetail = 'petitioners-negotiate'"
+              [ngClass]="this.petitionersDetail === 'petitioners-negotiate' ? 'list-group-item--active' : ''">
+              <span class="btn btn-outline-secondary btn-sm">
+                5
+              </span>
+              <p>Negociación</p>
+            </a>
+          </div>
+          <hr class="hr--vertical" *ngIf="isAssignedCriteria">
+          <div *ngIf="isAssignedCriteria">
+            <a class="list-group-item d-flex align-items-center" ngbTooltip="Criterio de Adjudicación"
+              placement="bottom" container="list-group" (click)="petitionersDetail = 'petitioners-assigned-criteria'"
+              [ngClass]="this.petitionersDetail === 'petitioners-assigned-criteria' ? 'list-group-item--active' : ''">
+              <span class="btn btn-outline-secondary btn-sm">
+                6
+              </span>
+              <p>Criterio de Adjudicación</p>
+            </a>
+          </div>
+
+            <!-- Negotiate end -->
+            <!-- Assigned start -->
+          <hr class="hr--vertical" *ngIf="isAwardedStatus">
+          <div *ngIf="isAwardedStatus">
+            <h6 class="list-group__title">Adjudicación</h6>
+            <a class="list-group-item d-flex align-items-center" ngbTooltip="Adjudicación" placement="bottom"
+              container="body" (click)="petitionersDetail = 'petitioners-assigned'"
+              [ngClass]="this.petitionersDetail === 'petitioners-assigned' ? 'list-group-item--active' : ''">
+              <span class="btn btn-outline-secondary btn-sm">
+                7
+              </span>
+              <p>Adjudicación</p>
+            </a>
+          </div>
+            <!-- Assigned end -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- WIZARD end -->
+
+    <!-- PETITION start -->
+    <div class="col-12 col-lg-8 col-xl-9 col-xxl-9 col-fhd-10">
+      <div class="card" [ngSwitch]="petitionersDetail">
+
+        <app-petitioners-basic-data *ngSwitchCase="'petitioners-basic-data'" (changeChild)="changeChild($event)">
+        </app-petitioners-basic-data>
+
+        <app-petitioners-deliver-detail *ngSwitchCase="'petitioners-deliver-detail'"
+          (changeChild)="changeChild($event)"></app-petitioners-deliver-detail>
+
+        <app-petitioners-items *ngSwitchCase="'petitioners-items'" (changeChild)="changeChild($event)">
+        </app-petitioners-items>
+
+        <app-petitioners-petition-type *ngSwitchCase="'petitioners-petition-type'" (changeChild)="changeChild($event)">
+        </app-petitioners-petition-type>
+
+        <app-petitioners-negotiate *ngSwitchCase="'petitioners-negotiate'" (changeChild)="changeChild($event)">
+        </app-petitioners-negotiate>
+
+        <app-petitioners-assigned-criteria *ngSwitchCase="'petitioners-assigned-criteria'"
+          (changeChild)="changeChild($event)"></app-petitioners-assigned-criteria>
+
+        <app-petitioners-assigned *ngSwitchCase="'petitioners-assigned'" (changeChild)="changeChild($event)">
+        </app-petitioners-assigned>
+
+      </div>
+    </div>
+    <!-- PETITION end -->
+
+  </div>
+</form>
+<!-- PETITIONERS end -->
+
+<app-modal-nullify [nullify]="this.nullify"></app-modal-nullify>
+
+<app-modal-cancel></app-modal-cancel>
+
+<div class="btn btn-primary fab" ngbTooltip="Descargar Solicitud" tooltipClass="tooltip--primary" placement="left"
+  container="body">
+  <i-download></i-download>
+</div>
+
+<div class="toast__container">
+  <app-notifications></app-notifications>
+  <!-- <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>La solicitud XXXXXXX ha sido anulada con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+  <!-- <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Atención!</h4>
+          <p>La solicitud ha sido anulada por el usuario XXXXXXX.</p>
+          <button class="btn btn-danger" type="button" name="button" data-toggle="modal" data-target="#ModalNullify">Ver
+            motivos</button>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+  <!-- NEGOTIATE start -->
+  <!-- <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>El proveedor sera notificado para que mejore su oferta.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Oops!</h4>
+          <p>Ha ocurrido un error y no se ha podido negociar la solicitud. Intenta nuevamente.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+  <!-- NEGOTIATE end -->
+  <!-- ASSIGNED start -->
+  <!-- <div class="toast toast--warning show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-alert-triangle class="text-light icon--md"></i-alert-triangle>
+        <div class="media-body">
+          <h4>¡Pendiente de Pago!</h4>
+          <p>Todavía no ha pagado la comisión.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Atención!</h4>
+          <p>La solicitud ha sido anulada por el administrador del Sistema.</p>
+          <button class="btn btn-danger" type="button" name="button" data-toggle="modal" data-target="#ModalNullify">Ver
+            motivos</button>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- ASSIGNED end -->
+</div>

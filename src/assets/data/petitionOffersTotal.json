@@ -1,0 +1,50 @@
+{
+  "data": [{
+      "id": "b73a20b4-4505-40e7-b6a5-2ab85f8ecf76",
+      "place": 1,
+      "name": "Proveedor 1",
+      "tripleA": "true",
+      "starRate": 2,
+      "payment": 2,
+      "paymentPeriod": 3,
+      "shippingCost": 23,
+      "shippingCostOwner": 1,
+      "total": 3000,
+      "subtotal": 2700,
+      "updatedOn": "09/01/19 00:00:00",
+      "deliveryOnSiteDateStart": "09/01/19",
+      "type": 2
+    },
+    {
+      "id": "3c1a599e-c204-4aaa-8211-352b2d934d4d",
+      "place": 2,
+      "name": "Proveedor 2",
+      "tripleA": "false",
+      "starRate": 5,
+      "payment": 1,
+      "paymentPeriod": 2,
+      "shippingCost": 23,
+      "shippingCostOwner": 2,
+      "total": 2800,
+      "subtotal": 2400,
+      "updatedOn": "09/01/19 00:00:00",
+      "deliveryOnSiteDateStart": "05/03/19",
+      "type": 2
+    },
+    {
+      "id": "cfdca644-97e2-4810-8b06-255f7cdf78b8",
+      "place": 3,
+      "name": "Proveedor 3",
+      "tripleA": "true",
+      "starRate": 3.5,
+      "payment": 3,
+      "paymentPeriod": 1,
+      "shippingCost": 23,
+      "shippingCostOwner": 1,
+      "total": 29000,
+      "subtotal": 23000,
+      "updatedOn": "09/01/19 00:00:00",
+      "deliveryOnSiteDateStart": "05/07/19",
+      "type": 2
+    }]
+}

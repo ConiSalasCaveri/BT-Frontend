@@ -1,0 +1,91 @@
+<div class="modal fade" id="ModalCreateUsers" tabindex="-1" role="dialog" aria-labelledby="ModalCreateUsers"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <div class="d-flex flex-column">
+          <h1>Agregar usuario</h1>
+          <!-- EDIT USER ONLY start--
+          <h1>Editar usuario</h1>
+          -- EDIT USER ONLY end -->
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" placeholder="Joe">
+            <div class="invalid-feedback">
+              El campo es requerido.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" class="form-control" placeholder="Doe">
+            <div class="invalid-feedback">
+              El campo es requerido.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="email" class="form-control input__icon--mail" placeholder="usuario@mail.com">
+            <div class="invalid-feedback">
+              Correo electrónico inválido.
+            </div>
+            <div class="invalid-feedback">
+              El campo es requerido.
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label>Código de Área</label>
+                <input type="" class="form-control" placeholder="011">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-6">
+              <div class="form-group">
+                <label>Teléfono</label>
+                <input type="tel" class="form-control" placeholder="4444-4444">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Tipo de usuario</label>
+            <select class="form-control input__icon--chevron-down" id="userType">
+              <option hidden disabled selected>Tipo de usuario...</option>
+              <option>Usuarios</option>
+              <option>Solicitudes</option>
+            </select>
+            <div class="invalid-feedback">
+              El campo es requerido.
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-primary">Aceptar</button>
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+</div>

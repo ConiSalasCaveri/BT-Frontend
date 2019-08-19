@@ -1,0 +1,84 @@
+<div class="d-inline-flex ddw__container w-100 position-relative">
+
+  <ng-template #defaultTemplate let-text="text">
+    <button type="button" class="btn__datepicker" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span>{{text}}</span>
+      <i-chevron-down></i-chevron-down>
+    </button>
+  </ng-template>
+
+  <ng-content *ngTemplateOutlet="customTemplate||defaultTemplate;context:ctx"></ng-content>
+
+  <div class="dropdown-menu" style="z-index:1010;">
+
+    <div class="ddw__header">
+      <h5 class="d-inline-flex">
+        <span class="flex-fill">Hours</span>
+      </h5>
+    </div>
+
+    <div class="ddw__body">
+      <div class="dtp__container">
+
+        <div class="row">
+          <div class="col d-inline-flex justify-content-center">
+            <div class="dtp-time__items">
+              <button (click)="$event.stopPropagation()"
+                (mousedown)="addHourPress($event, 1)"
+                (mouseup)="killIncrease()"
+                (mouseleave)="killIncrease()"
+                (touchstart)="addHourPress($event, 1)"
+                (touchend)="killIncrease()"
+                type="button" class="btn btn__link--secondary">
+                <i-chevron-up></i-chevron-up>
+              </button>
+              <span>{{formatNumber(this.hour)}}</span>
+              <button
+                (click)="$event.stopPropagation()"
+                (mousedown)="addHourPress($event, -1)"
+                (mouseup)="killIncrease()"
+                (mouseleave)="killIncrease()"
+                (touchstart)="addHourPress($event, -1)"
+                (touchend)="killIncrease()"
+                type="button" class="btn btn__link--secondary">
+                <i-chevron-down></i-chevron-down>
+              </button>
+            </div>
+            <div class="d-flex align-items-center">hour</div>
+          </div>
+          <div class="col d-inline-flex justify-content-center">
+            <div class="dtp-time__items">
+              <button
+                (click)="$event.stopPropagation()"
+                (mousedown)="addMinPress($event, 1)"
+                (mouseup)="killIncrease()"
+                (touchstart)="addMinPress($event, 1)"
+                (touchend)="killIncrease()"
+                (mouseleave)="killIncrease()"
+                type="button" class="btn btn__link--secondary">
+                <i-chevron-up></i-chevron-up>
+              </button>
+              <span>{{formatNumber(this.min)}}</span>
+              <button
+                (click)="$event.stopPropagation()"
+                (mousedown)="addMinPress($event, -1)"
+                (mouseup)="killIncrease()"
+                (mouseleave)="killIncrease()"
+                (touchstart)="addMinPress($event, -1)"
+                (touchend)="killIncrease()"
+                type="button" class="btn btn__link--secondary">
+                <i-chevron-down></i-chevron-down>
+              </button>
+            </div>
+            <div class="d-flex align-items-center">min</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="ddw__footer" *ngIf="withNow">
+      <button class="btn btn__link--secondary" (click)="onSelectNow()">Now</button>
+    </div> -->
+
+  </div>
+</div>

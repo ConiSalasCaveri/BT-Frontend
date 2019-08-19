@@ -1,0 +1,160 @@
+<div class="card-header d-flex justify-content-between">
+  <h3>Ítems</h3>
+  <!-- PETITION EDIT start -->
+  <span class="badge badge__dotted--success" *ngIf="state === 1">Borrador</span>
+  <span class="badge badge__dotted--dark" *ngIf="state === 2">En observación</span>
+  <span class="badge badge__dotted--warning" *ngIf="state === 3">Observadas</span>
+  <span class="badge badge__dotted--danger" *ngIf="state === 4">Rechazada</span>
+  <!-- PETITION EDIT end -->
+</div>
+
+<div class="card-body">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-responsive table--simple table--warning"
+      [ngClass]="{'is-invalid': !products.length}">
+          <!-- <table class="table table-responsive table--simple is-invalid table--warning"> -->
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Rubro</th>
+            <th scope="col">Subrubro</th>
+            <th class="d-flex justify-content-between" scope="col">
+              Nombre del producto
+              <span>
+                <ng-template #ProductName>
+                  <h6>Nombre del Producto</h6>
+                  <p class="tooltip__text">Ejemplo: "Cemento Loma Negra Bolsa de 50 Kgs."</p>
+                </ng-template>
+                <i-info class="icon--xs" placement="left" [ngbTooltip]="ProductName" triggers="click:blur"></i-info>
+              </span>
+            </th>
+            <th scope="col">Unidad de medida</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr scope="row" *ngFor="let item of products; index as i"
+          [ngClass]="{'tr--invalid': !products.length}">
+            <td class="td--row-number">{{i + 1}}</td>
+            <td class="td--md">
+              <select class="form-control input__icon--chevron-down" id="categorySelected"
+                disabled [value]="item.categoryId" [(ngModel)]="item.categoryId">
+                  <option [value]="item2.id" *ngFor="let item2 of categoryData" selected>{{item2.text}}</option>
+              </select>
+            </td>
+            <td class="td--md">
+                <select class="form-control input__icon--chevron-down" id="subcategorySelected{{i}}"
+                disabled [value]="item.subcategoryId" [(ngModel)]="item.subcategoryId">
+                  <option [value]="item2.id" *ngFor="let item2 of subcategoryData">{{item2.text}}</option>
+              </select>
+            </td>
+            <td class="td--xl"><textarea name="name" value="{{item.name}}" disabled></textarea></td>
+            <td class="td--md">
+                <select class="form-control input__icon--chevron-down" id="unitSelected"
+                disabled [value]="item.unitId" [(ngModel)]="item.unitId">
+                  <option [value]="item2.id" *ngFor="let item2 of unitData">{{item2.text}}</option>
+              </select>
+            </td>
+            <td class="td--sm">
+              <input type="number" min="0" class="form-control" placeholder="Cantidad" value="{{item.amount}}"
+              [disabled]="true">
+
+            </td>
+            <td class="td--md">
+              <button type="button" class="btn text-secondary" disabled>
+                <i-upload></i-upload>
+              </button>
+              <button type="button" class="btn text-primary" disabled>
+                <i-copy></i-copy>
+              </button>
+              <button type="button" class="btn text-danger" (click)="removeProduct(i)" [disabled]="disabled"
+                placement="bottom" ngbTooltip="Quitar" tooltipClass="tooltip--danger">
+                <i-x></i-x>
+              </button>
+            </td>
+          </tr>
+          <!--  Default -->
+          <tr scope="row"
+          [ngClass]="{'tr--invalid': !products.length}">
+            <td class="td--row-number">{{products.length + 1}}</td>
+            <td class="td--md">
+              <select class="form-control input__icon--chevron-down" id="categoryDefault"
+                [formControl]="itemsForm.controls['category']">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+                <option selected disabled [ngValue]="null">Seleccionar Rubro</option>
+                <option [value]="item2.id" *ngFor="let item2 of categoryData">{{item2.text}}</option>
+              </select>
+            </td>
+            <td class="td--md">
+                <select class="form-control input__icon--chevron-down" id="subcategoryDefault"
+                  [formControl]="itemsForm.controls['subcategory']">
+                  <div class="invalid-feedback">
+                    El campo es requerido.
+                  </div>
+                  <option selected disabled [ngValue]="null">Seleccionar Subrubro</option>
+                  <option [value]="item2.id" *ngFor="let item2 of subcategoryData">{{item2.text}}</option>
+              </select>
+            </td>
+            <td class="td--xl"><textarea name="name" [(ngModel)]="product.name"></textarea></td>
+            <td class="td--md">
+              <select class="form-control input__icon--chevron-down" id="unitDefault"
+                [formControl]="itemsForm.controls['unit']">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+                <option selected disabled [ngValue]="null">Seleccionar Unidad</option>
+                <option [value]="item2.id" *ngFor="let item2 of unitData">{{item2.text}}</option>
+              </select>
+            </td>
+            <td class="td--sm">
+              <input type="number" pattern="[0–9]*" min="0" class="form-control" placeholder="Cantidad"
+              [(ngModel)]="product.amount">
+            </td>
+            <td class="td--md">
+              <button type="button" class="btn text-secondary" data-toggle="modal" data-target="#ModalFileUpload"
+                placement="top" ngbTooltip="Cargar imagen" tooltipClass="tooltip--secondary">
+                <i-upload></i-upload>
+              </button>
+              <button type="button" class="btn text-primary" (click)="duplicateRow()" [disabled]="disabled"
+                placement="top" ngbTooltip="Duplicar" tooltipClass="tooltip--primary">
+                <i-copy></i-copy>
+              </button>
+              <button type="button" class="btn text-danger" [disabled]="disabled"
+                placement="top" ngbTooltip="Quitar" tooltipClass="tooltip--danger">
+                <i-x></i-x>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="invalid-feedback">
+        Es necesario completar todos los campos de la tabla.
+      </div>
+      <div class="row--invalid" *ngIf="validFields">
+        Es necesario completar todos los campos de la tabla.
+      </div>
+      <!-- Only PETITION EDIT Observadas start -->
+      <div class="warning--feedback" *ngIf="state === 3">
+        Intercambio de datos.
+      </div>
+      <!-- Only PETITION EDIT Observadas start -->
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+      <button type="button" class="btn btn-outline-secondary" (click)="addProduct()">
+        Agregar producto
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="card-footer d-flex justify-content-center flex-wrap">
+  <button type="button" class="btn btn-outline-secondary btn-sm" (click)="back()">Anterior</button>
+  <button type="button" class="btn btn-secondary btn-sm" (click)="next()">Siguiente</button>
+</div>
+
+
+<app-modal-fileupload></app-modal-fileupload>

@@ -1,0 +1,165 @@
+<!-- Breadcrumb start -->
+<app-breadcrumb>
+
+  <div class="col breadcrumb__item">
+    <a href="/petition/list/petitioners" class="d-inline-flex">
+      <i-file-text class="breadcrumb__icon"></i-file-text>
+      Solicitudes
+    </a>
+  </div>
+
+  <div class="col-12 col-lg-auto">
+    <div class="d-flex justify-content-end breadcrumb__btn-group">
+      <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#ModalImport">Importar</button>
+    </div>
+  </div>
+
+</app-breadcrumb>
+<!-- Breadcrumb end -->
+
+<app-notifications></app-notifications>
+
+<!-- PETITION LIST start -->
+<div class="row">
+
+  <!-- FILTERS start -->
+  <div class="col offset-md-2 col-md-8 offset-lg-0 col-lg-4 col-xl-3">
+      <div class="card">
+
+          <div class="card-header">
+            <h3>Filtros</h3>
+          </div>
+
+          <div class="card-body">
+            <form>
+                    <div class="form-group">
+                      <label for="inputState">Rubro</label>
+                      <ng-select [items]="categories" bindLabel="text" bindValue="id" [(ngModel)]="selectedCategoryId" name="rubro">
+                      </ng-select>
+                      <!-- <select2 [data]="categories" [options]="options" width="100%" [cssImport]=false
+                      (valueChanged)="changedCategory($event)" [value]="null">
+                      <option></option>
+                      </select2> -->
+
+                      <!-- <select2 [data]="localityData" [options]="options" class="d-block" id="SuppliersLocality" width="100%"
+                        [cssImport]=false (valueChanged)="changedLocality($event)" [value]="selectedLocalityId"
+                        [disabled]="disabled" ngDefaultControl formControlName="locality">
+                        <option disabled selected [ngValue]="selectedLocalityId" >
+                          Seleccionar Localidad</option>
+                      </select2> -->
+                      <!-- <p class="text-danger">SELECT INTELLISENSE</p> -->
+                    </div>
+                    <div class="form-group">
+                      <label for="inputState">Subrubro</label>
+                      <ng-select [items]="subcategories" bindLabel="text" bindValue="id"
+                        [(ngModel)]="selectedSubcategoryId" name="subrubro">
+                      </ng-select>
+                      <!-- <select id="inputState" class="form-control">
+                        <option select>Subrubro...</option>
+                        <option>...</option>
+                      </select> -->
+                      <!-- <p class="text-danger">SELECT INTELLISENSE</p> -->
+                    </div>
+                    <div class="form-group">
+                      <label for="inputState">Estado de la solicitud</label>
+                      <ng-select [items]="states" bindLabel="text" bindValue="id" [(ngModel)]="selectedState" name="state">
+                      </ng-select>
+                      <!-- <select id="inputState" class="form-control">
+                        <option select>Estado de la solicitud...</option>
+                        <option>...</option>
+                      </select> -->
+                      <!-- <p class="text-danger">SELECT INTELLISENSE</p> -->
+                    </div>
+                    <div class="form-group">
+                      <label>Vencimiento</label>
+                      <!-- <input type="text" class="form-control" placeholder="Vencimiento"> -->
+                      <ng-template let-text="text" let-identifier="identifier" #dateTemplate>
+                        <input type="text" data-toggle="dropdown" class="form-control input__icon--calendar"[value]="selectedExpirationDate"/>
+                      </ng-template>
+                      <app-dt-daytime #customFieldValueDayTime [customTemplate]="dateTemplate" [withToday]="false" [withTime]="false"
+                      (OnSelectDate)="setExpirationDate($event)">
+                      </app-dt-daytime>
+                      <!-- <p class="text-danger">PLUGIN RANGO DE FECHAS</p> -->
+                    </div>
+                    <div class="form-group">
+                      <label>Entrega</label>
+                      <!-- <input type="text" class="form-control" placeholder="Entrega"> -->
+                      <ng-template let-text="text" let-identifier="identifier" #dateTemplate1>
+                        <input type="text" data-toggle="dropdown" class="form-control input__icon--calendar" [value]="selectedDeliveryDate"/>
+                      </ng-template>
+                      <app-dt-daytime #customFieldValueDayTime [customTemplate]="dateTemplate1" [withToday]="false" [withTime]="false"
+                      (OnSelectDate)="setDeliveryDate($event)">
+                      </app-dt-daytime>
+                      <!-- <p class="text-danger">PLUGIN RANGO DE FECHAS</p> -->
+                    </div>
+            </form>
+          </div>
+
+          <div class="card-footer d-flex justify-content-center flex-wrap">
+            <button type="button" class="btn btn-secondary btn-sm" (click)="logRequest()">Filtrar</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal"
+            (click)="clearRequest()">Limpiar</button>
+          </div>
+
+        </div>
+  </div>
+  <!-- FILTERS end -->
+
+  <!-- LIST start -->
+  <div class="col-12 col-lg-8 col-xl-9">
+    <div class="card">
+      <div class="card-body">
+        <ngb-tabset type="pills">
+
+          <ngb-tab>
+            <ng-template ngbTabTitle>Borrador</ng-template>
+            <ng-template ngbTabContent>
+              <app-petitioners-draft-list (states)="setStates($event)"></app-petitioners-draft-list>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab>
+            <ng-template ngbTabTitle>Publicadas</ng-template>
+            <ng-template ngbTabContent>
+              <app-petitioners-publish-list (states)="setStates($event)"></app-petitioners-publish-list>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab>
+            <ng-template ngbTabTitle>Negociación</ng-template>
+            <ng-template ngbTabContent>
+              <app-petitioners-negotiate-list (states)="setStates($event)"></app-petitioners-negotiate-list>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab>
+            <ng-template ngbTabTitle>Adjudicadas</ng-template>
+            <ng-template ngbTabContent>
+              <app-petitioners-assigned-list (states)="setStates($event)"></app-petitioners-assigned-list>
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab>
+            <ng-template ngbTabTitle>Finalizadas</ng-template>
+            <ng-template ngbTabContent>
+              <app-petitioners-finish-list (states)="setStates($event)"></app-petitioners-finish-list>
+            </ng-template>
+          </ngb-tab>
+
+        </ngb-tabset>
+      </div>
+    </div>
+
+  </div>
+  <!-- LIST end -->
+
+</div>
+<!-- PETITION LIST end -->
+
+<div routerLink="/petition/create" class="btn btn-primary fab" ngbTooltip="Nueva Solicitud" tooltipClass="tooltip--primary" placement="left" container="body">
+  <i-plus></i-plus>
+</div>
+<!-- ADD PETITION LIST end -->
+
+<app-modal-import></app-modal-import>
+<app-modal-nullify></app-modal-nullify>

@@ -1,0 +1,88 @@
+@import "../abstracts/abstracts-module";
+
+/* BASE */
+body,
+main {
+	width: 100%;
+	height: 100%;
+}
+
+main{
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+section.section__container {
+	background: $gray-100;
+	min-height: calc(100vh - 60px);
+	padding: $spacer * 2;
+	flex: 1 0px;
+	overflow: hidden;
+}
+
+@include media-breakpoint-down(xs) {
+
+	section.section__container {
+		padding-left: $spacer / 2;
+		padding-right: $spacer / 2;
+	}
+
+}
+
+.hr--vertical {
+		border: none;
+    border-left: $border-default;
+    height: 35px;
+		width: 1px;
+		margin: 0 0 0 $spacer;
+}
+
+// Focus
+*:focus,
+*.focus {
+    box-shadow: none !important;
+		outline: none !important;
+}
+*::-moz-focus-inner {
+  border: 0;
+	outline: none !important;
+}
+
+// Selection
+::selection {
+	color: $secondary;
+	background-color: lighten($secondary, 70%);
+}
+::moz-selection {
+	color: $secondary;
+	background-color: lighten($secondary, 70%);
+}
+
+// Bugs
+input[type=search]::-webkit-search-cancel-button{
+  -webkit-appearance: none;
+}
+
+// Shorthand
+
+.sticky--top {
+	position: sticky;
+	top: 0;
+	z-index: $zindex-sticky;
+}
+
+@each $color, $value in $theme-colors {
+	.bg-circle--#{$color} {
+		background-color: rgba($value, 0.1);
+		border-radius: 50%;
+		width: 4rem !important;
+		height: 4rem !important;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

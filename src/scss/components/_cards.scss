@@ -1,0 +1,247 @@
+@import "../abstracts/abstracts-module";
+
+/* CARDS */
+
+.card--media {
+  border: 1px solid $primary;
+  margin-bottom: $spacer;
+  padding-top: $spacer;
+  padding-bottom: $spacer;
+  cursor: pointer;
+  *[class^="text"] {
+    margin-bottom: $spacer / 4 !important;
+  }
+  &:hover {
+    background-color: $primary;
+    box-shadow: 0 0 5px $primary;
+    text-decoration: none;
+    .text-primary,
+    p {
+      stroke: $white;
+      color: $white !important;
+    }
+  }
+
+  &.active {
+    background-color: $primary;
+    text-decoration: none;
+    box-shadow: none;
+    margin-bottom: 0;
+    border-radius: $spacer / 4 $spacer / 4 0px 0px !important;
+    .text-primary,
+    p {
+      stroke: $white;
+      color: $white !important;
+    }
+    & + .custom-checkbox {
+      display: block;
+      margin-bottom: $spacer;
+      padding: $spacer / 2 $spacer * 2 $spacer / 2 $spacer * 3.8;
+      border: 1px solid $primary;
+      border-top: 0;
+      border-radius: 0px 0px $spacer / 4 $spacer / 4;
+      @include prefixes(animation-name, alertsShow);
+      @include prefixes(animation-duration, 1s);
+    }
+  }
+
+  @include keyframes(alertsShow) {
+    from {
+      margin-top: -1rem;
+      opacity: 0;
+    }
+    to {
+      margin-top: 0;
+      opacity: 1;
+    }
+  }
+
+  &.disabled,
+  &:disabled,
+  &[disabled] {
+    opacity: $disabled-opacity;
+    cursor: default;
+    &:hover {
+      &:not(.active) {
+        color: $gray-600;
+        background-color: transparent;
+        border: 1px solid $primary;
+        box-shadow: none;
+        .text-primary {
+          stroke: $primary !important;
+          color: $primary !important;
+        }
+        p {
+          color: $gray-600 !important;
+        }
+      }
+      &.active {
+        color: $white !important;
+        background-color: $primary;
+      }
+    }
+    & + .custom-checkbox {
+      opacity: $disabled-opacity;
+    }
+  }
+
+  .card-body {
+    padding: 0;
+  }
+
+  &:last-child:not(:first-child) {
+    margin-bottom: 0;
+  }
+
+  .media-body {
+    margin-left: $spacer;
+    > * {
+      margin-bottom: 0;
+    }
+  }
+
+  & + .custom-checkbox {
+    display: none;
+  }
+}
+
+.card__wizard {
+  .card-body {
+    padding: $spacer * 2 0 $spacer;
+  }
+}
+
+.card {
+  padding-right: $spacer * 2;
+  padding-left: $spacer * 2;
+}
+
+.card-header {
+  padding-bottom: $spacer;
+  border-bottom: $border-default;
+  margin-bottom: $spacer;
+}
+
+.card-body {
+  padding: $spacer 0 0;
+
+  div:not(.btn-group) {
+    > .btn {
+      margin-bottom: $spacer;
+    }
+  }
+
+  .card__section {
+    &:last-child {
+      .divider {
+        display: none;
+      }
+    }
+  }
+}
+
+.card-footer {
+  padding-top: $spacer;
+  margin-top: $spacer;
+  border-top: $border-default;
+  > .btn {
+    margin-left: $spacer / 4;
+    margin-right: $spacer / 4;
+    margin-bottom: $spacer / 2;
+  }
+}
+
+.card__tag {
+  background-color: lighten($light, 20%);
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  padding: $spacer / 2 $spacer $spacer * 1.5;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: center;
+  small {
+    text-align: center;
+  }
+  & ~ .card {
+    margin-top: -$spacer;
+    .card-header {
+      // background-color: $dark;
+      .icon--star {
+        margin-bottom: $spacer;
+      }
+      h4 {
+        // color: $white;
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.card__empty {
+  background: transparent;
+  min-height: $spacer * 14;
+  max-height: $spacer * 20;
+  padding: $spacer * 2;
+
+  .card-body {
+    padding: 0;
+  }
+
+}
+
+.card__clarification {
+  background-color: $gray-100;
+  border-radius: $border-radius;
+  padding: $spacer;
+  margin-top: $spacer * 2;
+
+  p {
+    margin-bottom: $spacer / 2;
+    color: $secondary;
+  }
+
+  ul {
+    margin-bottom: 0;
+    padding-left: $spacer * 1.5;
+  }
+}
+
+.card__label {
+  color: $secondary;
+  background-color: lighten($secondary, 65%);
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  text-align: center;
+  margin-left: 1px;
+  border-top-left-radius: $spacer / 5;
+  border-bottom-left-radius: $spacer / 5;
+}
+
+.card__item {
+  padding: $spacer;
+  margin-bottom: $spacer / 2;
+}
+
+@each $color, $value in $theme-colors {
+  .card--#{$color} {
+    border-left: $spacer / 4 solid $value;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .card__wizard {
+    .card-body {
+      padding: $spacer 0;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .card__wizard {
+    .tooltip {
+      display: none;
+    }
+  }
+}

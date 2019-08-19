@@ -1,0 +1,98 @@
+@import "../abstracts/abstracts-module";
+
+/* LISTS */
+
+.list-group {
+    a.list-group-item {
+        p {
+            text-align: left;
+            color: $secondary;
+            line-height: 1.25rem;
+            margin-bottom: 0px !important;
+            padding: 0;
+        }
+
+        padding: $spacer 0;
+        position: relative;
+
+        .btn {
+            padding: 0.25rem;
+            min-width: 2.25rem;
+            height: 2.25rem;
+            margin: 0 $spacer 0 0;
+            line-height: 1.75rem;
+            position: relative;
+        }
+
+        &:hover {
+            color: $secondary;
+            cursor: pointer;
+
+            .btn {
+                color: $white;
+                background-color: $secondary;
+                box-shadow: 0 0 5px $secondary;
+            }
+        }
+
+       &.list-group-item--active {
+           p {
+             color: $primary;
+           }
+
+
+           .btn {
+               background-color: $primary;
+               border: 1px solid $primary;
+               color: $white;
+           }
+
+           &:hover {
+               color: $primary;
+
+               .btn {
+                box-shadow: 0 0 5px $primary;
+               }
+           }
+       }
+    }
+    > div {
+        .list-group__title {
+            margin-top: $spacer * 1;
+          }
+    }
+
+    .hr--vertical {
+        display: none;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .list-group__title {
+        display: none;
+    }
+    .list-group {
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-around;
+        align-items: center;
+
+        a.list-group-item {
+            p {
+                display: none;
+            }
+
+            padding: 0;
+
+            .btn {
+                margin-right: 0;
+             }
+        }
+
+        .hr--vertical {
+            display: block;
+            margin: 0 $spacer / 2;
+            height: $spacer * 2;
+        }
+    }
+}

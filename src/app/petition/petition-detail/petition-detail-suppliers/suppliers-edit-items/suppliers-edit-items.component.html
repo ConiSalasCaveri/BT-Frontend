@@ -1,0 +1,166 @@
+<div class="card-header d-flex justify-content-between" data-toggle="collapse" data-target="#items"
+  aria-expanded="true" aria-controls="items">
+  <h3>Ítems</h3>
+  <i-chevron-down class="text-light"></i-chevron-down>
+</div>
+<div class="card-body collapse show" id="items">
+  <div class="row">
+    <div class="col-12 col-lg-8 col-fhd-4">
+      <div class="form-group">
+        <label>Forma de pago</label>
+        <select class="form-control input__icon--chevron-down">
+          <option selected>Seleccionar Forma de pago</option>
+          <option>Debin</option>
+          <option>Pyme Nación</option>
+          <option>Pago electrónico</option>
+        </select>
+        <!-- <div class="btn-group btn-group-toggle d-flex" ngbRadioGroup name="radioBasic">
+          <label class="btn btn-outline-secondary" ngbButtonLabel>
+            <input ngbButton type="radio" [value]="1"> Debin
+          </label>
+          <label class="btn btn-outline-secondary" ngbButtonLabel>
+            <input ngbButton type="radio" [value]="2"> Pyme Nación
+          </label>
+          <label class="btn btn-outline-secondary" ngbButtonLabel>
+            <input ngbButton type="radio" [value]="3"> Pago electrónico
+          </label>
+        </div> -->
+        <!-- Only in negotiate -->
+        <small>Negociación 1 de 3</small>
+      </div>
+    </div>
+    <div class="col-6 col-lg-4 col-fhd-2">
+      <div class="form-group">
+        <label for="Playment">Plazo de pago</label>
+        <select class="form-control input__icon--chevron-down">
+          <option>60 días</option>
+        </select>
+        <!-- Only in negotiate -->
+        <small>Negociación 1 de 3</small>
+      </div>
+    </div>
+    <div class="col-6 col-fhd-2">
+      <div class="form-group">
+        <label>Entrega en Obra</label>
+        <ng-template let-text="text" #dateTemplate>
+          <input type="text" data-toggle="dropdown" class="form-control input__icon--calendar"/>
+        </ng-template>
+        <app-dt-daytime class="flex-fill" [customTemplate]="dateTemplate" [withToday]="false"
+        [withTime]="false">
+        </app-dt-daytime>
+        <!-- Only in negotiate -->
+        <small>Negociación 1 de 3</small>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 col-fhd-4">
+      <div class="form-group">
+        <label>Costo de envío a cargo de:</label>
+        <div class="btn-group btn-group-toggle d-flex" ngbRadioGroup name="radioBasic">
+          <label class="btn btn-outline-secondary" ngbButtonLabel>
+            <input ngbButton type="radio" [value]="1">Solicitante
+          </label>
+          <label class="btn btn-outline-secondary" ngbButtonLabel>
+            <input ngbButton type="radio" [value]="2">Proveedor
+          </label>
+        </div>
+        <!-- Only in negotiate -->
+        <small>Negociación 1 de 3</small>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12 table-responsive">
+      <table class="table table--simple">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Rubro</th>
+            <th scope="col">Subrubro</th>
+            <th scope="col">Nombre del producto</th>
+            <th scope="col">Unidad de medida</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr scope="row">
+            <td class="td--row-number">1</td>
+            <td>Rubro 10</td>
+            <td>Subrubro 23</td>
+            <td>Cemento Loma Negra Bolsa de 50 kgs</td>
+            <td>Kgs</td>
+            <td>100.000</td>
+            <td>
+              <!-- AVAILABLE start -->
+              <a class="text-primary" data-toggle="collapse" href="#collapseOnerowCollapse1"
+                aria-expanded="false" aria-controls="rowCollapsed1">Ofertar</a>
+              <!-- AVAILABLE end -->
+              <!-- NULLIFY start -->
+              <!-- <a class="te xt-primary" data-toggle="collapse" href="#collapseOnerowCollapse1"
+                aria-expanded="false" aria-controls="rowCollapsed1">Ver detalle</a> -->
+              <!-- NULLIFY end -->
+              <!-- NEGOTIATE start -->
+              <!-- <a class="te xt-primary" data-toggle="collapse" href="#collapseOnerowCollapse1"
+                aria-expanded="false" aria-controls="rowCollapsed1">Editar</a> -->
+              <!-- NEGOTIATE end -->
+            </td>
+          </tr>
+          <tr scope="row" class="collapse" id="collapseOnerowCollapse1">
+            <td colspan="7">
+              <div class="row">
+                <div class="col">
+                  <div class="row text-left">
+                    <div class="col-12 col-md-6 col-xxl-3">
+                      <div class="form-group">
+                        <label>Precio unitario</label>
+                        <input type="number" class="form-control" placeholder="Precio unitario">
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-xxl-3">
+                      <div class="form-group">
+                        <label>Código postal</label>
+                        <input type="number" class="form-control" placeholder="Código postal">
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-xxl-3">
+                      <div class="form-group">
+                        <label>Peso</label>
+                        <input type="number" class="form-control" placeholder="Peso">
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-xxl-3">
+                      <div class="form-group">
+                        <label>Volumen</label>
+                        <input type="number" class="form-control" placeholder="Volumen">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-auto d-flex align-items-center">
+                  <div class="form-group mb-0">
+                    <h3>$100.000,00</h3>
+                    <small class="d-flex justify-content-end">Total del Producto</small>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto">
+      <small>Subtotal</small>
+      <p>$300.000,00</p>
+    </div>
+    <div class="col">
+      <small>Costo de envío</small>
+      <p>$2.500,00</p>
+    </div>
+    <div class="ml-auto col text-right">
+      <h3 class="mb-0">$302.500,00</h3>
+      <small>TOTAL</small>
+    </div>
+  </div>
+</div>

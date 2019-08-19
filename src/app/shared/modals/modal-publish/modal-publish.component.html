@@ -1,0 +1,16 @@
+<div class="modal fade" id="ModalPublish" tabindex="-1" role="dialog" aria-labelledby="ModalPublishTitle"
+  aria-hidden="true">
+  <app-modals-frame>
+    <div body class="modal-body">
+        <div class="justify-content-center">
+            <i-info class="modal__icon"></i-info>
+            <h1>¡Aviso!</h1>
+            <p>Una vez publicada la solicitud no podrá modificarla, ¿Confirma que desea publicar?</p>
+        </div>
+    </div>
+    <div action class="modal-footer d-flex justify-content-center">
+      <button type="button" class="btn btn-info" data-dismiss="modal" (click)="onSubmit()">Sí</button>
+      <button type="button" class="btn btn-outline-info" data-dismiss="modal">No</button>
+    </div>
+  </app-modals-frame>
+</div>

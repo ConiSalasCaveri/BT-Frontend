@@ -1,0 +1,332 @@
+<!-- PROFILE HEADER start-->
+<div class="profile__header w-100 d-flex justify-content-between align-items-end">
+  <div class="profile__icon">
+    <i-user class="icon--lg"></i-user>
+  </div>
+  <div class="profile__user-name">
+    <p>administrador</p>
+    <!-- 
+    <p>usuario</p> 
+    -->
+    <h2 title="Natalia Giannantonio"> Natalia Giannantonio</h2>
+  </div>
+  <span class="badge badge__dotted--white">Classic</span>
+  <!-- PREMIUM start-->
+  <span class="badge badge__dotted--white">Premium</span>
+  <!-- PREMIUM end-->
+</div>
+<!-- PROFILE HEADER end-->
+
+<div class="row d-flex flex-column flex-xl-row profile__body">
+  <!-- PROFILE INFO start-->
+  <div class="order-2 order-xl-1 col-xl-6 offset-xl-1 col-fhd-7">
+    <div class="card pt-3">
+      <ngb-tabset type="pills">
+
+        <ngb-tab>
+          <ng-template ngbTabTitle>General</ng-template>
+          <ng-template ngbTabContent>
+            <app-profile-general></app-profile-general>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab>
+          <ng-template ngbTabTitle>Usuarios</ng-template>
+          <ng-template ngbTabContent>
+            <app-profile-list-user></app-profile-list-user>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab>
+          <ng-template ngbTabTitle>Proveedores</ng-template>
+          <ng-template ngbTabContent>
+            <app-profile-list-suppliers></app-profile-list-suppliers>
+          </ng-template>
+        </ngb-tab>
+
+      </ngb-tabset>
+    </div>
+  </div>
+  <!-- PROFILE INFO end-->
+
+  <!-- PROFILE PASSWORD start-->
+  <div class="order-1 order-xl-2 col-xl-4 col-fhd-3 mb-4 mb-xl-0">
+    <div class="card">
+      <div class="card-header">
+        <h3>Contraseña</h3>
+      </div>
+
+      <div class="card-body">
+        <form action="">
+          <div class="row">
+
+            <div class="col-4 col-xl-12">
+              <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" class="form-control input__icon--lock" id="inputPassword" placeholder="xxxxxxxx">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4 col-xl-12">
+              <div class="form-group">
+                <label>Nueva contraseña</label>
+                <input type="password" class="form-control input__icon--lock" id="inputNewPassword"
+                  placeholder="xxxxxxxx">
+                <div class="d-xl-none input__detail">
+                  La contraseña debe tener como mínimo 4 caracteres e incluir al menos una letra y/o número. Además,
+                  debe ser distinta a las últimas tres contraseñas. <br>
+                  Las contraseñas expiran a los 90 días.
+                </div>
+                <div class="invalid-feedback">
+                  La contraseña debe incluir al menos 4 caracteres.
+                </div>
+                <div class="invalid-feedback">
+                  La contraseña debe incluir al menos una letra y/o número.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4 col-xl-12">
+              <div class="form-group">
+                <label>Confirmar contraseña</label>
+                <input type="password" class="form-control input__icon--lock" id="inputNewPasswordRepeat" placeholder="xxxxxxxx">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="card-footer">
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-primary flex-xl-grow-1">Actualizar contraseña</button>
+        </div>
+
+
+        <div class="card__clarification d-none d-xl-block">
+          <p>Requisitos de contraseña</p>
+          <small>Para crear una nueva contraseña, debe cumplir con los requisitos siguientes:</small>
+          <ul>
+            <li><small>Mínimo 8 caracteres.</small></li>
+            <li><small>Mínimo 1 mayúscula.</small></li>
+            <li><small>Mínimo 1 minúscula.</small></li>
+            <li><small>Mínimo 1 número</small></li>
+            <li><small>Debe ser distinta a las últimas tres contraseñas.</small></li>
+          </ul>
+          <small>Las contraseñas expiran a los 90 días.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- PROFILE PASSWORD end-->
+</div>
+
+<!-- TOASTS start-->
+<div class="toast__container">
+  <app-notifications></app-notifications>
+
+  <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>La contraeña ha sido actualizada con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Atención!</h4>
+          <p>Ha ocurrido un error y no se ha podido actualizar la contraseña. Intenta nuevamente.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ONLY profile-general and profile-list-user start-->
+  <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>El usuario XXXXXXX ha sido editado con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Atención!</h4>
+          <p>Ha ocurrido un error y el usuario XXXXXXX no se ha podido editar. Intenta nuevamente.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ONLY profile-general and profile-list-user end-->
+
+  <!-- ONLY profile-list-user start-->
+  <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>El usuario XXXXXXX ha sido creado con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Atención!</h4>
+          <p>Ha ocurrido un error y el usuario XXXXXXX no se ha podido crear. Intenta nuevamente.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>El usuario XXXXXXX ha sido eliminado con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Atención!</h4>
+          <p>Ha ocurrido un error y el usuario XXXXXXX no se ha podido eliminar. Intenta nuevamente.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- ONLY profile-list-user end-->
+
+  <!-- ONLY profile-list-supplier start-->
+  <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>El proveedor XXXXXXX ha sido eliminado con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Atención!</h4>
+          <p>Ha ocurrido un error y el proveedor XXXXXXX no se ha podido eliminar. Intenta nuevamente.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>La invitación a los proveedores se ha enviado con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Atención!</h4>
+          <p>Ha ocurrido un error y la invitación a los proveedores no se ha podido enviar. Intenta nuevamente.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- ONLY profile-list-supplier end-->
+</div>
+<!-- TOASTS end-->

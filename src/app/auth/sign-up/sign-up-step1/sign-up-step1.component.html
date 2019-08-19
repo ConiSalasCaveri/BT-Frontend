@@ -1,0 +1,43 @@
+<div class="auth__content" @auth>
+
+  <div class="auth__header">
+    <h1>Regístrate</h1>
+    <p>Elige la cuenta que mejor se adapte a tus necesidades:</p>
+  </div>
+
+  <div class="auth__body">
+
+    <a class="card card--media" routerLink="/signup/step2" (click)="setClient('petitioner')">
+      <div class="card-body">
+        <div class="media d-flex align-items-center">
+          <i-clipboard class="text-primary icon--lg"></i-clipboard>
+          <div class="media-body">
+            <h4 class="text-primary">Crear cuenta Solicitante</h4>
+            <p>Licita de manera fácil y segura.</p>
+          </div>
+          <i-chevron-right class="text-primary icon--lg"></i-chevron-right>
+        </div>
+      </div>
+    </a>
+
+    <a class="card card--media" routerLink="/signup/step2" (click)="setClient('supplier')">
+      <div class="card-body">
+        <div class="media d-flex align-items-center">
+          <i-package class="text-primary icon--lg"></i-package>
+          <div class="media-body">
+            <h4 class="text-primary">Crear cuenta Proveedor</h4>
+            <p>Oferta de manera fácil y segura.</p>
+          </div>
+          <i-chevron-right class="text-primary icon--lg"></i-chevron-right>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="auth__footer">
+    <hr class="flex-fill text__divider" data-content="o">
+    <a class="btn btn-outline-secondary btn-block" routerLink="/signin">Iniciar sesión</a>
+  </div>
+
+</div>

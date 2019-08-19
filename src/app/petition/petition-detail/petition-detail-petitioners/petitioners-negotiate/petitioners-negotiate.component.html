@@ -1,0 +1,41 @@
+<div class="card-header d-flex justify-content-between">
+  <h3>Negociación</h3>
+  <span class="badge badge__dotted--success" *ngIf="petition.state === 7">En negociación</span>
+  <span class="badge badge__dotted--danger" *ngIf="petition.state === 8">Anulada</span>
+</div>
+
+
+<div class="card-body">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <div class="switch__btn-group">
+          <button type="button" class="btn btn-sm px-3"
+            (click)="petitionersNegotiate = 'petitioners-negotiate-total'"
+            [ngClass]="this.petitionersNegotiate === 'petitioners-negotiate-total' ? 'btn-secondary' : 'btn-outline-secondary'">
+            Total
+          </button>
+          <button type="button" class="btn btn-sm px-3"
+            (click)="petitionersNegotiate = 'petitioners-negotiate-subcategory'"
+            [ngClass]="this.petitionersNegotiate === 'petitioners-negotiate-subcategory' ? 'btn-secondary' : 'btn-outline-secondary'">
+            Subrubros
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" [ngSwitch]="petitionersNegotiate">
+      <app-petitioners-negotiate-total *ngSwitchCase="'petitioners-negotiate-total'"></app-petitioners-negotiate-total>
+      <app-petitioners-negotiate-subcategory *ngSwitchCase="'petitioners-negotiate-subcategory'"></app-petitioners-negotiate-subcategory>
+    </div>
+  </div>
+</div>
+
+<div class="card-footer d-flex justify-content-center flex-wrap">
+  <button type="button" class="btn btn-outline-secondary btn-sm" (click)="back()">Anterior</button>
+  <!-- NEGOTIATE start -> disabled -->
+  <button type="button" class="btn btn-secondary btn-sm" (click)="next()" disabled>Siguiente</button>
+  <!-- NEGOTIATE end -->
+</div>
+
+
+<app-modal-negotiate [petition]="petitionersNegotiate"></app-modal-negotiate>

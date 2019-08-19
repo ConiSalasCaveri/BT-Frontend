@@ -1,0 +1,80 @@
+@import "../abstracts/abstracts-module";
+
+/* ACCORDION */
+
+.accordion {
+  padding-bottom: $spacer;
+
+  .card {
+    border: $border-default !important;
+    border-radius: $border-radius !important;
+    padding: 0;
+    &:hover {
+      box-shadow: $box-shadow;
+    }
+    &:not(:last-child) {
+      margin-bottom: $spacer;
+    }
+    &:disabled,
+    &[disabled],
+    &.disabled {
+      opacity: $disabled-opacity !important;
+      &:hover {
+        cursor: default;
+        box-shadow: none;
+        .card-header {
+          cursor: default;          
+        }
+      }
+    }
+  }
+
+  .card-header {
+    background-color: transparent;
+    padding: $spacer;
+    cursor: pointer;
+    h4 {
+      margin-right: $spacer / 2;
+      margin-bottom: 0;
+    }
+    small {
+      line-height: 1;
+    }
+    &:not(.collapsed) {
+      .text-light {
+        transform: rotate(180deg);
+      }
+
+      .card__label {
+        border-bottom-left-radius: 0;
+      }
+
+    }
+  }
+
+  .card__container {
+    .card__tag ~ .card {
+      .card-header.collapsed {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .card-body {
+    padding: $spacer;
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+@include media-breakpoint-only(lg) {
+  .accordion {
+    .card {
+      .btn-accent {
+        margin-top: -20px;
+      }
+    }
+  }
+}

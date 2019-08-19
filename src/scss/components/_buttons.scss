@@ -1,0 +1,151 @@
+@import "../abstracts/abstracts-module";
+
+/* BUTTONS */
+.btn {
+    border-radius: $btn-border-radius;
+    min-width: $spacer * 3;
+
+    &__primary--gradient {
+        color: $white;
+        background-image: $primary-gradient;
+        &:hover,
+        &:active {
+            color: $white;
+            box-shadow: 0 0 5px $primary;
+        }
+    }
+
+    &-outline-secondary {
+        &:hover,
+        &:active {
+            border-color: transparent !important;
+            box-shadow: 0 0 5px $secondary;
+        }
+    }
+
+}
+
+@each $name, $color in $theme-colors {
+    .btn-#{$name} {
+        color: $white;
+        &:hover,
+        &:active {
+            box-shadow: 0 0 5px $color;
+            background-color: $color;
+            border-color: transparent;
+        }
+        &.disabled,
+        &:disabled {
+          color: $white;
+
+          &:hover {
+            box-shadow: none !important;
+          }
+        }
+    }
+
+    .btn-outline-#{$name} {
+        &:hover,
+        &:active {
+            box-shadow: 0 0 5px $color;
+        }
+        &.disabled {
+          &:hover {
+            border: 1px solid $color !important;
+            box-shadow: none !important;
+          }
+        }
+    }
+}
+
+.btn.btn-accent {
+  font-weight: $font-weight-bold;
+  min-width: $spacer * 1.5;
+  height: $spacer * 1.5;
+  padding: 0;
+  margin-bottom: 0 !important;
+  margin-right: $spacer;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Fab
+.fab {
+  border-radius: $spacer * 3;
+  min-width: $spacer * 3;
+  height: $spacer * 3;
+  padding: 0;
+  position: fixed;
+  right: $spacer * 2;
+  bottom: $spacer * 2;
+  cursor: pointer;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: $zindex-fab;
+}
+
+// Buttons header
+.btn__menu {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  &:hover {
+    opacity: 0.9;
+  }
+
+  i-menu {
+    stroke: $white;
+  }
+
+}
+
+.btn__user {
+  border: none;
+  border-radius: $border-radius-lg;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0 $spacer * 2;
+  cursor: pointer;
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: $border-radius-lg;
+  }
+}
+
+.btn-group {
+  margin-bottom: $spacer;
+
+  .btn {
+    // flex: 1 1 0;
+    padding: $spacer / 3;
+  }
+
+  & + small {
+    margin-top: -0.8rem;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+
+  .btn__menu {
+    margin-left: $spacer * 2 !important;
+    order: 1 !important;
+  }
+
+}
+
+@include media-breakpoint-only(sm) {
+
+  .btn__menu {
+    display: none;
+  }
+
+}

@@ -1,0 +1,71 @@
+<div class="card-header d-flex justify-content-between">
+  <h3>Datos básicos</h3>
+  <span class="badge badge__dotted--success" *ngIf="petition.state === 5">Publicada</span>
+  <span class="badge badge__dotted--danger"
+  *ngIf="petition.state === 6 || petition.state === 8 || petition.state === 4">Anulada</span>
+  <!-- NEGOTIATE start -->
+  <span class="badge badge__dotted--success" *ngIf="petition.state === 7">En negociación</span>
+  <!-- NEGOTIATE end -->
+</div>
+
+
+<div class="card-body">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <small>Nombre de la solicitud</small>
+        <p>{{petition.name}}</p>
+      </div>
+    </div>
+    <div class="col-6 col-lg-6">
+      <div class="form-group">
+        <small>Código de Obra</small>
+        <p>{{petition.outercode}}</p>
+      </div>
+    </div>
+    <div class="col-6 col-lg-6">
+      <div class="form-group">
+        <small>Responsable</small>
+        <p>{{petition.user}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr class="divider">
+      <h5>Fechas</h5>
+    </div>
+    <div class="col-6 col-lg-6">
+      <div class="form-group">
+        <small>Vencimiento de Oferta</small>
+        <p>{{offerDate}}</p>
+      </div>
+    </div>
+    <div class="col-6 col-lg-6">
+      <div class="form-group">
+        <small>Fecha adjudicación</small>
+        <p>{{awardedDate}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <hr class="divider">
+      <h5>Pago</h5>
+    </div>
+    <div class="col-12">
+      <small>Forma de pago</small>
+      <p>{{payment}}</p>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="card-footer d-flex justify-content-center flex-wrap">
+  <button type="button" class="btn btn-outline-secondary btn-sm disabled" disabled>Anterior</button>
+  <button type="button" class="btn btn-secondary btn-sm" (click)="next()">Siguiente</button>
+</div>

@@ -1,0 +1,25 @@
+@import "../abstracts/abstracts-module";
+
+/* SWTICH */
+
+*[class*="switch__btn-group"] {
+  background: $white;
+  border: 1px solid $secondary;
+  border-radius: $border-radius-lg;
+  box-shadow: $box-shadow;
+  width: max-content;
+  height: auto;
+  margin-bottom: $spacer * 2;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  *[class*="btn-outline"] {
+    border: 0;
+    box-shadow: none;
+  }
+  .btn {
+    min-width: 1rem;
+    padding: 0.4rem;
+    margin: 0 !important;
+  }
+}

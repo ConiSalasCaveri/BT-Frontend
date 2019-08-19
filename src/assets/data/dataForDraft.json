@@ -1,0 +1,33 @@
+{
+    "id": "asdasdasd",
+    "user": "Pepe",
+    "state": 1,
+    "street": "calle falsa",
+    "streetNumber": 123,
+    "apartment": "apartment",
+    "postCode": "asd123",
+    "provinceId": 2,
+    "localityId": 1,
+    "awardedDate": "06/23/2019",
+    "payment": 2,
+    "deliveryOnSiteDateEnd": "02/03/2019",
+    "deliveryOnSiteDateStart": "02/09/2019",
+    "products": [{
+      "unitId": 1,
+      "subcategoryId": 2,
+      "categoryId": 3,
+      "amount": 3,
+      "name": "Producto 1"
+    },
+    {
+      "unitId": 1,
+      "subcategoryId": 2,
+      "categoryId": 3,
+      "amount": 3,
+      "name": "Producto 1"
+    }],
+    "type": {
+      "inviteSuppliers": true,
+      "type": 2
+    }
+}

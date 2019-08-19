@@ -1,0 +1,81 @@
+@import "../abstracts/abstracts-module";
+
+/* BADGES */
+
+.badges__container {
+    margin-bottom: $spacer;
+    border: $border-default;
+    padding: $spacer $spacer 0 $spacer;
+}
+
+.badge-pill {
+  align-self: center;
+  margin: 0 $spacer $spacer 0;
+  padding: $spacer / 4 $spacer;
+  line-height: 1.7;
+  font-size: $font-size-base;
+  font-weight: $headings-font-weight;
+
+  .close {
+    margin-left: $spacer / 2;
+    color: $white;
+    opacity: 0.25;
+    text-shadow: none;
+    &:not(:disabled):not(.disabled):hover {
+      color: $white;
+      opacity: 1;
+    }
+  }
+
+  &.badge-secondary {
+    background-color: darken($secondary, 8%);
+  }
+
+}
+
+@each $color, $value in $theme-colors {
+ .badge__outline--#{$color} {
+    color: $value;
+    background: transparent;
+    border: 1px solid $value;
+  }
+}
+
+@each $color, $value in $theme-colors {
+ .badge__dotted--#{$color} {
+    &::before {
+      content: "·";
+      color: $value;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      padding-right: $spacer / 6;
+    }
+    color: $value;
+    font-size: $font-size-sm;
+    background: transparent;
+    border: none;
+  }
+}
+
+*[class*="badge__notification--"] {
+  position: relative;
+  &::after {
+    content: '';
+    width: $spacer;
+    height: $spacer;
+    border-radius: $border-radius-lg;
+    position: absolute;
+    top: -$spacer / 3.5;
+    right: -$spacer / 7;
+    border: $spacer / 7 solid $white;
+  }
+}
+
+@each $color, $value in $theme-colors {
+ .badge__notification--#{$color} {
+    &::after,
+    &:after {
+      background-color: $value;
+    }
+  }
+}

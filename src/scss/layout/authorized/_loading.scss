@@ -1,0 +1,76 @@
+// LOADING
+
+// .loading__container {
+//   @extend %backdrop;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//
+//   svg {
+// 		display: block;
+// 		margin: 0 auto;
+// 		width: 263px;
+//     position: absolute;
+//     top: calc(50vh - 25px);
+//     left: calc(50vw - 131px);
+// 		@include prefixes(animation, bounceIn 5s infinite);
+//
+//     @include keyframes(bounceIn){
+//
+//       from, 20%, 40%, 60%, 80%, to { @include prefixes(animation-timing-function, cubic-bezier(0.2, 0.6, 0.3, 1)); }
+//      	0%, 50%, 100% { @include prefixes(transform, scale3d(0.6, 0.6, 0.6)); }
+//       25%, 75% { @include prefixes(transform, scale3d(0.8, 0.8, 0.8)); }
+//
+//     }
+//
+// 		.o {
+// 			@include prefixes(animation, o 1.2s infinite);
+//
+// 			@include keyframes(o) {
+// 			 	0%, 20%		{ fill:#fb9820; }
+// 			 	21%, 100%	{ fill:#eaeaea; }
+// 			}
+// 		}
+//
+// 		.m {
+// 			@include prefixes(animation, m 1.2s infinite);
+//
+// 			@include keyframes(m) {
+// 			 	0%, 20%		{ fill:#eaeaea; }
+// 			 	21%, 40%	{ fill:#fb9820; }
+// 				41%, 100%	{ fill:#eaeaea; }
+// 			}
+// 		}
+//
+// 		.n {
+// 			@include prefixes(animation, n 1.2s infinite);
+//
+// 			@include keyframes(n) {
+// 			 	0%, 40%		{ fill:#eaeaea; }
+// 			 	41%, 60%	{ fill:#fb9820; }
+// 				61%, 100%	{ fill:#eaeaea; }
+// 			}
+// 		}
+//
+// 		.i {
+// 			@include prefixes(animation, i 1.2s infinite);
+//
+// 			@include keyframes(i) {
+// 			 	0%, 60%		{ fill:#eaeaea; }
+// 			 	61%, 80%	{ fill:#fb9820; }
+// 			 	81%, 100%	{ fill:#eaeaea; }
+// 			}
+// 		}
+//
+//     .x {
+// 			@include prefixes(animation, x 1.2s infinite);
+//
+// 			@include keyframes(x) {
+// 			 	0%, 80%		{ fill:#eaeaea; }
+// 			 	81%, 100%	{ fill:#fb9820; }
+// 			}
+// 		}
+//
+// 	}
+//
+// }

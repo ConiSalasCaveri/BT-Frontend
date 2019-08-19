@@ -1,0 +1,40 @@
+<div class="fileupload__container">
+
+  <div class="fileupload__block" hidden="{{!this.hidden ? 'hidden' : '' }}">
+    <input type='file' #browse id="upload" (change)="uploadButton($event)" hidden/>
+    <file-drop customstyle="drop" (onFileDrop)="dropped($event)">
+      <i-upload-cloud class="icon--lg text-secondary mr-3"></i-upload-cloud>
+      <div>
+        <span class="text-dark mr-1">Suelta el archivo aquí o</span>
+        <a class="text-secondary" (click)="browse.click()">selecciona el archivo</a>
+      </div>
+    </file-drop>
+  </div>
+
+  <div class="fileupload__preview" hidden="{{this.hidden ? 'hidden' : '' }}">
+
+    <div class="card card__item card--secondary" hidden="{{!this.hiddenLoading ? 'hidden' : '' }}">
+      <div class="card-body">
+        <div class="media d-flex align-items-center">
+          <img src="{{ this.previewUrl }}" alt="{{ this.fileName }}" class="fileupload__image">
+          <div class="media-body d-flex flex-column justify-content-center">
+            <h5 class="text-dark text-truncate mb-0" title="{{ this.fileName }}">NombreArchivo.jpg</h5>
+            <span class="text-light" title="{{ this.fileSize }}">100kb</span>
+          </div>
+          <a class="text-danger" (click)="onClear()"
+            placement="top" ngbTooltip="Quitar" tooltipClass="tooltip--danger">
+            <i-x></i-x>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="fileupload__loading" hidden="{{this.hiddenLoading ? 'hidden' : '' }}">
+      <div class="spinner-border text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>

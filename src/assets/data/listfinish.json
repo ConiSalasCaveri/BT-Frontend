@@ -1,0 +1,122 @@
+{
+  "data": {
+     "total": 4,
+     "results": [
+        {
+           "id": "4c101228-081e-47fc-9674-44534aecf6ed",
+           "companyId": "4b4774dd-3d5b-4294-3354-08d6d89600e8",
+           "name": "Peticion 1",
+           "outerCode": "1234",
+           "offerExpirationDate": "0001-01-01T00:00:00+00:00",
+           "deliveryDate": "0001-01-01T00:00:00+00:00",
+           "state": 14,
+           "categories": [
+              {
+                 "categoryModel": {
+                    "id": "c74ac94d-b5cb-4c99-bceb-7ad836e6f540",
+                    "name": "Categoria 3"
+                 }
+              },
+              {
+                 "categoryModel": {
+                    "id": "a7b8b6bc-8536-47d7-92a8-f066350ff8ed",
+                    "name": "Categoria 1"
+                 }
+              }
+           ],
+           "subcategories": [
+              {
+                 "subCategory": {
+                    "id": "9dec508f-b910-485f-b526-1a715aca247b",
+                    "name": "Subcategory D"
+                 }
+              },
+              {
+                 "subCategory": {
+                    "id": "849b8bf3-34b8-4d2c-8c86-54df8e6acdc4",
+                    "name": "Subcategory B"
+                 }
+              },
+              {
+                 "subCategory": {
+                    "id": "bd6a8568-0fd7-4afb-876b-65782be6f44f",
+                    "name": "Subcategory F"
+                 }
+              },
+              {
+                 "subCategory": {
+                    "id": "6be2009e-ebbe-4f53-b7f4-908230e3c7c8",
+                    "name": "Subcategory A"
+                 }
+              },
+              {
+                 "subCategory": {
+                    "id": "f7e21535-3504-4c50-871b-e11dcd3d9370",
+                    "name": "Subcategory E"
+                 }
+              },
+              {
+                 "subCategory": {
+                    "id": "fc6d2325-d4de-4f55-8119-f440c8ded1e5",
+                    "name": "Subcategory C"
+                 }
+              }
+           ]
+        },
+        {
+           "id": "bb897e61-3ba0-47ed-ad8a-9f12ddc61b8b",
+           "companyId": "4b4774dd-3d5b-4294-3354-08d6d89600e8",
+           "name": "Peticion 2",
+           "outerCode": "1234",
+           "offerExpirationDate": "0001-01-01T00:00:00+00:00",
+           "deliveryDate": "0001-01-01T00:00:00+00:00",
+           "state": 14,
+           "categories": [],
+           "subcategories": [
+              {
+                 "subCategory": {
+                    "id": "9dec508f-b910-485f-b526-1a715aca247b",
+                    "name": "Subcategory D"
+                 }
+              }
+           ]
+        },
+        {
+           "id": "1846190f-d8ed-486d-a4aa-2219b5283718",
+           "companyId": "4b4774dd-3d5b-4294-3354-08d6d89600e8",
+           "name": "Peticion 3",
+           "outerCode": "1234",
+           "offerExpirationDate": "0001-01-01T00:00:00+00:00",
+           "deliveryDate": "0001-01-01T00:00:00+00:00",
+           "state": 14,
+           "categories": [
+              {
+                 "categoryModel": {
+                    "id": "60ddbff2-bb98-4219-8c3b-0c3d857839ce",
+                    "name": "Categoria 2"
+                 }
+              }
+           ],
+           "subcategories": [
+              {
+                 "subCategory": {
+                    "id": "6be2009e-ebbe-4f53-b7f4-908230e3c7c8",
+                    "name": "Subcategory A"
+                 }
+              }
+           ]
+        },
+        {
+           "id": "9429e664-6690-4ddc-8743-c22c64e3eaac",
+           "companyId": "4b4774dd-3d5b-4294-3354-08d6d89600e8",
+           "name": "Peticion 4",
+           "outerCode": "234",
+           "offerExpirationDate": "0001-01-01T00:00:00+00:00",
+           "deliveryDate": "0001-01-01T00:00:00+00:00",
+           "state": 14,
+           "categories": [],
+           "subcategories": []
+        }
+     ]
+  }
+}

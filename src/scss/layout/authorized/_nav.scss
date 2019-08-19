@@ -1,0 +1,322 @@
+@import "../../vendors/bootstrap-abstracts";
+@import "../../abstracts/abstracts-module";
+
+/* NAV */
+.nav__container {
+  background-color: $white;
+  box-shadow: $box-shadow;
+  width: 260px;
+  height: calc(100vh - 60px);
+  padding: $spacer 0 $spacer * 2;
+  flex: 0 0 260px;
+  top: 60px;
+  transition: $transition-base;
+
+  .nav__item {
+    &:hover{
+      > span {
+        color: $dark;
+      }
+    }
+  }
+
+  .nav__footer {
+    border-top: $border-default;
+    width: calc(100% - 60px);
+    height: auto;
+    padding-top: $spacer * 2;
+    margin: $spacer * 2;
+    margin-top: 0;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+
+    .btn-outline-secondary {
+      @include clip-text();
+      width: auto;
+      padding: $input-btn-padding-y $input-btn-padding-x;
+      span {
+        margin-left: $spacer / 2;
+        max-width: 6rem;
+      }
+    }
+  }
+
+  .nav__body {
+    height: calc(100% - 107px);
+    margin-bottom: $spacer * 2;
+
+    ul{
+      padding: $spacer 0 0;
+      margin-bottom: 0;
+      li:first-child {
+        .nav__item{
+          margin-top: 0;
+        }
+      }
+    }
+
+    .nav__item {
+      text-decoration: none;
+      width: 100%;
+      height: auto;
+      padding: 0 $spacer * 2;
+      margin-top: $spacer * 2;
+      margin-bottom: $spacer / 2;
+      display: -webkit-inline-flex;
+      display: -ms-inline-flex;
+      display: inline-flex;
+      align-items: center;
+      transition: $transition-base;
+      cursor: pointer;
+
+      &:not(.collapsed) {
+        i-chevron-down {
+          transform: rotate(180deg);
+        }
+      }
+
+      &:hover {
+        > .nav__icon {
+          color: $white;
+          background-color: $secondary;
+          border: 1px solid $secondary;
+          box-shadow: 0 0 10px rgba($secondary, 0.6);
+          transition: $transition-base;
+        }
+        > span {
+          color: $secondary;
+          transition: $transition-base;
+        }
+      }
+      > .nav__icon {
+        color: $secondary;
+        border: 1px solid $secondary;
+        border-radius: $border-radius-lg;
+        width: 3rem;
+        height: 3rem;
+        padding: $spacer / 1.25;
+        margin-right: $spacer;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: $transition-base;
+      }
+      > span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: clip;
+        color: $secondary;
+      }
+      &--active {
+        &:hover {
+          > .nav__icon {
+            color: $white;
+            background: $primary-gradient;
+            border: none;
+            box-shadow: 0 0 10px $primary;
+          }
+          > span{
+            color: $primary;
+          }
+        }
+        > .nav__icon {
+          color: $white;
+          background: $primary-gradient;
+          border: none;
+        }
+        > span {
+          color: $primary;
+        }
+
+      }
+    }
+
+    .nav__subitems {
+      border: none;
+      display: flex;
+      flex-direction: column;
+      padding-left: $spacer * 6;
+
+      .nav__subitem {
+        @include ellipsis-text();
+        color: $light;
+        text-decoration: none;
+        margin-bottom: $spacer / 2;
+        &:last-child {
+          margin-bottom: none;
+        }
+        &:hover {
+          color: $dark;
+        }
+        &.disabled {
+          color: $gray-200;
+        }
+        &--active {
+          color: $primary;
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+    }
+
+    .popover {
+      display: none;
+    }
+
+  }
+}
+
+
+.header__container.header--collapse + .nav__container {
+  width: 90px;
+  height: calc(100vh - 60px);
+  flex: 0 0 90px;
+
+  .nav__body{
+    .nav__item{
+      padding: 0 $spacer;
+      justify-content: center;
+      > .nav__icon{
+        margin-right: 0;
+      }
+      > span,
+      > i-chevron-down{
+        display: none;
+      }
+
+      &--active + .popover {
+        .nav__subitem--active {
+          color: $primary;
+          &:hover,
+          &:active {
+            color: $primary;
+          }
+        }
+      }
+    }
+
+    .collapse,
+    .collapsing {
+      display: none !important;
+    }
+
+    .popover {
+      display: block;
+
+      .nav__subitem {
+        display: block;
+        white-space: nowrap;
+        color: $light;
+        font-size: $font-size-base;
+        text-decoration: none;
+        margin-bottom: $spacer / 3;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        &:hover,
+        &:active {
+          color: $dark;
+        }
+      }
+    }
+  }
+
+  .nav__footer{
+    width: 60px;
+    height: auto;
+    margin: $spacer * 2 $spacer;
+    .btn-outline-secondary {
+      padding: $spacer / 2 0;
+      min-width: 0;
+      width: 42px;
+      span {
+        width: 0;
+        display: inline-block;
+        transition: $transition-base;
+        vertical-align: top;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-left: 0;
+      }
+    }
+   }
+
+ }
+
+ @include media-breakpoint-down(md) {
+
+   .header__container + .nav__container {
+    width: 90px;
+    height: calc(100vh - 60px);
+    flex: 0 0 90px;
+
+     .nav__body{
+       .nav__item{
+         padding: 0 $spacer;
+         justify-content: center;
+         > .nav__icon{
+           margin-right: 0;
+         }
+         > span,
+         > i-chevron-down{
+           display: none;
+         }
+        &--active + .popover {
+          .nav__subitem--active {
+            color: $primary;
+            &:hover,
+            &:active {
+              color: $primary;
+            }
+          }
+        }
+       }
+       .collapse,
+       .collapsing {
+         display: none !important;
+       }
+
+       .popover {
+        display: block;
+
+        .nav__subitem {
+          display: block;
+          white-space: nowrap;
+          color: $light;
+          font-size: $font-size-base;
+          text-decoration: none;
+          margin-bottom: $spacer / 3;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          &:hover,
+          &:active {
+            color: $dark;
+          }
+        }
+      }
+     }
+
+     .nav__footer{
+      width:60px;
+      height: auto;
+      margin: $spacer * 2 $spacer;
+       .btn-outline-secondary{
+         padding: $spacer / 2 0;
+         min-width: 0;
+         width: 42px;
+         span{
+           display: none;
+           transition: $transition-base;
+         }
+       }
+     }
+
+   }
+
+ }

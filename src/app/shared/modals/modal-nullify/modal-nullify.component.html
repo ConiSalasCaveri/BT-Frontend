@@ -1,0 +1,49 @@
+<div class="modal fade" id="ModalNullify" tabindex="-1" role="dialog" aria-labelledby="ModalNullifyTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <div class="d-flex flex-column">
+          <div *ngIf="this.nullify">
+            <h1>{{nullify.headerTitle}}</h1>
+            <p>{{nullify.headerDescription}}</p>
+          </div>
+          <div *ngIf="!this.nullify">
+            <h1>Anular solicitud</h1>
+            <p>Escriba los motivos por los cuales anula la solicitud.</p>
+          </div>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onClose()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- OJO - Poner la class form--invalid en el FORM -->
+        <form [ngClass]="{ 'form--invalid': submited && nullifyForm.invalid}">
+          <div class="form-group mb-0">
+            <label for="NullifyTextarea">Observación</label>
+            <!-- OJO - Ya anulada una solicitud el textarea debe estar disabled -->
+            <textarea class="form-control" id="NullifyTextarea" rows="5" placeholder="Escriba un motivo de anulación..." [formControl]="nullifyForm.controls['observation']" [attr.disabled]="nullify"></textarea>
+            <div class="invalid-feedback">
+              El campo es requerido.
+            </div>
+          </div>
+          <!-- Nullified by Administrator only start -->
+          <p *ngIf="this.nullify && this.nullify.headerInformation" class="mt-4 mb-0">{{this.nullify.headerInformation}}</p>
+          <!-- Nullified by Administrator only end -->
+        </form>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="nullify">Aceptar</button>
+        <!-- Nullify only start-->
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" [disabled]="nullify"
+        (click)="onClose()">Cancelar</button>
+        <!-- Nullify only end-->
+      </div>
+
+    </div>
+  </div>
+</div>

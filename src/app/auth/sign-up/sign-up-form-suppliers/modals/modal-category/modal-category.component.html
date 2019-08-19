@@ -1,0 +1,61 @@
+<!-- <div class="modal fade" id="ModalSectors" tabindex="-1" role="dialog" aria-labelledby="ModalSectorsTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+    <app-modals-frame>
+      <div header class="modal-header">
+        <div class="d-flex flex-column">
+          <h1>Rubros y Subrubros</h1>
+          <p>Seleccioná los ítems de tu interés para recibir notificaciones.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div body class="modal-body">
+        <div class="modal__card-item">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="SectorAllCheck"
+              (change)="$event.currentTarget.checked ? selectAll(true) : selectAll(false)">
+              <label class="custom-control-label" for="SectorAllCheck">
+                Seleccionar todos
+              </label>
+            </div>
+          </div>
+          <div class="modal__card" *ngFor="let category of categories; index as i">
+            <div class="modal__card-header collapsed" data-toggle="collapse" [attr.data-target]="'#collapseSubitems'+i" role="button"
+              aria-expanded="false" aria-controls="collapseSubitems1">
+              <div class="custom-control custom-checkbox d-flex justify-content-between">
+                <div>
+                  <input type="checkbox" class="custom-control-input" id="{{i}}" name="category"
+                  (change)="$event.currentTarget.checked ? selectAllCategory(category, true, i) : selectAllCategory(category, false, i">
+                  <label class="custom-control-label" for="{{i}}">
+                    {{category.name}}
+                  </label>
+                </div>
+                <i-chevron-down></i-chevron-down>
+              </div>
+            </div>
+            <div class="collapse" id="collapseSubitems{{i}}" *ngFor="let subcategory of category.subcategories">
+              <div class="card card-body">
+                <div class="modal__card-subitem">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="{{subcategory.id}}"
+                    (change)="$event.currentTarget.checked ?
+                    pushSubcategory(subcategory, category, i) : popSubcategory(subcategory, category, i)"
+                    name="check-subcategory{{i}}">
+                    <label class="custom-control-label" for="{{subcategory.id}}">
+                      {{subcategory.name}}
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div action class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </app-modals-frame>
+  </div>
+</div> -->

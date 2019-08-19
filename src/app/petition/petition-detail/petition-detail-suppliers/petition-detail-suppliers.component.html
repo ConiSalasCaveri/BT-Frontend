@@ -1,0 +1,357 @@
+<!-- Breadcrumb start -->
+<app-breadcrumb>
+  <div class="col-auto breadcrumb__item">
+    <a href="/petition/list/suppliers" class="d-inline-flex">
+      <i-file-text class="breadcrumb__icon"></i-file-text>
+      Solicitudes
+    </a>
+  </div>
+
+  <div class="col breadcrumb__item text-truncate active" title="Código">
+    1212121212
+  </div>
+
+  <div class="col-12 col-lg-auto">
+    <div class="d-flex justify-content-end breadcrumb__btn-group">
+      <!-- AVAILABLE start -->
+      <a href="" class="btn btn-primary">Ofertar</a>
+      <button type="button" class="btn btn-primary">Guardar</button>
+      <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+      data-target="#ModalCancel">Cancelar</button>
+      <!-- AVAILABLE end -->
+      <!-- NEGOTIATE start -->
+      <button type="button" class="btn btn-primary">Guardar</button>
+      <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+      data-target="#ModalCancel">Cancelar</button>
+      <!-- NEGOTIATE end -->
+      <!-- ASSIGNED start -->
+      <a href="" class="btn btn-primary" data-toggle="modal"
+        data-target="#ModalRedirect">Pagar</a>
+      <!-- ASSIGNED end -->
+    </div>
+  </div>
+
+</app-breadcrumb>
+<!-- Breadcrumb end -->
+
+
+<!-- SUPPLIERS start -->
+<form action="">
+  <div class="row">
+
+    <!-- RANKING start -->
+    <!-- Only in negotiate -->
+    <div class="col-12 col-xl-5 col-xxl-4 col-fhd-3 mb-5">
+      <app-suppliers-ranking></app-suppliers-ranking>
+    </div>
+    <!-- RANKING end -->
+
+    <!-- PETITION DETAIL start -->
+    <!-- Always except in negotiate -->
+    <!-- <div class="col-12 offset-0 col-lg-10 offset-lg-1"> -->
+    <!-- Only in negotiate -->
+    <div class="col-12 col-xl-7 col-xxl-8 col-fhd-9">
+      <div class="card pb-4">
+
+        <div class="card-header d-flex justify-content-between" data-toggle="collapse" data-target="#basicData"
+        aria-expanded="true" aria-controls="basicData">
+        <h3>Datos básicos</h3>
+        <div class="d-flex justify-content-between">
+          <!-- Available start -->
+          <span class="badge badge__dotted--warning">Disponible</span>
+          <span class="badge badge__dotted--success">Ofertada</span>
+          <span class="badge badge__dotted--light">No seleccionada</span>
+          <span class="badge badge__dotted--danger">Anulada</span>
+          <!-- Available end -->
+          <!-- Negotiate start -->
+          <!-- <span class="badge badge__dotted--success">En negociación</span>
+          <span class="badge badge__dotted--light">No seleccionada</span>
+          <span class="badge badge__dotted--danger">Anulada</span> -->
+          <!-- Negotiate end -->
+          <!-- Assigned start -->
+          <!-- <span class="badge badge__dotted--success">Pagada</span>
+          <span class="badge badge__dotted--warning">Pendiente de Pago</span>
+          <span class="badge badge__dotted--light">Vencida</span>
+          <span class="badge badge__dotted--danger">Anulada</span> -->
+          <!-- Assigned end -->
+          <i-chevron-down class="text-light"></i-chevron-down>
+        </div>
+      </div>
+      <div class="card-body collapse show" id="basicData">
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <small>Código de Obra</small>
+              <p>12121212</p>
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="form-group d-flex flex-column align-items-end">
+              <small class="mb-1">Calificación del solicitante</small>
+              <ngb-rating [rate]="3" [readonly]="true" max="5" class="text-warning icon--star"></ngb-rating>
+            </div>
+          </div>
+          <div class="col-12">
+            <hr class="divider">
+            <h5>Fechas</h5>
+          </div>
+          <div class="col-6 col-lg-6">
+            <div class="form-group">
+              <small>Vencimiento de Oferta</small>
+              <p>15-03-2019</p>
+            </div>
+          </div>
+          <div class="col-6 col-lg-6">
+            <div class="form-group">
+              <small>Fecha adjudicación</small>
+              <p>02-04-2019 10:30</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <hr class="divider">
+            <h5>Pago</h5>
+          </div>
+          <div class="col-12">
+            <small>Forma de pago</small>
+            <p>Debin</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-header d-flex justify-content-between" data-toggle="collapse" data-target="#deliverDetail"
+      aria-expanded="true" aria-controls="deliverDetail">
+      <h3>Detalle de la Entrega</h3>
+      <i-chevron-down class="text-light"></i-chevron-down>
+    </div>
+    <div class="card-body collapse show" id="deliverDetail">
+      <div class="row">
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Calle/Avenida</small>
+            <p>Av. Álvarez Thomas</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Número</small>
+            <p>1131</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Piso/Depto</small>
+            <p>4 A/B</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Código postal</small>
+            <p>1427</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Provincia</small>
+            <p>Capital Federal</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Localidad</small>
+            <p>Colegiales</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Entrega en Obra</small>
+            <p>15-03-2019</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div [ngSwitch]="suppliersDetail">
+      <app-suppliers-items *ngSwitchCase="'suppliers-items'"></app-suppliers-items>
+      <app-suppliers-edit-items *ngSwitchCase="'suppliers-edit-items'"></app-suppliers-edit-items>
+      <app-suppliers-chosen *ngSwitchCase="'suppliers-chosen'"></app-suppliers-chosen>
+    </div>
+
+  </div>
+    </div>
+
+  </div>
+</form>
+<!-- SUPPLIERS end -->
+
+
+<app-modal-redirect></app-modal-redirect>
+
+
+<app-modal-nullify></app-modal-nullify>
+
+
+<app-modal-cancel></app-modal-cancel>
+
+
+<div class="btn btn-primary fab" ngbTooltip="Descargar Solicitud" tooltipClass="tooltip--primary" placement="left"
+  container="body">
+  <i-download></i-download>
+</div>
+
+
+<div class="toast__container d-none">
+  <app-notifications></app-notifications>
+  <!-- AVAILABLE start -->
+  <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-start">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>La solicitud XXXXXXX fue ofertada con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="toast toast--info show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-start">
+        <div class="align-items-center"></div>
+        <i-info class="text-light icon--md"></i-info>
+        <div class="media-body">
+          <h4>¡Aviso!</h4>
+          <p>Su oferta no ha sido seleccionada.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-start">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Atención!</h4>
+          <p>La solicitud ha sido anulada por el usuario XXXXXXX.</p>
+          <button class="btn btn-outline-white mt-3" type="button" name="button" data-toggle="modal" data-target="#ModalNullify">
+            Ver motivos
+          </button>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- AVAILABLE end -->
+  <!-- NEGOTIATE start -->
+  <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-start">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>La solicitud XXXXXXX fue negociada con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="toast toast--info show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-start">
+        <div class="align-items-center"></div>
+        <i-info class="text-light icon--md"></i-info>
+        <div class="media-body">
+          <h4>¡Aviso!</h4>
+          <p>Su oferta no ha sido seleccionada.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-start">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Atención!</h4>
+          <p>La solicitud ha sido anulada por el usuario XXXXXXX.</p>
+          <button class="btn btn-outline-white mt-3" type="button" name="button" data-toggle="modal" data-target="#ModalNullify">
+            Ver motivos
+          </button>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- NEGOTIATE end -->
+  <!-- ASSIGNED start -->
+  <div class="toast toast--info show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-start">
+        <div class="align-items-center"></div>
+        <i-info class="text-light icon--md"></i-info>
+        <div class="media-body">
+          <h4>¡Pendiente de Pago!</h4>
+          <p>Debe pagar la comisión de la solicitud XXXXXXX.</p>
+          <button class="btn btn-outline-white mt-3" type="button" name="button" data-toggle="modal" data-target="#ModalNullify">
+            Pagar
+          </button>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-start">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Atención!</h4>
+          <p>El plazo de pago de la comisión expiro.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-start">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Atención!</h4>
+          <p>La solicitud ha sido anulada por el usuario XXXXXXX.</p>
+          <button class="btn btn-outline-white mt-3" type="button" name="button" data-toggle="modal" data-target="#ModalNullify">
+            Ver motivos
+          </button>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- ASSIGNED end -->
+</div>

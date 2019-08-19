@@ -1,0 +1,21 @@
+<div class="modal fade" id="ModalCancel" tabindex="-1" role="dialog" aria-labelledby="ModalCancelTitle"
+  aria-hidden="true">
+  <div class="modal-sm modal--info modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+          <div class="justify-content-center">
+              <i-info class="modal__icon"></i-info>
+              <h1>¡Aviso!</h1>
+              <p>Los datos introducidos se perderán, ¿Confirma que desea cancelar?</p>
+          </div>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-info" (click)="goToLogin()">Sí</button>
+        <button type="button" class="btn btn-outline-info" data-dismiss="modal">No</button>
+      </div>
+
+    </div>
+  </div>
+</div>

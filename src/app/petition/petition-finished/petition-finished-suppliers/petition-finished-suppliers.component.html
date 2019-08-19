@@ -1,0 +1,369 @@
+<!-- Breadcrumb start -->
+<app-breadcrumb>
+  <div class="col-auto breadcrumb__item">
+    <a href="/petition/list/petitioners" class="d-inline-flex">
+      <i-file-text class="breadcrumb__icon"></i-file-text>
+      Solicitudes
+    </a>
+  </div>
+
+  <div class="col breadcrumb__item text-truncate active" title="Nombre de la solicitud">
+    Construcción edificio de Av. Álvarez Thomas 1131
+  </div>
+
+</app-breadcrumb>
+<!-- Breadcrumb end -->
+
+<!-- PETITION DETAIL start -->
+<div class="col-12 offset-0 col-lg-10 offset-lg-1">
+  <div class="card pb-4">
+
+    <div class="card-header d-flex justify-content-between" data-toggle="collapse" data-target="#basicData"
+      aria-expanded="true" aria-controls="basicData">
+      <h3>Datos básicos</h3>
+      <div class="d-flex justify-content-between">
+        <span class="badge badge__dotted--success">Finalizada</span>
+        <i-chevron-down class="text-light"></i-chevron-down>
+      </div>
+    </div>
+    <div class="card-body collapse show" id="basicData">
+      <div class="row d-flex align-items-end">
+        <div class="col-12 col-xl-8 col-fhd-6">
+          <div class="form-group">
+            <small>Nombre de la solicitud</small>
+            <p>Construcción edificio de Av. Álvarez Thomas 1131</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-4 col-fhd-2">
+          <div class="form-group">
+            <small>Código de Obra</small>
+            <p>12121212</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-4">
+          <div class="form-group d-flex flex-column">
+            <small class="mb-1">Calificación del solicitante</small>
+            <ngb-rating [rate]="3" [readonly]="true" max="5" class="text-warning icon--star"></ngb-rating>
+          </div>
+        </div>
+        <div class="col-12">
+          <hr class="divider">
+          <h5>Fechas</h5>
+        </div>
+        <div class="col-6 col-lg-6">
+          <div class="form-group">
+            <small>Vencimiento de Oferta</small>
+            <p>15-03-2019</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-6">
+          <div class="form-group">
+            <small>Fecha adjudicación</small>
+            <p>02-04-2019 10:30</p>
+          </div>
+        </div>
+        <div class="col-12">
+          <hr class="divider">
+          <h5>Pago</h5>
+        </div>
+        <div class="col-12">
+          <small>Forma de pago</small>
+          <p>Pago electrónico</p>
+        </div>
+        <div class="col-12">
+          <hr class="divider">
+          <h5>Datos del responsable de la cuenta</h5>
+        </div>
+        <div class="col-6 col-fhd-2">
+          <div class="form-group">
+            <small>Nombre</small>
+            <p>Joe</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Apellido</small>
+            <p>Doe</p>
+          </div>
+        </div>
+        <div class="col-12 col-xl-6 col-fhd-3">
+          <div class="form-group">
+            <small>Correo electrónico</small>
+            <p>usuario@mail.com</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2">
+          <div class="form-group">
+            <small>Código de Área</small>
+            <p>011</p>
+          </div>
+        </div>     
+        <div class="col-6 col-xl-4 col-fhd-2">
+          <div class="form-group">
+            <small>Teléfono</small>
+            <p>4444-4444</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-header d-flex justify-content-between" data-toggle="collapse" data-target="#deliverDetail"
+      aria-expanded="true" aria-controls="deliverDetail">
+      <h3>Detalle de la Entrega</h3>
+      <i-chevron-down class="text-light"></i-chevron-down>
+    </div>
+    <div class="card-body collapse show" id="deliverDetail">
+      <div class="row">
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Calle/Avenida</small>
+            <p>Av. Álvarez Thomas</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Número</small>
+            <p>1131</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Piso/Depto</small>
+            <p>4 A/B</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Código postal</small>
+            <p>1427</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Provincia</small>
+            <p>Capital Federal</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Localidad</small>
+            <p>Colegiales</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-header" data-toggle="collapse" data-target="#supplierOne" aria-expanded="true"
+      aria-controls="supplierOne">
+      <div class="row">
+        <div class="col d-flex align-items-center">
+          <span class="btn btn-accent btn-sm" ngbTooltip="Proveedor Triple A" tooltipClass="tooltip--accent"
+            placement="top" container="body">A</span>
+          <div class="d-flex flex-column flex-fhd-row align-items-fhd-baseline">
+            <h3 class="mr-fhd-2">Loma Negra CIA Industrial Argentina SA</h3>
+            <small class="mt-1 mt-fhd-0">CUIT 30-50053085-1</small>
+          </div>
+        </div>
+        <div class="col-auto d-inline-flex justify-content-center align-items-center pl-0">
+          <i-chevron-down class="text-light"></i-chevron-down>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body collapse show" id="supplierOne">
+      <div class="row">
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Calle/Avenida</small>
+            <p>Av. Álvarez Thomas</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Número</small>
+            <p>1131</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Piso/Depto</small>
+            <p>4 A/B</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Código postal</small>
+            <p>1427</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Provincia</small>
+            <p>Capital Federal</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Localidad</small>
+            <p>Colegiales</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Código de Área</small>
+            <p>011</p>
+          </div>
+        </div> 
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Teléfono</small>
+            <p>4319-3000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <hr class="divider">
+          <h5>Adjudicación</h5>
+        </div>
+        <div class="col-4 col-lg-6 col-xl-3 col-fhd-2">
+          <div class="form-group">
+            <small>Forma de pago</small>
+            <p>Pago electrónico</p>
+          </div>
+
+        </div>
+        <div class="col-4 col-lg-6 col-xl-3 col-fhd-2">
+          <div class="form-group">
+            <small>Plazo de pago</small>
+            <p>60 días</p>
+          </div>
+
+        </div>
+        <div class="col-4 col-lg-6 col-xl-3 col-fhd-2">
+          <div class="form-group">
+            <small>Entrega en obra</small>
+            <p>02-04-2019</p>
+          </div>
+
+        </div>
+        <div class="col-4 col-lg-6 col-xl-3 col-fhd-2">
+          <div class="form-group">
+            <small>Costo de envío a cargo de</small>
+            <p>Proveedor</p>
+          </div>
+
+        </div>
+        <div class="col-4 col-lg-6 col-xl-3 col-fhd-2">
+          <div class="form-group">
+            <small>Peso total</small>
+            <p>10 toneladas</p>
+          </div>
+
+        </div>
+        <div class="col-4 col-lg-6 col-xl-3 col-fhd-2">
+          <div class="form-group">
+            <small>Volumen total</small>
+            <p>1.000.000 cm³</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-12 table-responsive">
+          <table class="table table--simple">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Rubro</th>
+                <th scope="col">Subrubro</th>
+                <th scope="col">Nombre del producto</th>
+                <th scope="col">Unidad de medida</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr scope="row">
+                <td class="td--row-number">1</td>
+                <td>Rubro 10</td>
+                <td>Subrubro 23</td>
+                <td>Cemento Loma Negra Bolsa de 50 kgs</td>
+                <td>Kgs</td>
+                <td>100.000</td>
+                <td>
+                  <a class="text-primary" data-toggle="collapse" href="#collapseOnerowCollapse1"
+                    aria-expanded="false" aria-controls="rowCollapsed1">Ver detalle</a>
+                </td>
+              </tr>
+              <tr scope="row" class="collapse" id="collapseOnerowCollapse1">
+                <td colspan="7">
+                  <div class="row">
+                    <div class="col">
+                      <div class="row text-left">
+                        <div class="col-6 col-xxl">
+                          <div class="form-group">
+                            <small>Precio unitario</small>
+                            <p>$1.000,00</p>
+                          </div>
+                        </div>
+                        <div class="col-6 col-xxl">
+                          <div class="form-group">
+                            <small>Código postal</small>
+                            <p>1427</p>
+                          </div>
+                        </div>
+                        <div class="col-6 col-xxl">
+                          <div class="form-group">
+                            <small>Peso</small>
+                            <p>2 Kg.</p>
+                          </div>
+                        </div>
+                        <div class="col-6 col-xxl">
+                          <div class="form-group">
+                            <small>Volumen</small>
+                            <p>500 cm³</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto d-flex align-items-center">
+                      <div class="form-group">
+                        <h3>$100.000,00</h3>
+                        <small class="d-flex justify-content-end">Total del Producto</small>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-auto">
+          <small>Subtotal</small>
+          <p>$300.000,00</p>
+        </div>
+        <div class="col">
+          <small>Costo de envío</small>
+          <p>$2.500,00</p>
+        </div>
+        <div class="ml-auto col text-right">
+          <h3 class="mb-0">$302.500,00</h3>
+          <small>TOTAL</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- PETITION DETAIL end -->
+
+<div class="btn btn-primary fab" ngbTooltip="Descargar Solicitud" tooltipClass="tooltip--primary" placement="left"
+  container="body">
+  <i-download></i-download>
+</div>

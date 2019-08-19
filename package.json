@@ -1,0 +1,81 @@
+{
+  "author": "originsw",
+  "name": "eprocurement-frontend",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --prod",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "commit": "npx git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    },
+    "cz-customizable": {
+      "config": "commitizen.config.js"
+    }
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~7.2.0",
+    "@angular/common": "~7.2.0",
+    "@angular/compiler": "~7.2.0",
+    "@angular/core": "~7.2.0",
+    "@angular/forms": "^7.2.13",
+    "@angular/platform-browser": "~7.2.0",
+    "@angular/platform-browser-dynamic": "~7.2.0",
+    "@angular/router": "~7.2.0",
+    "@ng-bootstrap/ng-bootstrap": "^4.1.1",
+    "@ng-select/ng-select": "^2.20.5",
+    "angular-datatables": "^7.0.0",
+    "angular-feather": "^5.4.0",
+    "bootstrap": "^4.3.1",
+    "core-js": "^2.5.4",
+    "datatables.net": "^1.10.19",
+    "datatables.net-dt": "^1.10.19",
+    "datatables.net-editor-server": "^1.9.0",
+    "datatables.net-responsive-dt": "^2.2.3",
+    "jquery": "^3.4.1",
+    "ng-recaptcha": "^4.2.1",
+    "ng2-select": "^2.0.0",
+    "ng2-select2": "^1.0.0-beta.16",
+    "ngx-file-drop": "^5.0.0",
+    "ngx-pipes": "^2.4.7",
+    "popper.js": "^1.15.0",
+    "rxjs": "~6.3.3",
+    "select2": "^4.0.7",
+    "tslib": "^1.9.0",
+    "web-animations-js": "^2.3.1",
+    "zone.js": "~0.8.26"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.12.0",
+    "@angular/cli": "~7.2.4",
+    "@angular/compiler-cli": "~7.2.0",
+    "@angular/language-service": "~7.2.0",
+    "@types/datatables.net": "^1.10.17",
+    "@types/jasmine": "~2.8.8",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/jquery": "^3.3.29",
+    "@types/node": "~8.9.4",
+    "codelyzer": "~4.5.0",
+    "commitizen": "^2.10.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "cz-customizable": "^5.2.0",
+    "jasmine-core": "~2.99.1",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~3.1.1",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~1.1.2",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "protractor": "~5.4.0",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.11.0",
+    "typescript": "~3.2.2"
+  }
+}

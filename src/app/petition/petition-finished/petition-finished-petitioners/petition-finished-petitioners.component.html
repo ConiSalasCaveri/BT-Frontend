@@ -1,0 +1,412 @@
+<!-- Breadcrumb start -->
+<app-breadcrumb>
+  <div class="col-auto breadcrumb__item">
+    <a href="/petition?/list/petition?ers" class="d-inline-flex">
+      <i-file-text class="breadcrumb__icon"></i-file-text>
+      Solicitudes
+    </a>
+  </div>
+
+  <div class="col breadcrumb__item text-truncate active" title="Nombre de la solicitud">
+    {{petition?.name}}
+  </div>
+
+</app-breadcrumb>
+<!-- Breadcrumb end -->
+
+<!-- petition? DETAIL start -->
+<div class="col-12 offset-0 col-lg-10 offset-lg-1">
+  <div class="card pb-4">
+
+    <div class="card-header d-flex justify-content-between" data-toggle="collapse" data-target="#basicData"
+      aria-expanded="true" aria-controls="basicData">
+      <h3>Datos básicos</h3>
+      <div class="d-flex justify-content-between">
+        <span class="badge badge__dotted--success">Finalizada</span>
+        <i-chevron-down class="text-light"></i-chevron-down>
+      </div>
+    </div>
+    <div class="card-body collapse show" id="basicData">
+      <div class="row d-flex align-items-end">
+        <div class="col-12 col-xl-8 col-fhd-6">
+          <div class="form-group">
+            <small>Nombre de la solicitud</small>
+            <p>{{petition.name}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-4 col-fhd-2">
+          <div class="form-group">
+            <small>Código de Obra</small>
+            <p>{{petition.outerCode}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-4">
+          <div class="form-group">
+            <small>Responsable de la solicitud</small>
+            <p>{{petition?.responsableName}}</p>
+          </div>
+        </div>
+        <!-- <div class="col-6 col-fhd-4">
+          <div class="form-group d-flex flex-column">
+            <p class="mb-1">Calificación del solicitante</p>
+            <ngb-rating [rate]="3" [readonly]="true" max="5" class="text-warning icon--star"></ngb-rating>
+          </div>
+        </div> -->
+        <div class="col-12">
+          <hr class="divider">
+          <h5>Fechas</h5>
+        </div>
+        <div class="col-6 col-lg-6">
+          <div class="form-group">
+            <small>Vencimiento de Oferta</small>
+            <p>{{petition?.offerExpirationDate}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-6">
+          <div class="form-group">
+            <small>Fecha adjudicación</small>
+            <p>{{petition?.awardedDate}}</p>
+          </div>
+        </div>
+        <div class="col-12">
+          <hr class="divider">
+          <h5>Pago</h5>
+        </div>
+        <div class="col-12">
+          <small>Forma de pago</small>
+          <p>{{petition?.payment}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-header d-flex justify-content-between" data-toggle="collapse" data-target="#deliverDetail"
+      aria-expanded="true" aria-controls="deliverDetail">
+      <h3>Detalle de la Entrega</h3>
+      <i-chevron-down class="text-light"></i-chevron-down>
+    </div>
+    <div class="card-body collapse show" id="deliverDetail">
+      <div class="row">
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Calle/Avenida</small>
+            <p>{{petition?.street}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Número</small>
+            <p>{{petition?.streetNumber}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Piso/Depto</small>
+            <p>{{petition?.apartment}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Código postal</small>
+            <p>{{petition?.postCode}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Provincia</small>
+            <p>{{petition?.provinceName}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Localidad</small>
+            <p>{{petition?.localityName}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-header d-flex justify-content-between" data-toggle="collapse" data-target="#items"
+      aria-expanded="true" aria-controls="items">
+      <h3>Ítems</h3>
+      <i-chevron-down class="text-light"></i-chevron-down>
+    </div>
+    <div class="card-body collapse show" id="items">
+      <div class="row">
+        <div class="col-12">
+          <table class="table table--simple">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Rubro</th>
+                <th scope="col">Subrubro</th>
+                <th scope="col">Nombre del producto</th>
+                <th scope="col">Unidad de medida</th>
+                <th scope="col">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr scope="row" *ngFor="let item of petition?.products; index as i">
+                <td class="td--row-number">{{ i + 1}}</td>
+                  <td>{{item.categoryName}}</td>
+                  <td>{{item.subcategoryName}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.unitName}}</td>
+                  <td>{{item.amount}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-header" data-toggle="collapse" data-target="#supplierOne" aria-expanded="true"
+      aria-controls="supplierOne">
+      <div class="row">
+        <div class="col d-flex align-items-center">
+          <span class="btn btn-accent btn-sm" ngbTooltip="Proveedor Triple A" tooltipClass="tooltip--accent"
+            placement="top" container="body" *ngIf="petition?.tripleA">A</span>
+          <div class="d-flex flex-column flex-fhd-row align-items-fhd-baseline">
+            <h3 class="mr-fhd-2">{{petition?.supplierName}}</h3>
+            <small class="mt-1 mt-fhd-0">CUIT {{petition?.supplierCuit}}</small>
+          </div>
+        </div>
+        <div class="col-auto d-inline-flex justify-content-center align-items-center pl-0">
+          <i-chevron-down class="text-light"></i-chevron-down>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body collapse show" id="supplierOne">
+      <div class="row">
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Calle/Avenida</small>
+            <p>{{petition?.supplierStreet}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Número</small>
+            <p>{{petition?.supplierStreetNumber}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Piso/Depto</small>
+            <p>{{petition?.supplierApartment}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2 col-fhd-1">
+          <div class="form-group">
+            <small>Código postal</small>
+            <p>{{petition?.supplierPostCode}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Provincia</small>
+            <p>{{petition?.supplierProvinceName}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Localidad</small>
+            <p>{{petition?.supplierLocalityName}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Código de Área</small>
+            <p>011</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Teléfono</small>
+            <p>{{petition?.supplierPhone}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <hr class="divider">
+          <h5>Datos del responsable de la cuenta</h5>
+        </div>
+        <div class="col-6 col-fhd-2">
+          <div class="form-group">
+            <small>Nombre</small>
+            <p>{{petition?.responsableName}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-fhd-3">
+          <div class="form-group">
+            <small>Apellido</small>
+            <p>{{petition?.responsableLastName}}</p>
+          </div>
+        </div>
+        <div class="col-12 col-xl-6 col-fhd-3">
+          <div class="form-group">
+            <small>Correo electrónico</small>
+            <p>{{petition?.responsableEmail}}</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-2">
+          <div class="form-group">
+            <small>Código de Área</small>
+            <p>011</p>
+          </div>
+        </div>
+        <div class="col-6 col-xl-4 col-fhd-2">
+          <div class="form-group">
+            <small>Teléfono</small>
+            <p>{{petition?.responsablePhone}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <hr class="divider">
+          <h5>Adjudicación</h5>
+        </div>
+        <div class="col-4 col-lg-6 col-xl-3 col-fhd-2">
+          <div class="form-group">
+            <small>Forma de pago</small>
+            <p>{{petition?.payment}}</p>
+          </div>
+
+        </div>
+        <div class="col-4 col-lg-6 col-xl-3 col-fhd-2">
+          <div class="form-group">
+            <small>Plazo de pago</small>
+            <p>{{petition?.paymentPeriod}}</p>
+          </div>
+
+        </div>
+        <div class="col-4 col-lg-6 col-xl-3 col-fhd-2">
+          <div class="form-group">
+            <small>Entrega en obra</small>
+            <p>{{petition?.deliveryOnSiteStartDate}}</p>
+          </div>
+
+        </div>
+        <div class="col-4 col-lg-6 col-xl-3 col-fhd-2">
+          <div class="form-group">
+            <small>Costo de envío a cargo de</small>
+            <p>{{petition?.shippingCostOwner}}</p>
+          </div>
+
+        </div>
+        <div class="col-4 col-lg-6 col-xl-3 col-fhd-2">
+          <div class="form-group">
+            <small>Peso total</small>
+            <p>{{petition?.totalWeight }} {{petition?.totalWeightUnit}}</p>
+          </div>
+
+        </div>
+        <div class="col-4 col-lg-6 col-xl-3 col-fhd-2">
+          <div class="form-group">
+            <small>Volumen total</small>
+            <p>{{petition?.totalVolume}} cm³</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-12">
+          <table class="table table--simple table--fixed">
+            <thead class="thead-dark">
+              <tr>
+                <th></th>
+                <th>Rubro</th>
+                <th>Subrubro</th>
+                <th>Nombre del producto</th>
+                <th>Unidad de medida</th>
+                <th>Cantidad</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of petition?.products; index as i">
+              <tr>
+                <td class="td--row-number">{{ i + 1}}</td>
+                <td>{{item.categoryName}}</td>
+                <td>{{item.subcategoryName}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.unitName}}</td>
+                <td>{{item.amount}}</td>
+                <td>
+                  <a class="text-primary" data-toggle="collapse" [attr.data-target]="'#collapseOneRowCollapse'+i"
+                    aria-expanded="false" aria-controls="rowCollapsed1">Ver detalle</a>
+                </td>
+              </tr>
+              <tr class="collapse" id="collapseOneRowCollapse{{i}}">
+                <td colspan="7">
+                  <div class="row">
+                    <div class="col">
+                      <div class="row text-left">
+                        <div class="col-6 col-xxl">
+                          <div class="form-group">
+                            <small>Precio unitario</small>
+                            <p>{{item.unitPrice | currency}}</p>
+                          </div>
+                        </div>
+                        <div class="col-6 col-xxl">
+                          <div class="form-group">
+                            <small>Código postal</small>
+                            <p>{{item.postCode}}</p>
+                          </div>
+                        </div>
+                        <div class="col-6 col-xxl">
+                          <div class="form-group">
+                            <small>Peso</small>
+                            <p>{{item.unitPrice }} {{item.unitName}}</p>
+                          </div>
+                        </div>
+                        <div class="col-6 col-xxl">
+                          <div class="form-group">
+                            <small>Volumen</small>
+                            <p>{{item.volume}} cm³</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto d-flex align-items-center">
+                      <div class="form-group">
+                        <h3>{{item.totalPrice | currency}}</h3>
+                        <small class="d-flex justify-content-end">Total del Producto</small>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-auto">
+          <small>Subtotal</small>
+          <p>{{petition?.subtotal | currency}}</p>
+        </div>
+        <div class="col">
+          <small>Costo de envío</small>
+          <p>{{petition?.shippingCost | currency}}</p>
+        </div>
+        <div class="ml-auto col text-right">
+          <h3 class="mb-0">{{petition?.total | currency}}</h3>
+          <small>TOTAL</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- petition? DETAIL end -->
+
+<div class="btn btn-primary fab" ngbTooltip="Descargar Solicitud" tooltipClass="tooltip--primary" placement="left"
+  container="body">
+  <i-download></i-download>
+</div>

@@ -1,0 +1,22 @@
+{
+    // Specify in WORKSPACE settings the SonarQube/SonarCloud project to which the current project is bound
+    "sonarlint.connectedMode.project": {
+        // Connection defined in sonarlint.connectedMode.servers
+        "serverId": "sonar.originsw",
+        // Project key in SonarQube/SonarCloud
+        "projectKey": "HP-EProcurement-Frontend"
+    },
+    // Configure the connection(s) to SonarQube/SonarCloud in your USER settings.
+    // For security reasons, the token should not be stored in SCM with workspace settings
+    "sonarlint.connectedMode.servers": [
+        {
+            // Connection identifier
+            "serverId": "sonar.originsw",
+            // SonarQube/SonarCloud URL - https//sonarcloud.io for SonarCloud
+            "serverUrl": "https://sonar.originsw.com",
+            // User token - generated in SonarQube/SonarCloud in My Account>Security
+            "token": "f4a672943f9bb365f9cef34e7aa498b0899844ba"
+        }
+    ],
+    "editor.wordWrap": "on",
+}

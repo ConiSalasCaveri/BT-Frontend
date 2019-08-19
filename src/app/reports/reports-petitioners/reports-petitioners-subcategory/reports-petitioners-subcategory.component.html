@@ -1,0 +1,119 @@
+<!-- Breadcrumb start -->
+<app-breadcrumb>
+
+  <div class="col-auto breadcrumb__item">
+    <a href="/petition/list/suppliers" class="d-inline-flex" disabled>
+      <i-trending-up class="breadcrumb__icon"></i-trending-up>
+      Reportes
+    </a>
+  </div>
+
+  <div class="col breadcrumb__item text-truncate active" title="Reportes de subrubros">
+    Subrubros
+  </div>
+
+</app-breadcrumb>
+<!-- Breadcrumb end -->
+
+<!-- REPORTS SUBCATEGORY start -->
+<div class="row">
+
+  <!-- LIST start -->
+  <div class="col-7 mb-5 mb-lg-0">
+
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table datatable [dtOptions]="dtOptions" class="table" id="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Nombre de la solicitud</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- LIST end -->
+
+  <!-- SUBCATEGORY start -->
+  <div class="col-5" [ngSwitch]="subcategoryDetail">
+
+    <!-- Only empty -->
+    <div class="card card__empty" *ngSwitchCase="'card-empty'">
+      <div class="card-body d-flex flex-column justify-content-center align-items-center">
+        <div class="bg-circle--secondary mb-3">
+          <i-box class="icon--secondary icon--lg"></i-box>
+        </div>
+        Selecciona un producto para ver el detalle
+      </div>
+    </div>
+
+    <div class="card" *ngSwitchCase="'card-filled'">
+
+      <div class="card-header">
+        <h3>Construcción edificio de Av. Álvarez Thomas 1131</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <h5>Rubros</h5>
+            <div class="badges__container mb-5">
+              <span class="badge badge-pill badge-secondary">
+                <div>
+                  Rubro 10
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <h5>Subrubros</h5>
+            <div class="badges__container mb-5">
+              <span class="badge badge-pill badge-secondary">
+                <div>
+                  Subrubro 10
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <h5>Solicitud</h5>
+            <div class="badges__container">
+              <span class="badge badge-pill badge-secondary">
+                <div>
+                  XXXXXXXX
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- SUBCATEGORY end -->
+
+</div>
+<!-- REPORTS SUBCATEGORY end -->

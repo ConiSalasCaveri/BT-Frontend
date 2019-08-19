@@ -1,0 +1,152 @@
+{
+  "data": [
+    {
+      "categoryid": "33e359b2-bcfc-4aea-8b79-fdabe8c8d602",
+      "categoryname": "Albañilería",
+      "subcategories": [
+        {
+          "subcategoryid": "3cd3a7fb-6651-4269-9c76-79ff841be004",
+          "subcategoryname": "Cemento",
+          "petitionOffers": [
+            {
+              "id": "b73a20b4-4505-40e7-b6a5-2ab85f8ecf76",
+              "name": "Proveedor",
+              "place": 1,
+              "tripleA": "true",
+              "starRate": 2,
+              "payment": 3,
+              "paymentPeriod": 3,
+              "shippingCost": 23,
+              "shippingCostOwner": 1,
+              "total": 3000,
+              "subtotal": 2700,
+              "updatedOn": "09/01/19 00:00:00",
+              "deliveryOnSiteDateStart": "09/01/19",
+              "type": 2
+            },
+            {
+              "id": "3c1a599e-c204-4aaa-8211-352b2d934d4d",
+              "name": "ProveedorOtro",
+              "tripleA": "false",
+              "place": 2,
+              "starRate": 5,
+              "payment": 1,
+              "paymentPeriod": 2,
+              "shippingCost": 23,
+              "shippingCostOwner": 2,
+              "total": 2800,
+              "subtotal": 2400,
+              "updatedOn": "09/01/19 00:00:00",
+              "deliveryOnSiteDateStart": "05/03/19",
+              "type": 2
+            },
+            {
+              "id": "3c1a599e-c204-4aaa-8211-352b2d934d4d",
+              "name": "ProveedorDistinto",
+              "place": 3,
+              "tripleA": false,
+              "starRate": 5,
+              "payment": 2,
+              "paymentPeriod": 2,
+              "shippingCost": 23,
+              "shippingCostOwner": 2,
+              "total": 2800,
+              "subtotal": 2400,
+              "updatedOn": "09/01/19 00:00:00",
+              "deliveryOnSiteDateStart": "05/03/19",
+              "type": 1
+            }
+          ]
+        },
+        {
+          "subcategoryid": "3cd3a7fb-6651-4269-9c76-79ff841asd43",
+          "subcategoryname": "Arena",
+          "petitionOffers": [
+            {
+              "id": "cfdca644-97e2-4810-8b06-255f7cdf78b8",
+              "name": "Proveedor Otro",
+              "place": 1,
+              "tripleA": true,
+              "starRate": 3.5,
+              "payment": 3,
+              "paymentPeriod": 1,
+              "shippingCost": 23,
+              "shippingCostOwner": 1,
+              "total": 29000,
+              "subtotal": 23000,
+              "updatedOn": "09/01/19 00:00:00",
+              "deliveryOnSiteDateStart": "05/07/19",
+              "type": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "categoryid": "33e359b2-bcfc-4aea-8b79-fdloe8c8d602",
+      "categoryname": "otro",
+      "subcategories": [
+        {
+          "subcategoryid": "3cd3a7fb-6651-4269-9c76-79f5641be004",
+          "subcategoryname": "Cemento",
+          "petitionOffers": [
+            {
+              "id": "b73a20b4-4505-40e7-b6a5-2ab85f8ecf76",
+              "name": "Proveedor Distinto",
+              "place": 1,
+              "tripleA": true,
+              "starRate": 2,
+              "payment": 1,
+              "paymentPeriod": 3,
+              "shippingCost": 23,
+              "shippingCostOwner": 2,
+              "total": 3000,
+              "subtotal": 2700,
+              "updatedOn": "09/01/19 00:00:00",
+              "deliveryOnSiteDateStart": "09/01/19",
+              "type": 2
+            },
+            {
+              "id": "3c1a599e-c204-4aaa-8211-352b2d784d4d",
+              "name": "Proveedor",
+              "place": 2,
+              "tripleA": false,
+              "starRate": 5,
+              "payment": 2,
+              "paymentPeriod": 2,
+              "shippingCost": 23,
+              "shippingCostOwner": 1,
+              "total": 2800,
+              "subtotal": 2400,
+              "updatedOn": "09/01/19 00:00:00",
+              "deliveryOnSiteDateStart": "05/03/19",
+              "type": 2
+            }
+          ]
+        },
+        {
+          "subcategoryid": "3cd3a7fb-6651-4269-9c76-79ff8233asd43",
+          "subcategoryname": "Arena",
+          "petitionOffers": [
+            {
+              "id": "cfdca644-97e2-4810-8b06-255f7cdf78b8",
+              "name": "Proveedor",
+              "place": 1,
+              "tripleA": "true",
+              "starRate": 3.5,
+              "payment": 2,
+              "paymentPeriod": 1,
+              "shippingCost": 23,
+              "shippingCostOwner": 1,
+              "total": 29000,
+              "subtotal": 23000,
+              "updatedOn": "09/01/19 00:00:00",
+              "deliveryOnSiteDateStart": "05/07/19",
+              "type": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

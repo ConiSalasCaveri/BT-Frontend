@@ -1,0 +1,363 @@
+@import "../vendors/bootstrap-abstracts";
+
+/* VARIABLES */
+
+// Color system
+$white:    #fff;
+$gray-100: #E6E6E6;
+$gray-200: #CCCCCC;
+$gray-300: #B3B3B3;
+$gray-400: #999999;
+$gray-500: #808080;
+$gray-600: #666666;
+$gray-700: #4D4D4D;
+$gray-800: #333333;
+$gray-900: #1A1A1A;
+$black:    #000;
+
+$grays: () !default;
+$grays: map-merge(
+  (
+    "100": $gray-100,
+    "200": $gray-200,
+    "300": $gray-300,
+    "400": $gray-400,
+    "500": $gray-500,
+    "600": $gray-600,
+    "700": $gray-700,
+    "800": $gray-800,
+    "900": $gray-900
+  ),
+  $grays
+);
+
+$blue:    #007bff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+$colors: () ;
+$colors: map-merge(
+  (
+    "blue":       $blue,
+    "indigo":     $indigo,
+    "purple":     $purple,
+    "pink":       $pink,
+    "red":        $red,
+    "orange":     $orange,
+    "yellow":     $yellow,
+    "green":      $green,
+    "teal":       $teal,
+    "cyan":       $cyan,
+    "white":      $white,
+    "gray":       $gray-600,
+    "gray-dark":  $gray-800
+  ),
+  $colors
+);
+
+$primary:       #F5821F; //#FE7E03;
+$secondary:     darken(#2E3092, 10%); //#2E1F59;
+$accent:        #03CCEC;
+$success:       #4BB973;
+$info:          #479ED5;
+$warning:       #F1B123;
+$danger:        #B7202E;
+$light:         $gray-300;
+$dark:          $gray-600;
+$disabled:      $gray-200; //text
+$disabled-opacity: 0.4;
+
+$primary-gradient-color-2: lighten($primary, 10%); //#FFAA00;
+$secondary-gradient-color-2: lighten($secondary, 10%); //#422C7F;
+
+// Gradients
+$primary-gradient: linear-gradient(90deg, $primary-gradient-color-2 0%, $primary 100%);
+$secondary-gradient: linear-gradient(135deg, $secondary-gradient-color-2 0%, $secondary 100%);
+
+$theme-colors: ();
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "accent":     $accent,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark,
+    "white":      $white,
+  ),
+  $theme-colors
+);
+
+
+// Body
+$body-color:    $dark;
+
+
+// Links
+$link-color: theme-color("secondary");
+$link-hover-color: lighten($link-color, 15%);
+
+
+// Paragraphs
+$paragraph-margin-bottom:   1rem;
+
+
+// Grid breakpoints
+$grid-breakpoints: (
+  xs: 0, // Extra small screen / phone
+  sm: 576px, // Small screen / phone
+  md: 768px, // Medium screen / tablet
+  lg: 992px, // Large screen / desktop
+  xl: 1200px, // Extra large screen / wide desktop
+  // Agregados por nosotros v
+  xxl: 1366px, // 720p
+  fhd: 1920px, // Full HD 1080p
+  rt: 2560px, // Retina 1440p
+  rt15: 2880px, // 15" Retina
+  uhd: 3840px, // UHD
+  4k: 4096px, // 4k
+  8k: 8192px // 8K
+);
+
+
+// Spacing
+$spacer: 1rem;
+$spacers: ();
+$spacers: map-merge(
+  (
+    0: 0,
+    1: $spacer * .25,
+    2: $spacer * .5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 2,
+    6: $spacer * 3,
+  ),
+  $spacers
+);
+
+// Border
+$border-default: 1px solid $light;
+$border-dark: 1px solid $dark;
+
+
+// Border Radius
+$border-radius-sm:    .1rem;
+$border-radius:       .3rem;
+$border-radius-lg:    3rem;
+$border-radius-xl:    6rem;
+
+
+// Box Shadow
+$box-shadow-sm: 0 0 $spacer rgba($dark, 0.2);
+$box-shadow: 0 0 $spacer rgba($dark, 0.4);
+$box-shadow-lg: 0 0 $spacer rgba($dark, 0.6);
+
+//Opacity
+$disabled-opacity: 0.4;
+
+
+// Transition
+$transition-base:             all .2s ease-in-out;
+$transition-fade:             opacity .15s linear;
+$transition-collapse:         height .35s ease;
+
+
+// Typography
+$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, 'Nunito', 'Helvetica Neue', 'Roboto', sans-serif;
+$font-family-monospace:       'Monaco', 'Consolas', 'Lucida Console', monospace;
+$font-family-base:            $font-family-sans-serif;
+
+$font-size-base-px:           14px;
+$font-size-base:              1rem; // Assumes the browser default, typically `16px`
+$font-size-lg:                $font-size-base * 1.25;
+$font-size-sm:                $font-size-base * .875;
+$font-size-xs:                $font-size-base * .75;
+$small-font-size:             80% !default;
+
+$font-weight-lighter:         lighter;
+$font-weight-light:           300;
+$font-weight-normal:          400;
+$font-weight-bold:            700;
+$font-weight-bolder:          800;
+
+$h1-font-size:                $font-size-base * 2; //32px
+$h2-font-size:                $font-size-base * 1.75; //28px
+$h3-font-size:                $font-size-base * 1.5; //24px
+$h4-font-size:                $font-size-base * 1.25; //20px
+$h5-font-size:                $font-size-base * 1; //16px uppercase
+$h6-font-size:                $font-size-base * .75; //16px
+
+$font-weight-base:            $font-weight-normal;
+$line-height-base:            1.5;
+
+$headings-font-weight: 400;
+$headings-line-height: 1;
+
+
+// Buttons
+$btn-border-radius: $border-radius-lg;
+
+
+// Forms
+$label-margin-bottom: 0rem;
+$input-border-radius: $border-radius;
+$input-border-color: $dark;
+
+
+// Tables
+$table-dark-bg: $dark;
+$table-dark-border-color: $light;
+
+$td-sizes: ();
+$td-sizes: map-merge(
+  (
+    "xs":    $spacer * 4,
+    "sm":    $spacer * 8,
+    "md":    $spacer * 12,
+    "lg":    $spacer * 16,
+    "xl":    $spacer * 20,
+  ),
+  $td-sizes
+);
+
+
+// Toasts
+$toast-max-width:               26rem;
+$toast-padding-x:               $spacer * 2;
+$toast-padding-y:               $spacer * 2;
+$toast-font-size:               $font-size-base;
+$toast-border-width:            0;
+$toast-border-radius:           $border-radius;
+$toast-box-shadow:              0 .25rem .75rem rgba($black, .1);
+
+
+// Alerts
+$alert-bg-level:                    -1;
+$alert-border-level:                -9;
+$alert-color-level:                 6;
+
+
+// Cards
+$card-cap-bg: $white;
+$card-spacer-y:                     $spacer * 2;
+$card-spacer-x:                     0;
+
+
+// Badges
+$badge-font-size:                   75% !default;
+$badge-font-weight:                 $font-weight-bold !default;
+$badge-color:                       $white !default;
+$badge-padding-y:                   .25em !default;
+$badge-padding-x:                   .5em !default;
+$badge-border-radius:               $border-radius !default;
+
+
+// Breadcrumb
+$breadcrumb-padding-y:              0;
+$breadcrumb-padding-x:              0;
+$breadcrumb-item-padding-x:         .5rem;
+
+$breadcrumb-margin-bottom:          $spacer * 2;
+
+$breadcrumb-bg:                     transparent;
+$breadcrumb-divider-color:          $gray-600;
+$breadcrumb-active-color:           $gray-600;
+
+$breadcrumb-border-radius:          0;
+
+
+// Dropdowns
+$dropdown-border-color:             transparent;
+$dropdown-border-radius:            0;
+
+$dropdown-link-color:               $light;
+$dropdown-link-hover-color:         $dark;
+$dropdown-link-hover-bg:            lighten($secondary, 65%);
+
+$dropdown-link-active-color:        $white;
+$dropdown-link-active-bg:           lighten($secondary, 50%);
+
+$dropdown-link-disabled-color:      $disabled;
+
+
+// List group
+$list-group-color:                  null !default;
+$list-group-bg:                     $white !default;
+$list-group-border-color:           rgba($black, .125) !default;
+$list-group-border-width:           0;
+$list-group-border-radius:          $border-radius !default;
+
+$list-group-item-padding-y:         $spacer / 2;
+$list-group-item-padding-x:         0;
+
+$list-group-hover-bg:               $gray-100 !default;
+$list-group-active-color:           $component-active-color !default;
+$list-group-active-bg:              $component-active-bg !default;
+$list-group-active-border-color:    $list-group-active-bg !default;
+
+$list-group-disabled-color:         $disabled;
+$list-group-disabled-bg:            $list-group-bg !default;
+
+$list-group-action-color:           $gray-700 !default;
+$list-group-action-hover-color:     $list-group-action-color !default;
+
+$list-group-action-active-color:    $body-color !default;
+$list-group-action-active-bg:       $gray-200 !default;
+
+
+// Modal
+$modal-content-border-width:        0;
+
+
+// Popovers
+$popover-font-size:                 $font-size-base;
+$popover-border-color:              transparent;
+$popover-border-radius:             0;
+$popover-box-shadow:                $box-shadow;
+
+$popover-header-bg:                 $secondary;
+$popover-header-color:              $white;
+$popover-header-padding-y:          $spacer;
+$popover-header-padding-x:          $spacer;
+
+$popover-body-padding-y:            $spacer;
+$popover-body-padding-x:            $spacer;
+
+
+// Tooltips
+$tooltip-font-size:                 $font-size-sm;
+$tooltip-max-width:                 280px;
+$tooltip-color:                     $body-color;
+$tooltip-bg:                        $white;
+$tooltip-border-radius:             0;
+$tooltip-opacity:                   .9;
+$tooltip-padding-y:                 $spacer / 2;
+$tooltip-padding-x:                 $spacer / 2;
+$tooltip-margin:                    0;
+
+$tooltip-arrow-width:               .8rem;
+$tooltip-arrow-height:              .4rem;
+$tooltip-arrow-color:               $tooltip-bg;
+
+
+// Z-index
+$zindex-fab:                        990;
+$zindex-dropdown:                   1000;
+$zindex-sticky:                     1010;
+$zindex-fixed:                      1030;
+$zindex-modal-backdrop:             1040;
+$zindex-modal:                      1050;
+$zindex-popover:                    1060;
+$zindex-tooltip:                    1070;
+$zindex-toast:                      1080;

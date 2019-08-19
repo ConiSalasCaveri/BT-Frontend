@@ -1,0 +1,47 @@
+<div class="card-header d-flex justify-content-between">
+  <h3>Ítems</h3>
+  <span class="badge badge__dotted--success" *ngIf="petition.state === 5">Publicada</span>
+  <span class="badge badge__dotted--danger"
+  *ngIf="petition.state === 6 || petition.state === 8 || petition.state === 4">Anulada</span>
+  <!-- NEGOTIATE start -->
+  <span class="badge badge__dotted--success" *ngIf="petition.state === 7">En negociación</span>
+  <!-- NEGOTIATE end -->
+</div>
+
+
+<div class="card-body">
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table table--simple">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Rubro</th>
+            <th scope="col">Subrubro</th>
+            <th scope="col">Nombre del producto</th>
+            <th scope="col">Unidad de medida</th>
+            <th scope="col">Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr scope="row" *ngFor="let item of products; index as i">
+              <td class="text-xs">{{i+1}}</td>
+              <td>{{item.categoryName}}</td>
+              <td>{{item.subcategoryName}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.unitName}}</td>
+              <td>{{item.amount}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="card-footer d-flex justify-content-center flex-wrap">
+  <button type="button" class="btn btn-outline-secondary btn-sm" (click)="back()">Anterior</button>
+  <button type="button" class="btn btn-secondary btn-sm" (click)="next()">Siguiente</button>
+</div>

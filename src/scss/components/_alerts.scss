@@ -1,0 +1,37 @@
+@import "../abstracts/abstracts-module";
+
+/* ALERTS */
+
+.alert {
+  @include prefixes(animation-name, alertsShow);
+  @include prefixes(animation-duration, 1s);
+
+  .close:not(:disabled):not(.disabled):hover {
+    color: $white;
+    opacity: 1;
+  }
+
+  .close:not(:disabled):not(.disabled):focus {
+    outline: none !important;
+  }
+
+}
+
+@include keyframes(alertsShow) {
+  from {
+    margin-top: -1rem;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+@each $color, $value in $theme-colors {
+ .alert-#{$color} {
+    color: $white;
+    background: $value;
+    border: none;
+  }
+}

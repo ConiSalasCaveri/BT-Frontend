@@ -1,0 +1,22 @@
+// @import "../../../scss/utilities/variables";
+// @import "../../../scss/utilities/mixins";
+// @import "../../../scss/utilities/placeholders";
+
+// .loading{
+//   @extend %backdrop;
+
+//   &:after{
+//     display: block;
+//     content: "";
+//     width: 120px;
+//     height: 120px;
+//     position: fixed;
+//     top: 50%;
+//     left: 50%;
+//     margin-top: -60px;
+//     margin-left: -60px;
+//     background: transparent url("../../../assets/images/gears.gif") no-repeat center;
+//     background: transparent url("../../../assets/images/gears.svg") no-repeat center;
+//   }
+
+// }

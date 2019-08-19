@@ -1,0 +1,330 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()" [ngClass]="{ 'form--invalid': submitted && areChildsInvalid() }">
+  <fieldset [disabled]="disabledValue">
+<!-- Breadcrumb start -->
+<app-breadcrumb>
+  <div class="col-auto breadcrumb__item">
+    <a href="/petition/list/petitioners" class="d-inline-flex">
+      <i-file-text class="breadcrumb__icon"></i-file-text>
+      Solicitudes
+    </a>
+  </div>
+  <!-- PETITION CREATE start --
+  <div class="col breadcrumb__item text-truncate active">
+    Nueva Solicitud
+  </div>
+  -- PETITION CREATE end -->
+
+  <!-- PETITION EDIT start -->
+  <div class="col breadcrumb__item text-truncate active" title="Nombre de la solicitud">
+    <!-- Construcción edificio de Av. Álvarez Thomas 1131 -->
+    Nueva solicitud
+  </div>
+  <!-- PETITION EDIT end -->
+  <div class="col-12 col-lg-auto">
+    <div class="d-flex justify-content-end breadcrumb__btn-group">
+        <button type="submit" class="btn btn-primary">Publicar</button>
+      <!-- <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#ModalPublish">Publicar</button> -->
+      <hr class="hr--vertical">
+      <button type="button" class="btn btn-primary" (click)="onSave()">Guardar</button>
+      <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+        data-target="#ModalCancel">Cancelar</button>
+      <!-- PETITION EDIT start -->
+      <hr class="hr--vertical">
+      <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+        data-target="#ModalDelete" *ngIf="state" [disabled]="state === 3" >Eliminar</button>
+      <!-- PETITION EDIT end -->
+    </div>
+  </div>
+
+</app-breadcrumb>
+<!-- Breadcrumb end -->
+
+<!-- PETITION CREATE start -->
+  <div class="row">
+
+    <!-- WIZARD start -->
+    <div class="col col-lg-4 col-xl-3 mb-4 mb-lg-0">
+      <div class="card card__wizard">
+
+        <div class="card-body">
+          <h6 class="list-group__title">Solicitud</h6>
+          <div class="list-group">
+
+            <a class="list-group-item d-flex align-items-center animation-pulse--danger"
+              (click)="petitionCreate = 'petition-create-basic-data'" [ngClass]="this.petitionCreate === 'petition-create-basic-data' ? 'list-group-item--active' : ''">
+              <span class="btn btn-outline-secondary btn-sm"
+              [ngClass]="submitted ? basicDataIsValid ? '' : 'badge__notification--danger' : ''">
+                1
+              </span>
+              <span class="animation-pulse" style="top:4px; left:12px;"></span>
+              <p>Datos básicos</p>
+            </a>
+            <hr class="hr--vertical">
+            <a class="list-group-item d-flex align-items-center animation-pulse--danger"
+              (click)="petitionCreate = 'petition-create-deliver-detail'" [ngClass]="this.petitionCreate === 'petition-create-deliver-detail' ? 'list-group-item--active' : ''">
+              <span class="btn btn-outline-secondary btn-sm"
+              [ngClass]="submitted ? deliverDetailIsValid ? '' : 'badge__notification--danger' : ''" >
+                  <!-- <span class="btn btn-outline-secondary btn-sm badge__notification--danger"> -->
+                2
+              </span>
+              <span class="animation-pulse" style="top:4px; left:12px;"></span>
+              <p>Detalle de la entrega</p>
+            </a>
+            <hr class="hr--vertical">
+            <a class="list-group-item d-flex align-items-center animation-pulse--danger"
+            (click)="petitionCreate = 'petition-create-items'" [ngClass]="this.petitionCreate === 'petition-create-items' ? 'list-group-item--active' : ''">
+              <span class="btn btn-outline-secondary btn-sm"
+              [ngClass]="submitted ? itemsIsValid ? '' : 'badge__notification--danger' : ''">
+              <!-- <span class="btn btn-outline-secondary btn-sm badge__notification--warning"> -->
+                3
+              </span>
+              <span class="animation-pulse" style="top:4px; left:12px;"></span>
+              <p>Ítems</p>
+            </a>
+
+            <!--Only Premium start-->
+            <hr class="hr--vertical">
+            <a class="list-group-item d-flex align-items-center animation-pulse--danger"
+              (click)="petitionCreate = 'petition-create-petition-type'" [ngClass]="this.petitionCreate === 'petition-create-petition-type' ? 'list-group-item--active' : ''">
+              <span class="btn btn-outline-secondary btn-sm"
+              [ngClass]="submitted ? petitionTypeIsValid ? '' : 'badge__notification--danger' : ''">
+                4
+              </span>
+              <span class="animation-pulse" style="top:4px; left:12px;"></span>
+              <p>Tipo de solicitud</p>
+            </a>
+            <!--Only Premium end-->
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- WIZARD end -->
+
+    <!-- PETITION start -->
+    <div class="col-12 col-lg-8 col-xl-9">
+      <div class="card" [ngSwitch]="petitionCreate">
+
+        <app-petition-create-basic-data *ngSwitchCase="'petition-create-basic-data'" (changeChild)="changeChild($event)"
+        (isValid)="basicDataIsValid = $event" [parentPetition]="parentPetition">
+
+        </app-petition-create-basic-data>
+
+        <app-petition-create-deliver-detail *ngSwitchCase="'petition-create-deliver-detail'" (changeChild)="changeChild($event)"
+        (isValid)="deliverDetailIsValid = $event">
+        </app-petition-create-deliver-detail>
+
+        <app-petition-create-items *ngSwitchCase="'petition-create-items'" (changeChild)="changeChild($event)"
+        (isValid)="itemsIsValid = $event">
+        </app-petition-create-items>
+
+        <app-petition-create-petition-type *ngSwitchCase="'petition-create-petition-type'" (changeChild)="changeChild($event)"
+        (isValid)="petitionTypeIsValid = $event">
+        </app-petition-create-petition-type>
+
+      </div>
+    </div>
+    <!-- PETITION end -->
+
+  </div>
+
+<!-- PETITION CREATE end -->
+
+<app-modal-cancel>
+</app-modal-cancel>
+
+<app-modal-delete>
+</app-modal-delete>
+
+<app-modal-publish (submitted)="onCreate()">
+</app-modal-publish>
+
+<div routerLink="#" class="btn btn-primary fab" ngbTooltip="Descargar Solicitud" tooltipClass="tooltip--primary" placement="left" container="body">
+  <i-download></i-download>
+</div>
+</fieldset>
+</form>
+
+
+<div class="toast__container">
+  <app-notifications></app-notifications>
+  <!--SUCCESS TOAST START(esto va en Petition-list)-->
+  <!-- <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>La solicitud XXXXXXX ha sido creada con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>La solicitud XXXXXXX ha sido publicada con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Oops!</h4>
+          <p>Es necesario completar todos los campos requeridos.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Oops!</h4>
+          <p>Ha ocurrido un error y no se ha podido crear la solicitud. Intenta nuevamente.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Oops!</h4>
+          <p>Ha ocurrido un error y no se ha podido publicar la solicitud. Intenta nuevamente.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+
+
+  <!-- only PETITION EDIT start-->
+  <!-- <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>La solicitud XXXXXXX ha sido editada con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-check class="text-light icon--md"></i-check>
+        <div class="media-body">
+          <h4>¡Bien Hecho!</h4>
+          <p>La solicitud XXXXXXX ha sido eliminada con éxito.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--info show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-info class="text-light icon--md"></i-info>
+        <div class="media-body">
+          <h4>¡Intercambio de datos!</h4>
+          <p>El administrador del sistema está evaluando la solicitud.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--warning show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-alert-triangle class="text-light icon--md"></i-alert-triangle>
+        <div class="media-body">
+          <h4>¡Intercambio de datos!</h4>
+          <p>Realiza los ajustes necesarios para poder publicar la solicitud.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Oops!</h4>
+          <p>Ha ocurrido un error y no se ha podido crear la solicitud. Intenta nuevamente.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="media d-flex align-items-center">
+        <div class="align-items-center"></div>
+        <i-slash class="text-light icon--md"></i-slash>
+        <div class="media-body">
+          <h4>¡Intercambio de datos!</h4>
+          <p>La solicitud ha sido rechazada por el administrador del sistema.</p>
+        </div>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+  <!-- only PETITION EDIT end-->
+</div>

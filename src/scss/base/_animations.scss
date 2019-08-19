@@ -1,0 +1,46 @@
+@import "../abstracts/abstracts-module";
+/* ANIMATIONS */
+// animation--pulse
+.animation-pulse {
+	display: none;
+}
+
+@each $color, $value in $theme-colors {
+  .animation-pulse--#{$color} .animation-pulse {
+    border: 3px solid rgba($value, 0.8);
+  }
+}
+
+*[class*="animation-pulse--"] {
+	position: relative;
+	*[class*="badge__notification--"] ~ .animation-pulse {
+		border-radius: $border-radius-lg;
+		height: $spacer * 2;
+		width: $spacer * 2;
+		display: block;
+		position: absolute;
+		opacity: 0;
+		@include prefixes(animation-name, animation-pulse);
+		@include prefixes(animation-duration, 2s);
+		@include prefixes(animation-iteration-count, 2);
+		@include prefixes(animation-timing-function, ease-in-out);
+	}
+}
+
+@include keyframes(animation-pulse) {
+	0% {
+		@include prefixes(transform, scale(0.2, 0.2));
+		opacity: 0.0;
+	}
+	60% {
+		@include prefixes(transform, scale(0.2, 0.2));
+		opacity: 0.0;
+	}
+	65% {
+		opacity: 1;
+	}
+	100% {
+		@include prefixes(transform, scale(1.2, 1.2));
+		opacity: 0.0;
+	}
+}

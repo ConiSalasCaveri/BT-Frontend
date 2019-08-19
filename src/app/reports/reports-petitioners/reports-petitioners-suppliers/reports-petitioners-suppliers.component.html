@@ -1,0 +1,69 @@
+<!-- Breadcrumb start -->
+<app-breadcrumb>
+
+  <div class="col-auto breadcrumb__item">
+    <a href="/petition/list/suppliers" class="d-inline-flex">
+      <i-trending-up class="breadcrumb__icon"></i-trending-up>
+      Reportes
+    </a>
+  </div>
+
+  <div class="col breadcrumb__item text-truncate active" title="Reportes de proveedores">
+    Proveedores
+  </div>
+
+</app-breadcrumb>
+<!-- Breadcrumb end -->
+
+<!-- REPORTS PRODUCTS start -->
+<div class="row">
+
+  <!-- FILTERS start -->
+  <div class="col offset-md-2 col-md-8 offset-lg-0 col-lg-4 col-xl-3 mb-5 mb-lg-0">
+    <app-filters>
+      <div class="form-group">
+        <label for="inputState">Rubro</label>
+        <select id="inputState" class="form-control">
+          <option select>Rubro...</option>
+          <option>...</option>
+        </select>
+        <p class="text-danger">SELECT INTELLISENSE</p>
+      </div>
+      <div class="form-group">
+        <label for="inputState">Subrubro</label>
+        <select id="inputState" class="form-control">
+          <option select>Subrubro...</option>
+          <option>...</option>
+        </select>
+        <p class="text-danger">SELECT INTELLISENSE</p>
+      </div>
+    </app-filters>
+  </div>
+  <!-- FILTERS end -->
+
+  <!-- LIST start -->
+  <div class="col-12 col-lg-8 col-xl-9">
+
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table datatable [dtOptions]="dtOptions" class="table" id="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Razón social</th>
+                <th scope="col">Ranking</th>
+                <th scope="col">Total comprado</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- LIST end -->
+
+</div>
+<!-- REPORTS PRODUCTS end -->

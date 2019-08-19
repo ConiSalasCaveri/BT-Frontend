@@ -1,0 +1,65 @@
+<div class="card-header d-flex justify-content-between">
+  <h3>Detalle de la entrega</h3>
+  <span class="badge badge__dotted--success" *ngIf="petition.state === 5">Publicada</span>
+  <span class="badge badge__dotted--danger"
+  *ngIf="petition.state === 6 || petition.state === 8 || petition.state === 4">Anulada</span>
+  <!-- NEGOTIATE start -->
+  <span class="badge badge__dotted--success" *ngIf="petition.state === 7">En negociación</span>
+  <!-- NEGOTIATE end -->
+</div>
+
+
+<div class="card-body">
+
+  <div class="row">
+    <div class="col-6 col-lg-12 col-xl-6 col-fhd-3">
+      <div class="form-group">
+        <small>Calle/Avenida</small>
+        <p>{{petition.street}}</p>
+      </div>
+    </div>
+    <div class="col-6 col-xl-2 col-fhd-1">
+      <div class="form-group">
+        <small>Número</small>
+        <p>{{petition.streetNumber}}</p>
+      </div>
+    </div>
+    <div class="col-6 col-xl-2 col-fhd-1">
+      <div class="form-group">
+        <small>Piso/Depto</small>
+        <p>{{petition.apartment}}</p>
+      </div>
+    </div>
+    <div class="col-6 col-xl-2 col-fhd-1">
+      <div class="form-group">
+        <small>Código postal</small>
+        <p>{{petition.postCode}}</p>
+      </div>
+    </div>
+    <div class="col-6 col-xl-4 col-fhd-2">
+      <div class="form-group">
+        <small for="SupplierssProvince">Provincia</small>
+        <p>{{provinceName}}</p>
+      </div>
+    </div>
+    <div class="col-6 col-xl-4 col-fhd-2">
+      <div class="form-group">
+        <small for="SuppliersLocality">Localidad</small>
+        <p>{{localityName}}</p>
+      </div>
+    </div>
+    <div class="col-6 col-xl-4 col-fhd-2">
+      <div class="form-group">
+        <small>Entrega en Obra</small>
+        <p>{{deliveryOnSiteDateStart}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="card-footer d-flex justify-content-center flex-wrap">
+  <button type="button" class="btn btn-outline-secondary btn-sm" (click)="back()">Anterior</button>
+  <button type="button" class="btn btn-secondary btn-sm" (click)="next()">Siguiente</button>
+</div>

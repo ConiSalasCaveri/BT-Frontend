@@ -1,0 +1,266 @@
+@import "../abstracts/abstracts-module";
+
+/* FORMS */
+.form-control {
+  padding-right: $spacer;
+  &:focus {
+    border-color: $dark !important;
+  }
+
+  &[class*="input__icon--"] {
+    padding-right: $spacer * 2.5;
+    background-color: $white;
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: lighten($secondary, 65%);
+    color: $dark;
+  }
+  &::placeholder {
+    color: $light;
+    opacity: 1;
+  }
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+
+input[type="checkbox"],
+input[type="radio"]{
+  vertical-align: baseline;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.required:before {
+  display: inline-block;
+  content: "*";
+  color: $danger;
+  position: absolute;
+  top: 0.125rem;
+  left: 0.25rem;
+}
+
+.custom-control.custom-checkbox {
+  .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+    color: $white;
+    background-color: $secondary;
+    border-color: transparent;
+  }
+
+  .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: none;
+    border-color: $dark;
+  }
+
+  .custom-control-label::before {
+    box-shadow: none;
+    background-color: $white;
+    border-color: $dark;
+    border-radius: $border-radius;
+  }
+
+  .custom-control-input:checked ~ .custom-control-label::before {
+    color: initial;
+    background-color: initial;
+    border-color: initial;
+  }
+
+  .custom-control-input:checked ~ .custom-control-label::after {
+    color: #fff;
+    background-color: $secondary;
+    border-color: transparent;
+    border-radius: $border-radius;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 28 24" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"/></svg>');
+  }
+}
+
+// Password
+.form-control {
+  & + .input__detail {
+    display: none;
+  }
+}
+
+.form-control:focus {
+  & + .input__detail {
+    display: block;
+    position: absolute;
+  }
+}
+
+.input__detail {
+  background: $white;
+  border: 1px solid $dark;
+  border-radius: $input-border-radius;
+  padding: $spacer;
+  margin-top: -2px;
+  z-index: 1;
+}
+
+.form--warning {
+  & .warning--invalid {
+    border-color: $warning;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23F1B123' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-alert-triangle'><path d='M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z'/><line x1='12' y1='9' x2='12' y2='13'/><line x1='12' y1='17' x2='12' y2='17'/></svg>");
+    background-repeat: no-repeat;
+    background-position: center right calc(0.375em + 0.1875rem);
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  }
+
+  & .warning--invalid {
+    & ~ .warning--feedback {
+      display: block;
+    }
+  }
+
+  .tr--warning {
+    background-color: lighten($warning, 40%);
+  }
+
+  & .table--warning {
+    margin-bottom: 0;
+    & ~ .warning--feedback {
+      padding-bottom: $spacer;
+      display: block;
+    }
+  }
+
+  .warning--feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: $warning;
+  }
+}
+
+.form--invalid {
+  & .ng-invalid {
+    border-color: $danger;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='%23B7202E' viewBox='-2 -2 7 7'><path stroke='%23B7202E' d='M0 0l3 3m0-3L0 3'/><circle r='.5'/><circle cx='3' r='.5'/><circle cy='3' r='.5'/><circle cx='3' cy='3' r='.5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: center right calc(0.375em + 0.1875rem);
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  }
+
+  & .ng-invalid,
+  & .is-invalid {
+    & ~ .invalid-feedback {
+      display: block;
+    }
+  }
+
+    // Recaptcha
+    re-captcha {
+      &.ng-invalid {
+        padding-right: 0;
+        background-image: none;
+
+        &.ng-untouched {
+          & ~ .invalid-feedback {
+            display: block;
+          }
+        }
+
+        &.ng-touched {
+          & ~ .captcha--invalid {
+            display: block;
+          }
+        }
+      }
+
+      & ~ .invalid-feedback {
+        padding-left: calc((100% - 304px) / 2);
+      }
+
+      & ~ .captcha--invalid {
+        padding-left: calc((100% - 304px) / 2);
+      }
+    }
+
+  textarea.ng-invalid {
+    background-image: none;
+  }
+
+  .tr--invalid {
+    background-color: lighten($danger, 52%);
+  }
+
+  & .btn-group,
+  & .card-body,
+  & .table {
+    &.is-invalid,
+    & > .is-invalid .card--media,
+    & > .is-invalid {
+      margin-bottom: 0;
+      & ~ .invalid-feedback {
+        padding-bottom: $spacer;
+      }
+    }
+  }
+}
+
+.invalid-feedback,
+.captcha--invalid {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: $danger;
+}
+
+.row--invalid {
+  width: 100%;
+  margin-top: -0.75rem;
+  font-size: 80%;
+  color: $danger;
+}
+
+.input__group {
+  .flex-fill {
+    &:first-child {
+      .form-control {
+        border-radius: 0.3rem 0 0 0.3rem;
+      }
+    }
+  }
+  .input-group-prepend {
+    .input-group-text {
+      border-color: $dark;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+      background-color: lighten($secondary, 70%);
+      color: $dark;
+    }
+
+    ~ .flex-fill {
+      .form-control {
+        border-radius: 0 0.3rem 0.3rem 0;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .form--invalid {
+    .card-body {
+      & > .is-invalid {
+        & > *:first-child .card--media {
+          margin-bottom: $spacer;
+        }
+      }
+    }
+  }
+}

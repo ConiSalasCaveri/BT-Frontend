@@ -1,0 +1,60 @@
+@import "../../vendors/bootstrap-abstracts";
+@import "../../abstracts/abstracts-module";
+
+/* PROFILE */
+
+  .profile__icon {
+    background-image: $primary-gradient;
+    width: 2rem;
+    height: 2rem;
+    border-radius: $border-radius-lg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i-user {
+      stroke: $white;
+    }
+  }
+
+.profile__header {
+  background-color: darken($secondary, 8%);
+  height: $spacer * 6;
+  position: fixed;
+  z-index: 1010;
+  padding-bottom: $spacer;
+  padding-right: $spacer;
+  box-shadow: $box-shadow;
+  margin: $spacer * -2 $spacer * -2 $spacer * 3;
+
+  .profile__icon {
+    background-image: $primary-gradient;
+    width: $spacer * 6;
+    height: $spacer * 6;
+    border-radius: $border-radius-xl;
+    position: absolute;
+    top: $spacer * 2;
+    left: $spacer * 2;
+  }
+
+  .profile__user-name {
+    padding-left: $spacer * 9;
+
+    h2 {
+      color: $white;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    p {
+      text-transform: uppercase;
+      color: $white;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.profile__body {
+  padding-top: 7rem;
+}

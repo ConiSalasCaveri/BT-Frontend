@@ -1,0 +1,49 @@
+<div class="auth__content" @auth>
+
+  <div class="auth__header" >
+    <h1>¡Bienvenido de nuevo!</h1>
+    <p>Inicia sesión para estar al día.</p>
+  </div>
+
+  <div class="auth__body">
+    <form (ngSubmit)="onSubmit()" [ngClass]="{ 'form--invalid': submitted }">
+      <app-notifications></app-notifications>
+
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" name="email" class="form-control input__icon--user" placeholder="usuario@mail.com"
+        [formControl]="loginForm.controls['email']">
+        <div class="invalid-feedback" *ngIf="loginForm.controls['email'].errors?.email">
+          Correo electrónico inválido.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="d-flex justify-content-between align-items-baseline">
+          <label>Contraseña</label>
+          <small>
+            <a class="text-secondary" routerLink="/password-recover">¿Has olvidado tu contraseña?</a>
+          </small>
+        </div>
+        <input type="password" class="form-control input__icon--lock" id="exampleInputPassword1" placeholder="xxxxxxxx" [formControl]="loginForm.controls['password']">
+      </div>
+
+      <div class="form-group d-flex align-items-center flex-column">
+        <re-captcha (resolved)="resolved($event)" [formControl]="loginForm.controls['captcha']" ></re-captcha>
+        <div class="invalid-feedback">
+          El campo es requerido.
+        </div>
+        <div class="captcha--invalid">
+          La verificación caducó. Vuelve a marcar la casilla de verificación.
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="auth__footer">
+    <button type="submit" class="btn btn__primary--gradient btn-block" (click)="onSubmit()">Iniciar sesión</button>
+    <hr class="flex-fill text__divider" data-content="o">
+    <a class="btn btn-outline-secondary btn-block" routerLink="/signup/step1">Crear cuenta</a>
+  </div>
+
+</div>

@@ -1,0 +1,60 @@
+@import "../abstracts/abstracts-module";
+
+/* TOOLTIPS */
+.tooltip {
+  pointer-events: none !important;
+  // margin: 5px;
+}
+
+.tooltip-inner {
+  box-shadow: $box-shadow;
+
+  h6 {
+    color: $secondary;
+    text-align: left;
+    font-weight: $font-weight-bold;
+    padding-bottom: $spacer / 2;
+    border-bottom: 1px solid $light;
+    margin-bottom: 0;
+  }
+
+  .tooltip__list {
+    padding: $spacer / 2 $spacer / 2 0 $spacer * 2;
+    margin-bottom: 0;
+    > li {
+      text-align: left;  
+    }
+  }
+
+  .tooltip__text {
+    margin-top: $spacer;
+    margin-bottom: $spacer / 2;
+    text-align: left;
+  }
+
+}
+
+@each $name, $color in $theme-colors {
+
+  .tooltip--#{$name} {
+    .tooltip-inner {
+      color: $white;
+      background-color: $color;
+      box-shadow: 0 0 5px $color;
+      margin-bottom: $spacer / 8;
+    }
+    &.bs-tooltip-top > .arrow::before {
+      border-top-color: $color;
+    }
+    &.bs-tooltip-right > .arrow::before {
+      border-right-color: $color;
+    }
+    &.bs-tooltip-bottom > .arrow::before {
+      border-bottom-color: $color;
+    }
+    &.bs-tooltip-left > .arrow::before {
+      border-left-color: $color;
+    }
+  }
+
+}

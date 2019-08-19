@@ -1,0 +1,10 @@
+<div class="card-header d-flex justify-content-between">
+  <h3>Adjudicación</h3>
+  <span class="col-auto badge badge__dotted--danger" *ngIf="petition.state === 12">Anulada</span>
+  <span class="col-auto badge badge__dotted--warning" *ngIf="petition.state === 11">Pendiente de pago</span>
+  <span class="col-auto badge badge__dotted--dark" *ngIf="petition.state === 13">Anulada sistema</span>
+</div>
+<div [ngSwitch]="petitionersAssigned">
+  <app-petitioners-assigned-anonymous *ngSwitchCase="'petitioners-assigned-anonymous'"></app-petitioners-assigned-anonymous>
+  <app-petitioners-assigned-chosen *ngSwitchCase="'petitioners-assigned-chosen'"></app-petitioners-assigned-chosen>
+</div>

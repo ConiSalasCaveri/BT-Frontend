@@ -1,0 +1,25 @@
+<div class="modal fade" id="ModalAssignedCriteria" tabindex="-1" role="dialog" aria-labelledby="ModalAssignedCriteriaTitle"
+  aria-hidden="true">
+  <div class="modal-sm modal--info modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+          <div class="justify-content-center">
+              <i-info class="modal__icon"></i-info>
+              <h1>¡Aviso!</h1>
+              <!-- Precio Total -->
+              <p>{{data?.header}}</p>
+              <!-- <p>¿Confirma que el criterio de adjudicación es por el precio total de la solicitud?</p> -->
+              <!-- Precio Subrubro -->
+              <!-- <p>¿Confirma que el criterio de adjudicación es por el precio de cada uno de los subrubros de la solicitud?</p> -->
+          </div>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-info" (click)="asdd()">Sí</button>
+        <button type="button" class="btn btn-outline-info" data-dismiss="modal">No</button>
+      </div>
+
+    </div>
+  </div>
+</div>

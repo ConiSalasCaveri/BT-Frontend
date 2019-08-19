@@ -1,0 +1,64 @@
+<div class="card-header d-flex justify-content-between">
+  <h3>Tipo de solicitud</h3>
+  <!-- PETITION EDIT start -->
+  <span class="badge badge__dotted--success" *ngIf="state === 1">Borrador</span>
+  <span class="badge badge__dotted--dark" *ngIf="state === 2">En observación</span>
+  <span class="badge badge__dotted--warning" *ngIf="state === 3">Observadas</span>
+  <span class="badge badge__dotted--danger" *ngIf="state === 4">Rechazada</span>
+  <!-- PETITION EDIT end -->
+</div>
+
+<div class="card-body">
+
+  <div class="row" [ngClass]="petitionType ? '' : 'is-invalid'">
+    <div class="col-12 col-xl-6">
+      <a class="card card--media" (click)="setPetitionType(1)"
+      [ngClass]="petitionType && petitionType.type === 1 ? 'active' : ''"
+      [ngStyle]="state === 4 || state === 2 ? {'pointer-events': 'none'} : ''">
+        <div class="card-body">
+          <div class="media d-flex align-items-center">
+            <i-unlock class="text-primary icon--lg"></i-unlock>
+            <div class="media-body">
+              <h4 class="text-primary">Solicitud pública</h4>
+              <p>Se notificará a todos los proveedores asociados a los subrubros correspondientes.<p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-12 col-xl-6" >
+      <a class="card card--media" (click)="setPetitionType(2, false)"
+      [ngClass]="petitionType && petitionType.type === 2 ? 'active' : ''"
+      [ngStyle]="state === 4 || state === 2 ? {'pointer-events': 'none'} : ''">
+        <div class="card-body">
+          <div class="media d-flex align-items-center">
+            <i-lock class="text-primary icon--lg"></i-lock>
+            <div class="media-body">
+              <h4 class="text-primary">Solicitud privada</h4>
+              <!-- <p>Se notificará a tus proveedores triple A asociados a los rubros correspondientes.</p> -->
+              <p>Se notificará a todos los proveedores "Tripe A" asociados a su compañia que ofrezcan los sub-rubros de esta solicitud.</p>
+            </div>
+          </div>
+        </div>
+      </a>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="PrivatePurchaseCheck" name="#privateCheck"
+        (change)="$event.currentTarget.checked ? setPetitionType(2, true) : setPetitionType(2, false)"
+        [checked]="petitionType && petitionType.inviteSuppliers ? true : false">
+        <label class="custom-control-label" for="PrivatePurchaseCheck">
+          <!-- Invitar a todos los proveedores triple A del sistema. -->
+          Seleccione esta opción, se notificará a todos los proveedores "Triple A" del sistema que ofrezcan los sub-rubros de esta solicitud.
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="invalid-feedback">
+    Es necesario seleccionar el tipo de solicitud.
+  </div>
+
+</div>
+
+<div class="card-footer d-flex justify-content-center flex-wrap">
+  <button type="button" class="btn btn-outline-secondary btn-sm" (click)="back()">Anterior</button>
+  <button type="button" class="btn btn-secondary btn-sm disabled" disabled>Siguiente</button>
+</div>

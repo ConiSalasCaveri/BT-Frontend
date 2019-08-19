@@ -1,0 +1,25 @@
+{
+  "data": {
+    "products": [{
+      "unitName": "kilos",
+      "subcategoryName": "Subrubro A",
+      "categoryName": "Categoria A",
+      "amount": 3,
+      "name": "Producto 1"
+    },
+    {
+      "unitName": "toneladas",
+      "subcategoryName": "Subrubro D",
+      "categoryName": "Categoria F",
+      "amount": 3,
+      "name": "Producto 2"
+    },
+    {
+      "unitName": "toneladas",
+      "subcategoryName": "Subrubro E",
+      "categoryName": "Categoria C",
+      "amount": 3,
+      "name": "Producto 3"
+    }]
+  }
+}

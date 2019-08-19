@@ -1,0 +1,39 @@
+/* PRINT */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+
+  html, body {
+    width: 297mm;
+    height: 420mm;
+  }
+
+  .header__container,
+  .nav__container,
+  app-breadcrumb,
+  .fab  {
+    display: none !important;
+  }
+
+  section.section__container {
+    background-color: transparent;
+  }
+
+  .card {
+    .card-header[data-toggle="collapse"] {
+      i-chevron-down {
+        display: none;
+      }
+      & + .card-body.collapse {
+        display: block;
+      }
+    }
+  }
+
+  tr.collapse {
+    display: table-row !important;
+  }
+}

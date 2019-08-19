@@ -1,0 +1,134 @@
+<main>
+
+  <header class="header__container sticky--top" [ngClass]="this.collapseMenu === true ? 'header--collapse' : ''">
+
+    <!-- SOLICITANTE start -->
+    <a class="header__brand order-1" routerLink="/petition/list/petitioners">EProcurement</a>
+    <!-- SOLICITANTE end -->
+    <!-- PROVEEDOR start -->
+    <!-- <a class="header__brand order-1" routerLink="/petition/list/suppliers">EProcurement</a> -->
+    <!-- PROVEEDOR end -->
+
+    <button type="button" (click)="onBtnMenuClick()" class="btn__menu order-2">
+      <i-menu></i-menu>
+    </button>
+ <!-- Only for QA knowledge, remove it if necessary -->
+ <div style="position: fixed; top: 0; left: 0;">v1.0.0-beta-15</div>
+    <div class="dropdown order-3 ml-auto">
+      <button class="btn btn__primary--gradient" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i-user class="icon--xs"></i-user>
+      </button>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown__header">
+          <div class="dropdown__icon">
+            <i-user class="icon--md"></i-user>
+          </div>
+          <div class="dropdown__user-name">
+            <small>usuario</small>
+            <h6 title="Natalia Giannantonio Natalia Giannantonio Natalia Giannantonio"> Natalia Giannantonio Natalia Giannantonio Natalia Giannantonio</h6>
+          </div>
+        </div>
+
+        <a class="dropdown-item" routerLink="/profile"><i-user class="text-secondary icon--xs"></i-user> Mi cuenta</a>
+        <a class="dropdown-item" href="#"><i-users class="text-secondary icon--xs"></i-users> Usuarios</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">
+            <i-log-out class="text-secondary icon--xs"></i-log-out>
+            Cerrar sesión
+        </a>
+      </div>
+    </div>
+
+  </header>
+
+  <nav class="nav__container sticky--top">
+
+    <div class="nav__body">
+      <ul>
+        <li>
+            <ng-template #popSolicitudesContent>
+              <!-- SOLICITANTE start -->
+              <a class="nav__subitem" routerLink="/petition/list/petitioners" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Buscar Solicitudes</a>
+              <a class="nav__subitem" (click)="goToCreate()" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Crear Solicitud</a>
+              <a class="nav__subitem" data-toggle="modal" data-target="#ModalImport">Importar Solicitud</a>
+              <!-- SOLICITANTE end -->
+              <!-- PROVEEDOR start -->
+              <!-- <a class="nav__subitem" routerLink="/petition/list/suppliers" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Buscar Solicitudes</a> -->
+              <!-- PROVEEDPR end -->
+            </ng-template>
+            <ng-template #popSolicitudesTitle>Solicitudes</ng-template>
+            <a class="nav__item nav__item--active collapsed" data-toggle="collapse" data-target="#SolicitudesCollapse" aria-expanded="false" aria-controls="collapseExample" placement="right" [ngbPopover]="popSolicitudesContent" [popoverTitle]="popSolicitudesTitle">
+              <div class="nav__icon">
+                <i-file-text></i-file-text>
+              </div>
+              <span>Solicitudes</span>
+              <i-chevron-down class="ml-auto text-light"></i-chevron-down>
+            </a>
+            <div class="collapse" id="SolicitudesCollapse">
+              <div class="nav__subitems">
+                <!-- SOLICITANTE start -->
+                <a class="nav__subitem" routerLink="/petition/list/petitioners" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Buscar Solicitudes</a>
+                <a class="nav__subitem" routerLink="/petition/create" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Crear Solicitud</a>
+                <a class="nav__subitem" data-toggle="modal" data-target="#ModalImport">Importar Solicitud</a>
+                <!-- SOLICITANTE end -->
+                <!-- PROVEEDOR start -->
+                <!-- <a class="nav__subitem" routerLink="/petition/list/suppliers" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Buscar Solicitudes</a> -->
+                <!-- PROVEEDPR end -->
+              </div>
+            </div>
+        </li>
+        <li>
+          <ng-template #popReportesContent>
+            <!-- SOLICITANTE start -->
+            <a class="nav__subitem" routerLink="/reports/petitioners/products" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Productos</a>
+            <a class="nav__subitem" routerLink="/reports/petitioners/subcategory" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Subrubros</a>
+            <a class="nav__subitem" routerLink="/reports/petitioners/suppliers" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Proveedores</a>
+            <!-- SOLICITANTE end -->
+            <!-- PROVEEDOR start -->
+            <!-- <a class="nav__subitem" routerLink="/reports/suppliers/products" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Productos</a> -->
+            <!-- PROVEEDPR end -->
+          </ng-template>
+          <ng-template #popReportesTitle>Reportes</ng-template>
+          <a class="nav__item collapsed" data-toggle="collapse" data-target="#ReportesCollapse" aria-expanded="false" aria-controls="collapseExample" placement="right" [ngbPopover]="popReportesContent"  [popoverTitle]="popReportesTitle">
+            <div class="nav__icon">
+                <i-trending-up></i-trending-up>
+            </div>
+            <span>Reportes</span>
+            <i-chevron-down class="ml-auto text-light"></i-chevron-down>
+          </a>
+          <div class="collapse" id="ReportesCollapse">
+            <div class="nav__subitems">
+              <!-- SOLICITANTE start -->
+              <a class="nav__subitem" routerLink="/reports/petitioners/products" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Productos</a>
+              <a class="nav__subitem" routerLink="/reports/petitioners/subcategory" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Subrubros</a>
+              <a class="nav__subitem" routerLink="/reports/petitioners/suppliers" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Proveedores</a>
+              <!-- SOLICITANTE end -->
+              <!-- PROVEEDOR start -->
+              <!-- <a class="nav__subitem" routerLink="/reports/suppliers/products" [routerLinkActive]="['nav__subitem--active']" [routerLinkActiveOptions]="{ exact : true }">Productos</a> -->
+              <!-- PROVEEDPR end -->
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SOLICITANTE start -->
+    <div class="nav__footer">
+      <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#ModalInvitation" placement="right" ngbTooltip="Invita Proveedores">
+        <i-user-plus></i-user-plus>
+        <span>Proveedores</span>
+      </button>
+    </div>
+    <!-- SOLICITANTE end -->
+
+  </nav>
+
+  <section class="section__container">
+    <router-outlet></router-outlet>
+  </section>
+
+  <app-modal-invitation></app-modal-invitation>
+
+  <app-modal-import></app-modal-import>
+
+</main>

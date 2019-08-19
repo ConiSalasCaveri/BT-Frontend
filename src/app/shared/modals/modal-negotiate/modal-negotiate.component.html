@@ -1,0 +1,81 @@
+<div class="modal fade" id="ModalNegotiate" tabindex="-1" role="dialog" aria-labelledby="ModalNegotiateTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+    <div header class="modal-header">
+      <div class="d-flex flex-column">
+        <h1>Negociar oferta</h1>
+        <p>Selecciona los ítems que deseas negociar.</p>
+      </div>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div body class="modal-body">
+      <div class="form-group">
+        <label>Forma de pago</label>
+        <select class="form-control input__icon--chevron-down">
+          <option selected>Seleccionar Forma de pago</option>
+          <option>Debin</option>
+          <option>Pyme Nación</option>
+          <option>Pago electrónico</option>
+        </select>
+        <!-- <div class="btn-group btn-group-toggle d-flex" ngbRadioGroup name="radioBasic"
+          [formControl]="modalNegotiateForm.controls['payment']" [(ngModel)]="payment">
+          <label class="btn btn-outline-secondary" ngbButtonLabel>
+            <input ngbButton type="radio" [value]="1" (click)="setPayment(1)"> Debin
+          </label>
+          <label class="btn btn-outline-secondary" ngbButtonLabel>
+            <input ngbButton type="radio" [value]="2" (click)="setPayment(2)"> Pyme Nación
+          </label>
+          <label class="btn btn-outline-secondary" ngbButtonLabel>
+            <input ngbButton type="radio" [value]="3" (click)="setPayment(3)"> Pago electrónico
+          </label>
+        </div> -->
+      </div>
+      <div class="form-group">
+        <label for="Playment">Plazo de pago</label>
+        <select class="form-control input__icon--chevron-down" id="Playment" [(ngModel)]="paymentPeriod">
+          <option *ngFor="let item of paymentPeriodData" [ngValue]="item.id">{{item.text}}</option>
+          <!-- <option>60 días</option> -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Entrega en Obra</label>
+        <ng-template let-text="text" let-identifier="identifier" #dateTemplate>
+          <input type="text" data-toggle="dropdown" class="form-control input__icon--calendar"
+          [formControl]="modalNegotiateForm.controls['deliveryonsiteStart']"
+          [value]="deliveryOnSiteStart ? deliveryOnSiteStart.toLocaleDateString() : ''"/>
+        </ng-template>
+        <app-dt-daytime class="flex-fill" #customFieldValueDayTime [customTemplate]="dateTemplate" [withToday]="false"
+        [withTime]="true" (OnSelectDate)="setDeliveryOnSiteStart($event)">
+        </app-dt-daytime>
+      </div>
+      <div class="form-group">
+        <label>Costo de envío a cargo de:</label>
+        <div class="btn-group btn-group-toggle d-flex" ngbRadioGroup name="radioBasic"
+        [formControl]="modalNegotiateForm.controls['shippingCostOwner']" [(ngModel)]="shippingCostOwner">
+          <label class="btn btn-outline-secondary" ngbButtonLabel>
+            <input ngbButton type="radio" [value]="1">Solicitante
+          </label>
+          <label class="btn btn-outline-secondary" ngbButtonLabel>
+            <input ngbButton type="radio" [value]="2">Proveedor
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Prices">Mejora de precios</label>
+        <select class="form-control input__icon--chevron-down" id="Prices" (change)="onChange($event.target.value)"
+        [(ngModel)]="priceImprovement">
+          <option [value]="true">Sí</option>
+          <option [value]="false" [selected]="true">No</option>
+        </select>
+      </div>
+    </div>
+    <div footer class="modal-footer d-flex justify-content-center">
+      <button type="button" class="btn btn-primary" (click)="onSubmit()">Aceptar</button>
+      <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+  </div>
+  </div>
+</div>

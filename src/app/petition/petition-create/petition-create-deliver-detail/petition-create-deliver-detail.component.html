@@ -1,0 +1,151 @@
+<div class="card-header d-flex justify-content-between">
+  <h3>Detalles de la entrega</h3>
+  <!-- PETITION EDIT start -->
+  <span class="badge badge__dotted--success" *ngIf="state === 1">Borrador</span>
+  <span class="badge badge__dotted--dark" *ngIf="state === 2">En observación</span>
+  <span class="badge badge__dotted--warning" *ngIf="state === 3">Observadas</span>
+  <span class="badge badge__dotted--danger" *ngIf="state === 4">Rechazada</span>
+  <!-- PETITION EDIT end -->
+</div>
+<ng-container [formGroup]="deliverDetailForm">
+<div class="card-body">
+  <div class="row">
+    <div class="col-6 col-lg-9">
+      <div class="form-group">
+        <label>Calle/Avenida</label>
+        <input type="" class="form-control" placeholder="Av. Álvarez Thomas"
+        [formControl]="deliverDetailForm.controls['street']">
+        <div class="invalid-feedback">
+          El campo es requerido.
+        </div>
+        <!-- Only PETITION EDIT Observadas start -->
+        <div class="warning--feedback" *ngIf="state === 3">
+          Intercambio de datos.
+        </div>
+        <!-- Only PETITION EDIT Observadas start -->
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="form-group">
+        <label>Número</label>
+        <input type="number" class="form-control" placeholder="1131" [formControl]="deliverDetailForm.controls['number']">
+        <div class="invalid-feedback">
+          El campo es requerido.
+        </div>
+        <!-- Only PETITION EDIT Observadas start -->
+        <div class="warning--feedback" *ngIf="state === 3">
+          Intercambio de datos.
+        </div>
+        <!-- Only PETITION EDIT Observadas start -->
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label>Piso/Depto<small> (opcional)</small></label>
+        <input type="" class="form-control" placeholder="4 A/B" [formControl]="deliverDetailForm.controls['apartment']">
+        <!-- Only PETITION EDIT Observadas start -->
+        <div class="warning--feedback" *ngIf="state === 3">
+          Intercambio de datos.
+        </div>
+        <!-- Only PETITION EDIT Observadas start -->
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label>Código postal</label>
+        <input type="" class="form-control" placeholder="1427" [formControl]="deliverDetailForm.controls['postcode']">
+        <div class="invalid-feedback">
+          El campo es requerido.
+        </div>
+        <!-- Only PETITION EDIT Observadas start -->
+        <div class="warning--feedback" *ngIf="state === 3">
+          Intercambio de datos.
+        </div>
+        <!-- Only PETITION EDIT Observadas start -->
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label for="SupplierssProvince">Provincia</label>
+        <select class="form-control input__icon--chevron-down" id="SupplierssProvince"
+         [formControl]="deliverDetailForm.controls['province']">
+        <div class="invalid-feedback">
+          El campo es requerido.
+        </div>
+        <option selected disabled [ngValue]="null">Seleccionar Provincia</option>
+        <option [value]="item.id" *ngFor="let item of provinceData">{{item.name}}</option>
+      </select>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label for="SuppliersLocality">Localidad</label>
+        <!-- <select2 [data]="localityData" [options]="options" class="d-block" id="SuppliersLocality" width="100%"
+          [cssImport]=false (valueChanged)="changedLocality($event)" [value]="selectedLocalityId"
+          [disabled]="disabled" ngDefaultControl formControlName="locality" (click)="changeChild">
+          <option disabled selected [ngValue]="selectedLocalityId">
+            Seleccionar Localidad</option>
+        </select2> -->
+        <select class="form-control input__icon--chevron-down" id="SuppliersLocality"
+         [formControl]="deliverDetailForm.controls['locality']">
+        <div class="invalid-feedback">
+          El campo es requerido.
+        </div>
+        <option selected disabled [ngValue]="null">Seleccionar Localidad</option>
+        <option [value]="item.id" *ngFor="let item of localityData">{{item.name}}</option>
+      </select>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group">
+        <div class="d-flex justify-content-between align-items-baseline">
+          <label>Entrega en Obra</label>
+          <ng-template #DeliveryOnSite>
+            <h6>Entrega en obra</h6>
+            <p class="tooltip__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime culpa, quaerat
+              cumque vel fugiat eligendi placeat laudantium.</p>
+          </ng-template>
+          <small class="text-info">
+            <i-info class="icon--xs" placement="left" [ngbTooltip]="DeliveryOnSite">
+            </i-info>
+          </small>
+        </div>
+        <ng-template let-text="text" let-identifier="identifier" #dateTemplate1>
+          <input type="text" data-toggle="dropdown" class="form-control input__icon--calendar"
+          [formControl]="deliverDetailForm.controls['deliveryonsiteStart']"
+          [value]="deliveryonsiteStart ? deliveryonsiteStart.toLocaleString() : ''"
+          [ngStyle]="state === 4 || state === 2 ? {'pointer-events': 'none'} : ''"
+          onkeypress="return false;" />
+        </ng-template>
+        <ng-template let-text="text" let-identifier="identifier" #dateTemplate>
+          <input type="text" data-toggle="dropdown" class="form-control input__icon--calendar"
+          [formControl]="deliverDetailForm.controls['deliveryonsiteEnd']"
+          [value]="deliveryonsiteEnd ? deliveryonsiteEnd.toLocaleString() : ''"
+          [ngStyle]="state === 4 || state === 2 ? {'pointer-events': 'none'} : ''"
+          onkeypress="return false;"/>
+        </ng-template>
+
+        <div class="d-flex input__group">
+          <app-dt-daytime class="flex-fill" #customFieldValueDayTime [customTemplate]="dateTemplate1" [withToday]="false"
+          [withTime]="true" (OnSelectDate)="setDeliveryOnSiteStart($event)" [restrictionDate]="restrictedStart">
+          </app-dt-daytime>
+          <div class="input-group-prepend">
+            <span class="input-group-text">a</span>
+          </div>
+          <app-dt-daytime class="flex-fill" #customFieldValueDayTime [customTemplate]="dateTemplate" [withToday]="false"
+          [withTime]="true" (OnSelectDate)="setDeliveryOnSiteEnd($event)" [restrictionDate]="restrictedEnd">
+          </app-dt-daytime>
+        </div>
+        <div class="invalid-feedback">
+          El campo es requerido.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-container>
+
+<div class="card-footer d-flex justify-content-center flex-wrap">
+  <button type="button" class="btn btn-outline-secondary btn-sm" (click)="back()">Anterior</button>
+  <button type="button" class="btn btn-secondary btn-sm" (click)="next()">Siguiente</button>
+</div>

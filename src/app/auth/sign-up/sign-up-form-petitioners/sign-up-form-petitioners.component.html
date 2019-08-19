@@ -1,0 +1,283 @@
+<form [formGroup]="this.signUpPetitionerForm" (ngSubmit)="createPetitionerAccount()" [ngClass]="{ 'form--invalid': submitted }">
+  <div class="container">
+    <div class="row">
+      <div class="col-10 offset-1 col-lg-8 offset-lg-2" @auth>
+
+        <div class="sign-up-form__header">
+          <div class="row">
+            <div class="col-12">
+              <a class="icon__link" routerLink="/signup/step2">
+                <i-chevron-left class="text-dark icon--lg"></i-chevron-left>
+              </a>
+            </div>
+          </div>
+          <h1>Crear cuenta Solicitante</h1>
+          <p>¡Bienvenido a la comunidad de Eprocurement! Por favor, complete la siguiente información para finalizar su
+            registro con éxito. Tenga la seguridad que la información ingresada sólo se utilizará con fines de registrar y
+            administrar su cuenta.</p>
+        </div>
+
+        <div class="sign-up-form__body">
+          <div class="row">
+
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>CUIT/CUIL</label>
+                <input type="text" maxlength="11" class="form-control input__icon--user" placeholder="27000000001" disabled [value]="cuit">
+              </div>
+            </div>
+
+            <div class="col-12">
+              <hr class="divider">
+              <h5>Datos de la cuenta</h5>
+            </div>
+
+            <div class="col-12">
+              <div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="email" class="form-control input__icon--mail" placeholder="usuario@mail.com"
+                [formControl]="signUpPetitionerForm.controls['email']">
+                <div class="invalid-feedback" *ngIf="signUpPetitionerForm.controls['email'].errors?.email">
+                  Correo electrónico inválido.
+                </div>
+                <div class="invalid-feedback" *ngIf="signUpPetitionerForm.controls['email'].errors?.required">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group position-relative">
+                <label>Contraseña</label>
+                <input type="password" class="form-control input__icon--lock" id="exampleInputPassword1" placeholder="xxxxxxxx" [formControl]="signUpPetitionerForm.controls['password']">
+                <div class="input__detail">
+                  La contraseña debe tener como mínimo 4 caracteres. Además, debe incluir al menos una letra y/o número.
+                </div>
+                <div class="invalid-feedback" *ngIf="signUpPetitionerForm.controls['password'].errors?.minlength">
+                  La contraseña debe incluir al menos 4 caracteres.
+                </div>
+                <div class="invalid-feedback" *ngIf="signUpPetitionerForm.controls['password'].errors?.pattern">
+                  La contraseña debe incluir al menos una letra y/o número.
+                </div>
+                <div class="invalid-feedback" *ngIf="signUpPetitionerForm.controls['password'].errors?.required">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>Confirmación de contraseña</label>
+                <input type="password" class="form-control input__icon--lock" placeholder="********"
+                [formControl]="signUpPetitionerForm.controls['passwordRepeat']">
+                <div class="invalid-feedback" *ngIf="this.signUpPetitionerForm.controls['passwordRepeat'].errors?.required">
+                  El campo es requerido.
+                </div>
+                <div class="invalid-feedback" *ngIf="this.signUpPetitionerForm.controls['passwordRepeat'].errors?.mustMatch">
+                  La confirmación de contraseña no coincide.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <hr class="divider">
+              <h5>Datos de la empresa</h5>
+            </div>
+
+            <div class="col-12">
+              <div class="form-group">
+                <label>Razón social</label>
+                <input type="text" class="form-control" placeholder="Origin Software S.A."
+                [formControl]="signUpPetitionerForm.controls['businessName']">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4 col-lg-6">
+              <div class="form-group">
+                <label>Código de Área</label>
+                <input type="" class="form-control" placeholder="011">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-8 col-lg-6">
+              <div class="form-group">
+                <label>Teléfono</label>
+                <input type="tel" class="form-control" placeholder="4444-4444"
+                [formControl]="signUpPetitionerForm.controls['phone']">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-9">
+              <div class="form-group">
+                <label>Calle/Avenida</label>
+                <input type="tex" class="form-control" placeholder="Avenida Álvarez Thomas"
+                [formControl]="signUpPetitionerForm.controls['street']">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+              <div class="form-group">
+                <label>Número</label>
+                <input type="" class="form-control" placeholder="1131"
+                [formControl]="signUpPetitionerForm.controls['streetNumber']">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-lg-6">
+              <div class="form-group">
+                <label>Piso/Depto<small> (opcional)</small></label>
+                <input type="" class="form-control" placeholder="4 A/B"
+                [formControl]="signUpPetitionerForm.controls['apartment']">
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>Código postal</label>
+                <input type="" class="form-control" placeholder="1427"
+                [formControl]="signUpPetitionerForm.controls['postCode']">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="PetitionersProvince">Provincia</label>
+                  <select class="form-control input__icon--chevron-down" id="PetitionersProvince"
+                    (change)="getLocalities($event.target.value)" [formControl]="signUpPetitionerForm.controls['province']">
+                    <div class="invalid-feedback">
+                      El campo es requerido.
+                    </div>
+                    <option selected disabled [ngValue]="null">Seleccionar Provincia</option>
+                    <option [value]="item.id" *ngFor="let item of provinces">{{item.name}}</option>
+                  </select>
+                </div>
+              </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="PetitionersLocality">Localidad</label>
+                <select class="form-control input__icon--chevron-down" id="PetitionersLocality" formControlName="locality">
+                  <div class="invalid-feedback">
+                    El campo es requerido.
+                  </div>
+                  <option selected disabled [ngValue]="null">Seleccionar Localidad</option>
+                  <option [value]="item.id" *ngFor="let item of localities">{{item.name}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <hr class="divider">
+              <h5>Datos del responsable de la cuenta</h5>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" placeholder="Joe"
+                [formControl]="signUpPetitionerForm.controls['name']">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>Apellido</label>
+                <input type="text" class="form-control" placeholder="Doe"
+                [formControl]="signUpPetitionerForm.controls['lastName']">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="email" class="form-control" placeholder="usuario@mail.com"
+                [formControl]="signUpPetitionerForm.controls['amEmail']">
+                <div class="invalid-feedback" *ngIf="signUpPetitionerForm.controls['amEmail'].errors?.email">
+                  Correo electrónico inválido.
+                </div>
+                <div class="invalid-feedback" *ngIf="signUpPetitionerForm.controls['amEmail'].errors?.required">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4 col-lg-6">
+              <div class="form-group">
+                <label>Código de Área</label>
+                <input type="text" class="form-control" placeholder="011"
+                [formControl]="signUpPetitionerForm.controls['areaCode']">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-8 col-lg-6">
+              <div class="form-group">
+                <label>Teléfono</label>
+                <input type="tel" class="form-control" placeholder="4444-4444"
+                [formControl]="signUpPetitionerForm.controls['amPhone']">
+                <div class="invalid-feedback">
+                  El campo es requerido.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <hr class="divider">
+            </div>
+
+            <div class="col-12">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="TermsConditionsCheck"
+                [formControl]="signUpPetitionerForm.controls['terms']">
+                <label class="custom-control-label" for="TermsConditionsCheck">
+                  Al hacer clic en Crear cuenta, estás aceptando los
+                  <a href="#">Términos y Condiciones de Uso</a>
+                  de Eprocurement.
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="sign-up-form__footer d-flex justify-content-center">
+          <button type="submit" class="btn btn__primary--gradient">Crear cuenta solicitante</button>
+          <a class="btn btn-outline-secondary" routerLink="/signin">Cancelar</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Position it -->
+<div style="position: fixed; top: 1rem; right: 1rem;">
+
+  <app-notifications></app-notifications>
+
+</div>

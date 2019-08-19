@@ -1,0 +1,68 @@
+<div *ngIf="notifications.length">
+    <div *ngFor="let notification of notifications; let i = index">
+
+        <div div *ngIf="notification.type && notification.type.getType() == 'error'" class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{notification.data.text}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="hide(i)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div div *ngIf="notification.type && notification.type.getType() == 'info'" class="alert alert-info alert-dismissible fade show" role="alert">
+            {{notification.data.text}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="hide(i)">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div *ngIf="notification.type && notification.type.getType() == 'iconSuccess'" class="toast toast--success show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+              <div class="media d-flex align-items-start">
+                <i-check class="text-light icon--md"></i-check>
+                <div class="media-body">
+                  <h4>¡Bien Hecho!</h4>
+                  <p>{{notification.data.text}}</p>
+                </div>
+                <button type="button" class="close" data-dismiss="toast" aria-label="Close" (click)="hide(i)">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="notification.type && notification.type.getType() == 'iconError'" class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+              <div class="media d-flex align-items-start">
+                <i-slash class="text-light icon--md"></i-slash>
+                <div class="media-body">
+                  <h4>¡Oops!</h4>
+                  <p>{{notification.data.text}}</p>
+                </div>
+                <button type="button" class="close" data-dismiss="toast" aria-label="Close" (click)="hide(i)">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+          <div *ngIf="notification.type && notification.type.getType() == 'petitionnullify'" class="toast toast--danger show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+              <div class="media d-flex align-items-start">
+                <i-slash class="text-light icon--md"></i-slash>
+                <div class="media-body">
+                  <h4>¡Atención!</h4>
+                  <!-- <p>La solicitud ha sido anulada por el usuario XXXXXXX.</p> -->
+                  <p>{{notification.data.text}}</p>
+                  <button class="btn btn-danger" type="button" name="button" data-toggle="modal" data-target="#ModalNullify">Ver
+                    motivos</button>
+                </div>
+                <button type="button" class="close" data-dismiss="toast" aria-label="Close" (click)="hide(i)">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+    </div>
+</div>

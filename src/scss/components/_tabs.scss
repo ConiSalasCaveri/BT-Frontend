@@ -1,0 +1,108 @@
+@import "../abstracts/abstracts-module";
+
+/* TABS */
+
+.nav-pills {
+	border-bottom: $border-default;
+	width: 100%;
+	margin-bottom: $spacer;
+	transition: $transition-base;
+
+	.nav-item {
+		margin: 0 $spacer / 2 -1px;
+		transition: $transition-base;
+    &:first-child {
+      margin-left: 0;
+      margin-right: $spacer / 2;
+    }
+		&:last-child {
+      margin-left: $spacer / 2;
+      margin-right: 0;
+		}
+	}
+
+	.nav-link {
+    color: $light;
+		font-weight: $font-weight-normal;
+		line-height: 49px;
+		white-space: nowrap;
+		background: transparent;
+		padding: 0;
+		display: block;
+		position: relative;
+		transition: $transition-base;
+		&:hover {
+      color: lighten($body-color, 10%);
+			border: none;
+		}
+
+		&.active {
+			color: $primary;
+			font-weight: $font-weight-normal;
+			border: none;
+			border-bottom: 1px solid $primary;
+			border-radius: 0;
+			background: transparent;
+			z-index: 1;
+			transition: $transition-base;
+			cursor: default;
+			&:hover{
+				color: $primary;
+			}
+		}
+
+	}
+
+}
+
+.tab__card {
+	.nav.nav-tabs {
+		border-bottom: 0;
+		margin-bottom: $spacer;
+		.nav-item {
+			width: 50%;
+			margin-bottom: 0;
+
+			.nav-link {
+				padding: 0 $spacer $spacer;
+				&:hover {
+					border-color: transparent;
+				}
+				&.active {
+					border-color: transparent;
+					.card--media {
+						background-color: $primary;
+						text-decoration: none;
+						box-shadow: none;
+						margin-bottom: 0;
+						border-radius: $spacer / 4;
+						.text-primary,
+						p {
+							stroke: $white;
+							color: $white !important;
+						}
+					}
+				}
+			}
+
+			.card--media {
+				padding: $spacer;
+				margin-bottom: 0;
+				.media-body  {
+					margin-left: 0;
+				}
+			}
+
+		}
+	}
+}
+
+@include media-breakpoint-down(md) {
+	.tab__card {
+		.nav.nav-tabs {
+			.nav-item {
+				width: 100%;
+			}
+		}
+	}
+}

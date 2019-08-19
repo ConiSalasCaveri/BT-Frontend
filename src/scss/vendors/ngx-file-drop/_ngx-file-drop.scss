@@ -1,0 +1,65 @@
+@import "../../abstracts/abstracts-module";
+
+/* FILEUPLOAD */
+
+$fileupload-height: $spacer * 6 !important;
+
+.fileupload__container {
+
+  .fileupload__block {
+    border: 1px dashed $secondary;
+    border-radius: $border-radius;
+  }
+
+  .drop {
+    height: $fileupload-height;
+    & .over {
+      background-color: $dropdown-link-hover-bg;
+    }
+  }
+
+	.content {
+    height: $fileupload-height;
+		padding: $spacer * 2;
+    justify-content: flex-start !important;
+	}
+
+  .fileupload__loading {
+    border: 1px dashed $secondary;
+    border-radius: $border-radius;
+    height: $fileupload-height;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fileupload__image {
+    border: 1px solid $secondary;
+    width: auto;
+  	height: $spacer * 3;
+    margin-right: $spacer;
+    @include prefixes(animation, ulpload__image .5s);
+    @include keyframes(ulpload__image){
+      from, 0% { display: none; transform: scale(0); }
+     	to, 100% { display: block; transform: scale(1); }
+    }
+  }
+
+  .card__item {
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    border-radius: 0;
+    box-shadow: $box-shadow-sm;
+    margin-bottom: 0;
+    .card-body {
+      padding-top: 0;
+    }
+    h5 + *[class*="text-"] {
+      line-height: 1;
+    }
+  }
+
+}

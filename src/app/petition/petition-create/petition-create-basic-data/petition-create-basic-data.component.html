@@ -1,0 +1,121 @@
+<div class="card-header d-flex justify-content-between">
+  <h3>Datos básicos</h3>
+  <!-- PETITION EDIT start -->
+  <span class="badge badge__dotted--success" *ngIf="state === 1">Borrador</span>
+  <span class="badge badge__dotted--dark" *ngIf="state === 2">En observación</span>
+  <span class="badge badge__dotted--warning" *ngIf="state === 3">Observadas</span>
+  <span class="badge badge__dotted--danger" *ngIf="state === 4">Rechazada</span>
+  <!-- PETITION EDIT end -->
+</div>
+<ng-container>
+<div class="card-body">
+  <div class="row">
+    <div class="col-12">
+        <fieldset>
+      <div class="form-group">
+        <div class="d-flex justify-content-between align-items-baseline">
+          <label>Nombre de la solicitud</label>
+          <small>(Máximo 100 carácteres)</small>
+        </div>
+        <input type="" class="form-control" placeholder="Construcción edificio de Av. Álvarez Thomas 1131" name="name"
+        [formControl]="basicDataForm.controls['name']" maxlength="100">
+        <div class="invalid-feedback">
+          El campo es requerido.
+        </div>
+        <!-- Only PETITION EDIT Observadas start -->
+        <div class="warning--feedback" *ngIf="state === 3">
+          Intercambio de datos.
+        </div>
+        <!-- Only PETITION EDIT Observadas start -->
+      </div>
+    </fieldset>
+    </div>
+    <div class="col-6 col-lg-6">
+      <div class="form-group">
+        <label>Código de Obra <small>(opcional)</small></label>
+        <input type="number" class="form-control" placeholder="12121212" name="outerCode"
+        [formControl]="basicDataForm.controls['outerCode']">
+        <!-- Only PETITION EDIT Observadas start -->
+        <div class="warning--feedback" *ngIf="state === 3">
+          Intercambio de datos.
+        </div>
+        <!-- Only PETITION EDIT Observadas start -->
+      </div>
+    </div>
+    <!-- PETITION EDIT start -->
+    <div class="col-6 col-lg-6" *ngIf="state">
+      <div class="form-group">
+        <label>Responsable</label>
+        <input type="text" class="form-control" placeholder="Joe Doe" readonly>
+      </div>
+    </div>
+    <!-- PETITION EDIT end -->
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <hr class="divider">
+      <h5>Fechas</h5>
+    </div>
+    <div class="col-6 col-lg-6">
+      <div class="form-group">
+        <label>Vencimiento de Oferta</label>
+        <ng-template let-text="text" let-identifier="identifier" #dateTemplate1>
+          <input type="text" data-toggle="dropdown" class="form-control input__icon--calendar"
+          [formControl]="basicDataForm.controls['offerDate']"
+          [value]="offerDate ? offerDate.toLocaleDateString() : ''"
+          [ngStyle]="state === 4 || state === 2 ? {'pointer-events': 'none'} : ''"
+          onkeypress="return false"/>
+        </ng-template>
+        <app-dt-daytime #customFieldValueDayTime [customTemplate]="dateTemplate1" [withToday]="false" [withTime]="false"
+        (OnSelectDate)="setOfferDate($event)" [restrictionDate]="restrictedExpiration">
+        </app-dt-daytime>
+        <div class="invalid-feedback">
+          El campo es requerido.
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-lg-6">
+      <div class="form-group">
+        <label>Fecha adjudicación</label>
+        <ng-template let-text="text" let-identifier="identifier" #dateTemplate>
+          <input type="text" data-toggle="dropdown" class="form-control input__icon--calendar"
+          [formControl]="basicDataForm.controls['awardedDate']"
+          [value]="awardedDate ? awardedDate.toLocaleDateString() : ''"
+          [ngStyle]="state === 4 || state === 2 ? {'pointer-events': 'none'} : ''"
+          onkeypress="return false;"/>
+        </ng-template>
+        <app-dt-daytime #customFieldValueDayTime [customTemplate]="dateTemplate" [withToday]="false" [withTime]="false"
+        (OnSelectDate)="setAwardedDate($event)" [restrictionDate]="restrictedAssigned" [initialDate]="offerDate">
+        </app-dt-daytime>
+        <div class="invalid-feedback">
+          El campo es requerido.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <hr class="divider">
+      <h5>Pago</h5>
+    </div>
+    <div class="col-6 col-lg-6">
+      <div class="form-group">
+        <label for="SelectPayment">Forma de pago</label>
+      <select class="form-control input__icon--chevron-down" id="SelectPayment"
+        [formControl]="basicDataForm.controls['payment']">
+       <div class="invalid-feedback">
+        Es necesario seleccionar la forma de pago.
+       </div>
+       <option selected disabled [ngValue]="null">Seleccionar forma de pago</option>
+       <option [value]="item.id" *ngFor="let item of paymentData">{{item.text}}</option>
+     </select>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-container>
+
+<div class="card-footer d-flex justify-content-center flex-wrap">
+  <button type="button" class="btn btn-outline-secondary btn-sm disabled">Anterior</button>
+  <button type="button" class="btn btn-secondary btn-sm" (click)="next()">Siguiente</button>
+</div>

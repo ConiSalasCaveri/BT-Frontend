@@ -1,0 +1,49 @@
+<div class="auth__content" @auth>
+
+  <div class="auth__header">
+    <h1>Activar cuenta</h1>
+  </div>
+
+  <div class="auth__body">
+    <form class="form-invalid">
+      <div *ngIf="!this.result" class="alert alert-info alert-dismissible fade show" role="alert">
+        Nos encontramos validando su cuenta...
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  
+      <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" name="email" class="form-control input__icon--user" placeholder="usuario@mail.com">
+          <div class="invalid-feedback">
+            Correo electrónico inválido.
+          </div>
+        </div>
+  
+        <div class="form-group d-flex align-items-center flex-column">
+            <re-captcha></re-captcha>
+            <div class="invalid-feedback">
+              El campo es requerido.
+            </div>
+            <div class="captcha--invalid">
+              La verificación caducó. Vuelve a marcar la casilla de verificación.
+            </div>
+          </div>
+    </form>
+  </div>
+
+  <div class="auth__footer">
+    <button class="btn btn__primary--gradient btn-block">Reenviar correo</button>
+    <hr class="flex-fill text__divider" data-content="o">
+    <a class="btn btn-outline-secondary btn-block" routerLink="/signin">Iniciar sesión</a>
+  </div>
+
+</div>
+
+<!-- Position it -->
+<div style="position: fixed; top: 1rem; right: 1rem;">
+
+  <app-notifications></app-notifications>
+
+</div>

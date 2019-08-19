@@ -1,0 +1,239 @@
+<div class="card">
+
+  <div class="card-header">
+    <h3>Ranking</h3>
+  </div>
+
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex justify-content-center">
+          <div class="switch__btn-group">
+            <button type="button" class="btn btn-sm px-3" (click)="suppliersRanking = 'suppliers-ranking-total'" [ngClass]="this.suppliersRanking === 'suppliers-ranking-total' ? 'btn-secondary' : 'btn-outline-secondary'">
+              Total
+            </button>
+            <button type="button" class="btn btn-sm px-3" (click)="suppliersRanking = 'suppliers-ranking-subcategory'" [ngClass]="this.suppliersRanking === 'suppliers-ranking-subcategory' ? 'btn-secondary' : 'btn-outline-secondary'">
+              Subrubros
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12" [ngSwitch]="suppliersRanking">
+
+        <div class="accordion" *ngSwitchCase="'suppliers-ranking-total'">
+
+          <div class="card">
+            <div class="card-header collapsed" data-toggle="collapse" data-target="#suppliersOneTotal" aria-expanded="false" aria-controls="suppliersOneTotal">
+              <div class="d-flex justify-content-between align-items-center">
+                <h4>1° Proveedor 50</h4>
+                <i-chevron-down class="text-light"></i-chevron-down>
+              </div>
+            </div>
+            <div id="suppliersOneTotal" class="collapse" aria-labelledby="headingOne">
+              <div class="card-body">
+
+                <div class="row form-group">
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <small>Forma de pago</small>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                    <p class="text-right">Pago electrónico</p>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <small>Plazo de Pago</small>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                    <p class="text-right">60 días</p>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <small>Entrega en Obra</small>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                    <p class="text-right">02-04-2019</p>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <small>Costo de envío a cargo de</small>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                    <p class="text-right">Proveedor</p>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <small>Sub total</small>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                    <p class="text-right">$ 2.000.000,00</p>
+                  </div>
+                </div>
+                <div class="row form-group mb-0">
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <small>Costo de envío</small>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                    <p class="text-right">$ 2.500,00</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <hr class="divider">
+                    <div class="form-group">
+                      <h3 class="d-flex justify-content-end">$ 2.002.500,00</h3>
+                      <small class="d-flex justify-content-end">TOTAL</small>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="card" disabled>
+            <div class="card-header collapsed">
+              <div class="d-flex justify-content-between align-items-center">
+                <h4>2° Proveedor 50</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" disabled>
+            <div class="card-header collapsed">
+              <div class="d-flex justify-content-between align-items-center">
+                <h4>3° Proveedor 50</h4>
+              </div>
+            </div>
+          </div>          
+
+        </div>
+
+        <div class="accordion" *ngSwitchCase="'suppliers-ranking-subcategory'">
+
+          <!-- Only me suppliers -->
+          <div class="card">
+            <div class="card-header collapsed" data-toggle="collapse" data-target="#suppliersOneSubcategory" aria-expanded="false" aria-controls="suppliersOneSubcategory">
+              <div class="d-flex justify-content-between align-items-center">
+                <h4>1° Proveedor 50</h4>
+                <i-chevron-down class="text-light"></i-chevron-down>
+              </div>
+            </div>
+            <div id="suppliersOneSubcategory" class="collapse" aria-labelledby="headingOne">
+              <div class="card-body">
+
+                <div class="row form-group">
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <small>Forma de pago</small>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                    <p class="text-right">Pago electrónico</p>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <small>Plazo de Pago</small>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                    <p class="text-right">60 días</p>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <small>Entrega en Obra</small>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                    <p class="text-right">02-04-2019</p>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <small>Costo de envío a cargo de</small>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                    <p class="text-right">Proveedor</p>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <small>Sub total</small>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                    <p class="text-right">$ 2.000.000,00</p>
+                  </div>
+                </div>
+                <div class="row form-group mb-0">
+                  <div class="col-6 d-flex justify-content-start align-items-center">
+                    <small>Costo de envío</small>
+                  </div>
+                  <div class="col-6 d-flex justify-content-end align-items-center">
+                    <p class="text-right">$ --,--</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <hr class="divider">
+                    <div class="row form-group">
+                      <div class="col-6 d-flex justify-content-start align-items-center">
+                        <small>Subrubro 10</small>
+                      </div>
+                      <div class="col-6 d-flex justify-content-end align-items-center">
+                        <p class="text-right">$ 1.000.000,00</p>
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <div class="col-6 d-flex justify-content-start align-items-center">
+                        <small>Subrubro 20</small>
+                      </div>
+                      <div class="col-6 d-flex justify-content-end align-items-center">
+                        <p class="text-right">$ 1.000.000,00</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <hr class="divider">
+                    <div class="form-group">
+                      <h3 class="d-flex justify-content-end">$ 2.000.000,00</h3>
+                      <small class="d-flex justify-content-end">TOTAL</small>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="card" disabled>
+            <div class="card-header collapsed">
+              <div class="d-flex justify-content-between align-items-center">
+                <h4>2° Proveedor 50</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" disabled>
+            <div class="card-header collapsed">
+              <div class="d-flex justify-content-between align-items-center">
+                <h4>3° Proveedor 50</h4>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

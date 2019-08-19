@@ -1,0 +1,120 @@
+<div id="accordion" class="accordion" *ngFor="let category of petitionOffers">
+    <h4>{{category.categoryname}}</h4>
+    <div class="card" *ngFor="let subcategory of category.subcategories; index as i">
+    <div class="card-header collapsed" data-toggle="collapse" [attr.data-target]="'#subcategoryOne'+subcategory.subcategoryid" aria-expanded="false" aria-controls="subcategoryOne" >
+      <div class="row">
+        <div class="col d-flex align-items-center">
+          <h4>{{subcategory.subcategoryname}}</h4>
+        </div>
+        <div class="col-auto d-flex justify-content-center align-items-center">
+          <i-chevron-down class="text-light"></i-chevron-down>
+        </div>
+      </div>
+    </div>
+    <div id="subcategoryOne{{subcategory.subcategoryid}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <div class="row">
+          <div [ngClass]="subcategory.petitionOffers.length > 1 ?
+            'col-12 offset-md-1 col-md-10 offset-xl-0 col-xl-6 col-fhd-4 mb-4 mb-fhd-0' :
+            'col-12 offset-md-1 col-md-10 offset-xl-3 col-xl-6 offset-fhd-0 col-fhd-4'"
+            *ngFor="let petitionOffer of subcategory.petitionOffers; index as ipo">
+            <div class="card__tag">
+              <small>Última modificación: {{getUpdatedOn(petitionOffer.updatedOn)}}</small>
+            </div>
+            <div class="card">
+              <div class="card-header py-0" data-toggle="collapse"
+              [attr.data-target]="'#suppliersOne'+createIndex(ipo, subcategory.subcategoryid)" aria-expanded="true" aria-controls="suppliersOne">
+                <div class="row">
+                  <div class="col-auto card__label px-2 py-3">
+                    <h4 class="mr-0">{{petitionOffer.place}}º</h4>
+                  </div>
+                  <div class="col py-3 pr-0">
+                    <div class="row">
+                      <div class="col d-flex flex-column align-items-start">
+                        <ngb-rating [rate]="petitionOffer.starRate" [readonly]="true" max="5" class="text-warning icon--star mb-2" ngbTooltip="Calificación del proveedor" placement="top" container="body"></ngb-rating>
+                        <h4>{{petitionOffer.name}}</h4>
+                      </div>
+                      <div class="col-auto d-flex align-items-center px-1">
+                        <span class="btn btn-accent btn-sm mr-0 mt-0" ngbTooltip="Proveedor Triple A" tooltipClass="tooltip--accent" placement="top" container="body" *ngIf="petitionOffer.tripleA">A</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-auto d-flex justify-content-center align-items-center">
+                    <i-chevron-down class="text-light"></i-chevron-down>
+                  </div>
+                </div>
+              </div>
+              <div id="suppliersOne{{createIndex(ipo, subcategory.subcategoryid)}}" class="collapse show">
+                <div class="card-body">
+                  <div class="row form-group">
+                      <div class="col-6 d-flex justify-content-start align-items-center">
+                        <small>Forma de pago</small>
+                      </div>
+                      <div class="col-6 d-flex justify-content-end align-items-center">
+                        <p class="text-right">{{getPaymentString(petitionOffer.payment)}}</p>
+                      </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-6 d-flex justify-content-start align-items-center">
+                      <small>Plazo de Pago</small>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end align-items-center">
+                      <p class="text-right">{{getPaymentPeriodString(petitionOffer.paymentPeriod)}}</p>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-6 d-flex justify-content-start align-items-center">
+                      <small>Entrega en Obra</small>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end align-items-center">
+                      <p class="text-right">{{petitionOffer.deliveryOnSiteDateStart}}</p>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-6 d-flex justify-content-start align-items-center">
+                      <small>Costo de envío a cargo de</small>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end align-items-center">
+                      <p class="text-right">{{getRoleString(petitionOffer.shippingCostOwner)}}</p>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-6 d-flex justify-content-start align-items-center">
+                      <small>Sub total</small>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end align-items-center">
+                      <p class="text-right">{{petitionOffer.subtotal | currency}}</p>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-6 d-flex justify-content-start align-items-center">
+                      <small>Costo de envío</small>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end align-items-center">
+                      <p class="text-right">{{petitionOffer.shippingCost | currency}}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <hr class="divider">
+                      <div class="form-group">
+                        <h3 class="d-flex justify-content-end">{{petitionOffer.total | currency}}</h3>
+                        <small class="d-flex justify-content-end">TOTAL</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col d-flex justify-content-center">
+                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalNegotiate"
+                      (click)="openModal(petitionOffer)">Negociar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>

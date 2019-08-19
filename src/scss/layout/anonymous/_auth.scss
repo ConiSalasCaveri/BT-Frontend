@@ -1,0 +1,79 @@
+@import "../../vendors/bootstrap-abstracts";
+@import "../../abstracts/abstracts-module";
+
+/* AUTH */
+.auth__container,
+.auth__aside {
+  min-height: 100vh;
+}
+
+.auth__container {
+  width: 540px;
+
+  .auth__logo {
+    width: auto;
+    height: 3rem;
+    margin: $spacer * 4 0;
+  }
+
+  > div:last-child {
+    height: calc(100% - 158px);
+    overflow: auto;
+    padding-bottom: $spacer * 4;
+  }
+
+}
+
+.auth__aside {
+  background: $secondary-gradient;
+}
+
+.auth__content {
+  width: 390px;
+
+   .auth__header {
+      margin-bottom: $spacer * 2;
+      p {
+         margin-bottom: 0;
+      }
+      i-chevron-left {
+        margin-bottom: $spacer * 3;
+      }
+      *[class^="icon"] {
+         margin-bottom: $spacer;
+      }
+   }
+
+  .auth__body {
+    margin: $spacer 0;
+    & > .form-group:last-child,
+    & > .card:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .auth__footer {
+    margin-top: $spacer * 2;
+  }
+
+}
+
+// Media Queries
+@include media-breakpoint-down(md) {
+  .auth__container {
+    width: 100vw;
+
+    .auth__logo {
+      height: 2.5rem;
+    }
+
+    .auth__content {
+      width: 540px;
+    }
+
+    > div:last-child {
+      height: calc(100% - 163px);
+    }
+
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "asdasdasd",
+  "user": "Pepe",
+  "state": 7,
+  "name": "Solicitud Detalle Uno",
+  "street": "calle falsa",
+  "streetNumber": 123,
+  "apartment": "apartment",
+  "postCode": "asd123",
+  "provinceId": 2,
+  "localityId": 1,
+  "awardedDate": "06/23/2019",
+  "offerExpirationDate": "06/23/2019",
+  "payment": 2,
+  "deliveryOnSiteDateEnd": "02/03/2019",
+  "deliveryOnSiteDateStart": "02/09/2019",
+  "type": {
+    "inviteSuppliers": true,
+    "type": 2
+  },
+  "nullify": {
+    "id": "asd",
+    "petitionId": "asdasd",
+    "observation": "La solicitud no cumplía con los requisitos.",
+    "type": 1,
+    "userName": "Pepe usuario"
+  }
+}

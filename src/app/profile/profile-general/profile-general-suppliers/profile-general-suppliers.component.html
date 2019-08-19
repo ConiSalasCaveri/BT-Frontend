@@ -1,0 +1,162 @@
+<div class="col-12">
+  <hr class="divider">
+  <h5>Rubros y Subrubros</h5>
+</div>
+
+<div class="col-12 table-responsive pb-3">
+  <table class="table table--simple">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Rubros</th>
+        <th scope="col">Subrubros</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr scope="row">
+        <td>Rubro 10</td>
+        <td>
+          <div>Subrubro 5, Subrubro 7, Subrubro 15</div>
+        </td>
+        <td><a class="text-danger">Quitar</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-12 d-flex justify-content-center">
+    <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#ModalSectors">
+      Agregar rubros y subrubros
+    </button>
+  </div>
+
+<div class="col-12">
+  <hr class="divider">
+  <h5>provincias</h5>
+</div>
+
+<div class="col-12">
+  <div class="badges__container">
+    <span class="badge badge-pill badge-secondary">
+      <div>
+        C.A.B.A.
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="col-12 d-flex justify-content-center">
+    <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#ModalProvinces">
+      Agregar provincias
+    </button>
+  </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="ModalSectors" tabindex="-1" role="dialog" aria-labelledby="ModalSectorsTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <div class="d-flex flex-column">
+        <h1>Rubros y Subrubros</h1>
+        <p>Seleccioná los ítems de tu interés para recibir notificaciones.</p>
+      </div>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal__card-item">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="SectorAllCheck">
+          <label class="custom-control-label" for="SectorAllCheck">
+            Seleccionar todos
+          </label>
+        </div>
+      </div>
+      <div class="modal__card">
+        <div class="modal__card-header collapsed" data-toggle="collapse" data-target="#collapseSubitems1" role="button"
+          aria-expanded="false" aria-controls="collapseSubitems1">
+          <div class="custom-control custom-checkbox d-flex justify-content-between">
+            <div>
+              <input type="checkbox" class="custom-control-input" id="1" name="category1">
+              <label class="custom-control-label" for="1">
+                Rubro 10
+              </label>
+            </div>
+            <i-chevron-down></i-chevron-down>
+          </div>
+        </div>
+        <div class="collapse" id="collapseSubitems1">
+          <div class="card card-body">
+            <div class="modal__card-subitem">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="SubcategoryID">
+                <label class="custom-control-label" for="SubcategoryID">
+                  Subrubro 20
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer d-flex justify-content-center">
+      <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+      <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="ModalProvinces" tabindex="-1" role="dialog" aria-labelledby="ModalProvincesTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <div class="d-flex flex-column">
+        <h1>Provincias</h1>
+        <p>Seleccioná las provincias en las que desea participar para ofertar.</p>
+      </div>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal__card-item">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="ProvinceAllCheck">
+          <label class="custom-control-label" for="ProvinceAllCheck">
+            Seleccionar todas
+          </label>
+        </div>
+      </div>
+      <div class="modal__card-item">
+        <div class="modal__card-header">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="itemName" name="check-province">
+            <label class="custom-control-label" for="itemName">
+              CABA
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer d-flex justify-content-center">
+      <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+      <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+    </div>
+
+  </div>
+</div>
+</div>

@@ -1,0 +1,146 @@
+@import "../abstracts/abstracts-module";
+
+/* MODALS */
+
+.modal-header,
+.modal-footer {
+  padding: $spacer * 2 0;
+  margin-left: $spacer * 2;
+  margin-right: $spacer * 2;
+}
+
+.modal-body {
+  padding: $spacer * 2;
+}
+
+.modal-header {
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.modal-body {
+  .modal__card {
+    margin-top: $spacer;
+
+    .modal__card-header {
+      box-shadow: $box-shadow-sm;
+      padding: $spacer;
+
+      &:hover {
+        box-shadow: $box-shadow;
+      }
+
+      &:not(.collapsed) {
+        i-chevron-down {
+          transform: rotate(180deg);
+        }
+      }
+
+      &--all {
+        margin-bottom: $spacer;
+      }
+    }
+
+    .card-body {
+      border: none;
+      background-color: transparent;
+      padding: $spacer 0 0 0;
+
+      .modal__card-subitem {
+        margin-left: $spacer * 2;
+        margin-bottom: $spacer;
+        background-color: none;
+        box-shadow: $box-shadow-sm;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .custom-control {
+          padding-left: 0;
+        }
+
+        .custom-control-label {
+          width: 100%;
+          padding: $spacer $spacer $spacer 0;
+          text-indent: 45px;
+
+          &::before,
+          &::after {
+            top: calc(50% - 8px);
+            left: $spacer;
+          }
+        }
+      }
+    }
+
+    &-item {
+      &:not(:first-child) {
+        box-shadow: $box-shadow-sm;
+        margin-top: $spacer;
+
+        &:hover {
+          box-shadow: $box-shadow;
+        }
+      }
+
+      .custom-control {
+        padding-left: 0;
+      }
+
+      .custom-control-label {
+        width: 100%;
+        padding: $spacer $spacer $spacer 0;
+        text-indent: 45px;
+
+        &::before,
+        &::after {
+          top: calc(50% - 8px);
+          left: $spacer;
+        }
+      }
+
+      &:first-child {
+        background-color: $gray-100;
+      }
+    }
+  }
+}
+
+.modal-dialog-scrollable .modal-body {
+  height: 360px;
+}
+
+@each $name, $color in $theme-colors {
+  .modal--#{$name} {
+    h1 {
+      color: $color;
+    }
+
+    .modal__icon {
+        stroke: $color;
+        width: 2rem;
+        height: auto;
+        padding-bottom: $spacer * 2;
+    }
+  }
+}
+
+.modal-sm {
+  .modal-content {
+    padding: $spacer * 3 $spacer * 2;
+  }
+  .modal-body {
+    min-height: 120px;
+    padding: 0 0 $spacer 0;
+    text-align: center;
+    p {
+      margin-bottom: 0;
+    }
+  }
+  .modal-footer {
+    border: none;
+    padding: $spacer 0 0 0;
+  }
+}
