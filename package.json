@@ -35,7 +35,7 @@
     "angular-feather": "^5.4.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
-    "datatables.net": "^1.10.19",
+    "datatables.net": "^1.11.3",
     "datatables.net-dt": "^1.10.19",
     "datatables.net-editor-server": "^1.9.0",
     "datatables.net-responsive-dt": "^2.2.3",
